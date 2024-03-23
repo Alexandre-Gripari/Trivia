@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameService } from '../../../services/game.service';
-import { Question } from '../../../models/question.model';
+import { Clue, Question } from '../../../models/question.model';
 import { Answer } from '../../../models/question.model';
 
 @Component({
@@ -12,14 +12,21 @@ import { Answer } from '../../../models/question.model';
 
 export class GameQuestionComponent implements OnInit {
 
+  public clue: Clue | undefined;
+
   public question: Question | undefined;
 
   public answers: Answer[] | undefined;
 
   constructor(public gameService: GameService) {
-    this.gameService.question$.subscribe((question) => {
-      this.question = question;
-      this.answers = question.answers;
+    this.gameService.observable$.subscribe((observable) => {
+      this.question = observable.question;
+      if (observable.clueActive) {
+        this.clue = observable.question.clue[observable.clueNumber];
+      }
+      else {
+        this.clue = undefined;
+      }  
     });
   }
 
@@ -29,6 +36,11 @@ export class GameQuestionComponent implements OnInit {
   handleAnswerSelected(answer: Answer) {
     console.log("received answer");
     this.gameService.checkAnswer(answer);
+  }
+
+  handleClueUsed(clue: Clue) {
+    console.log("Clue used");
+    this.gameService.useClue(clue);
   }
 
 
