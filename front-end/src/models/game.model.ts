@@ -5,8 +5,7 @@ import { Answer } from './question.model';
 export interface GameInstance { 
 	gameId: string;
 	quizId: string;
-    picture? : string;
-    text? : string;
+    text : string;
 	gameQuestionsAnswers: GameQuestionAnswer[];
 	startTime: Date;
 	endTime: Date;

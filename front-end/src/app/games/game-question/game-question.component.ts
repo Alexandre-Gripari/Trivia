@@ -12,9 +12,9 @@ import { Answer } from '../../../models/question.model';
 
 export class GameQuestionComponent implements OnInit {
 
-  public question: Question;
+  public question: Question | undefined;
 
-  public answers : Answer[];
+  public answers: Answer[] | undefined;
 
   constructor(public gameService: GameService) {
     this.gameService.question$.subscribe((question) => {
@@ -25,5 +25,14 @@ export class GameQuestionComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  handleAnswerSelected(answer: Answer) {
+    console.log("received answer");
+    this.gameService.checkAnswer(answer);
+  }
+
+
+
+
 
 }

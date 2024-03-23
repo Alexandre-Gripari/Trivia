@@ -1,0 +1,5 @@
+<div class="game-answer" *ngIf="answer">
+    <button *ngIf ="answer.show" (click)="onAnswerClick()">
+        <p>{{ answer?.value }}</p>
+    </button>
+</div>

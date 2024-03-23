@@ -1,0 +1,11 @@
+.answer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.question {
+    margin: auto;
+    font-size: 30px;
+    margin-bottom: 20px;
+}

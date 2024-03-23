@@ -8,6 +8,9 @@ import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { GamePageComponent } from './games/game-page/game-page.component';
+import { QuestionContainerComponent } from './games/question-container/question-container.component';
+import { GameQuestionComponent } from './games/game-question/game-question.component';
+import { GameAnswerComponent } from './games/game-answer/game-answer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { GamePageComponent } from './games/game-page/game-page.component';
     QuizComponent,
     HeaderComponent,
     QuizFormComponent,
-    GamePageComponent
+    GamePageComponent,
+    QuestionContainerComponent,
+    GameQuestionComponent,
+    GameAnswerComponent
   ],
   imports: [
     BrowserModule,

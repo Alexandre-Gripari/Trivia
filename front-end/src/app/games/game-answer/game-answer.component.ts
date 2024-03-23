@@ -18,8 +18,7 @@ export class GameAnswerComponent implements OnInit {
   @Input()
   answer: Answer | undefined;
 
-  @Output()
-  quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() answerSelected = new EventEmitter<Answer>();
 
   constructor() {
   }
@@ -27,7 +26,11 @@ export class GameAnswerComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectQuiz() {
-    this.quizSelected.emit(true);
+  onAnswerClick() {
+    this.answerSelected.emit(this.answer);
+    console.log(this.answer);
   }
+
+
+  
 }
