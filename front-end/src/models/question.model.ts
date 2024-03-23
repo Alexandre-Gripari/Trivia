@@ -8,10 +8,10 @@ export interface Answer {
 export interface Question {
     question: string;
     answers: Answer[];
-    indice : Indice[];
+    clue : Clue[];
 }
 
-export interface Indice {
+export interface Clue {
     image?: string;
     text?: string;
     audio?: string;
