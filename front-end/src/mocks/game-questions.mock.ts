@@ -37,15 +37,7 @@ export const QUESTION_PARIS: Question = {
     ]
 };
 
-export const QUIZ_LIST: Quiz[] = [
-    {
-        name: 'Les Acteurs', // What's happening if I change this value..?
-        theme: 'Actor',
-        questions: [QUESTION_ACTOR],
-    },
-    {
-        name: 'Les Capitales',
-        theme: 'Geography',
-        questions: [QUESTION_PARIS],
-    }
+export const QUESTION_LIST: Question[] = [
+    QUESTION_ACTOR,
+    QUESTION_PARIS
 ];
