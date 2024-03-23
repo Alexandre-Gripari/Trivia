@@ -17,3 +17,9 @@ export interface GameQuestionAnswer {
 	question: Question; 
 	//answer: Answer[]; 
 }
+
+export interface QuestionAndClue {
+	question: Question;
+	clueNumber: number;
+	clueActive: Boolean;
+}

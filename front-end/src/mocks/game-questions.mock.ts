@@ -26,7 +26,7 @@ export const QUESTION_PARIS: Question = {
             show: true,
         }
     ],
-    indice: [
+    clue: [
         {
             image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Paris_-_Eiffelturm_und_Marsfeld2.jpg/800px-Paris_-_Eiffelturm_und_Marsfeld2.jpg'
         }
@@ -59,9 +59,12 @@ export const QUESTION_CONTINANT: Question = {
             show: true,
         }
     ],
-    indice: [
+    clue: [
         {
             image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Flag_map_of_Algeria.svg/800px-Flag_map_of_Algeria.svg.png'
+        },
+        {
+            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/ChadMap.svg/825px-ChadMap.svg.png?20130501204653'
         }
     ]
         

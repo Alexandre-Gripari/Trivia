@@ -5,4 +5,7 @@
     <div class="answer-container">
         <app-game-answer *ngFor="let answer of question?.answers" [answer]="answer" (answerSelected)="handleAnswerSelected($event)"></app-game-answer>
     </div>
+    <div>
+        <app-game-clue [clue]="clue" (clueUsed)="handleClueUsed($event)"></app-game-clue>
+    </div>
 </div>
