@@ -15,7 +15,7 @@ export class GameService {
 
   private question: Question = this.questions[this.index];
 
-  private clueNumber: number = 0;
+  private clueNumber: number = -1;
 
   private clueActive: Boolean = false;
 
@@ -30,7 +30,7 @@ export class GameService {
     if (answer.isCorrect) {
       this.index++;
       this.observable.question = this.questions[this.index];
-      this.observable.clueNumber = 0;
+      this.observable.clueNumber = -1;
       this.observable.clueActive = false;
     }
     else {
@@ -40,13 +40,10 @@ export class GameService {
           }
       }
       this.observable.clueActive = true;
+      if(this.observable.clueNumber < this.observable.question.clue.length - 1){
+        this.observable.clueNumber++;
+      }
     }
-    this.observable$.next(this.observable);
-  }
-
-  public useClue(clue: Clue) {
-    this.observable.clueActive = false;
-    this.observable.clueNumber+=1
     this.observable$.next(this.observable);
   }
 
