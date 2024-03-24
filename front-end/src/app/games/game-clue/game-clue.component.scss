@@ -1,20 +1,5 @@
-.game-clue {
-    position: fixed;
-    top: 35%;
-    left: 125%;
-}
-
-.indice-button {
-    padding: 10px 100px;
-    font-size: 30px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.indice-button:hover {
-    background-color: #0056b3;
+.game-clue img {
+    border: black 1px solid;
+    width: 300px;
+    height: auto;
 }
