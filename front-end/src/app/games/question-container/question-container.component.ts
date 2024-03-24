@@ -7,9 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionContainerComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
   }
+
 
 }

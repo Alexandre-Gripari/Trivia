@@ -17,15 +17,13 @@ export class GameQuestionComponent implements OnInit {
 
   public answers: Answer[] | undefined;
 
+  isFinished: Boolean = false;
+
   constructor(public gameService: GameService) {
     this.gameService.observable$.subscribe((observable) => {
       this.question = observable.question;
-      if (observable.clueActive) {
-        this.clue = observable.question.clue[this.getCurrentClueNumber()];
-      }
-      else {
-        this.clue = undefined;
-      }
+      this.clue = observable.question.clue[this.getCurrentClueNumber()];
+      if (observable.question === undefined) this.isFinished = true;
     });
   }
 
@@ -33,6 +31,7 @@ export class GameQuestionComponent implements OnInit {
     console.log("Début du quiz");
       if (this.question?.nbOfErrorsToUseClue == 0) this.gameService.autoClueOnStart();
   }
+
   handleAnswerSelected(answer: Answer) {
     console.log("received answer");
     this.gameService.checkAnswer(answer);
@@ -40,8 +39,12 @@ export class GameQuestionComponent implements OnInit {
   
   getCurrentClueNumber() {
     return this.gameService.observable$.getValue().clueNumber;
-
-  handleClueUsed(clue: Clue) {
-    this.gameService.useClue(clue);
   }
+
+  handleClueUsed() {
+    console.log("Clue used by button");
+    this.gameService.useClueWithButton();
+  }
+
+
 }
