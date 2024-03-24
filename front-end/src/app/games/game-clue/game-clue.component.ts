@@ -12,4 +12,9 @@ export class GameClueComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  onClueClick() {
+    this.clueUsed.emit(this.clue);
+  }
+
 }

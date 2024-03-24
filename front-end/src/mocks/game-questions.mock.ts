@@ -30,9 +30,10 @@ export const QUESTION_PARIS: Question = {
         {
             image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Paris_-_Eiffelturm_und_Marsfeld2.jpg/800px-Paris_-_Eiffelturm_und_Marsfeld2.jpg'
         }
-    ]
-
-
+    ],
+    nbOfErrorsToUseClue: 2
+        
+    
 };
 
 export const QUESTION_CONTINANT: Question = {
@@ -62,6 +63,9 @@ export const QUESTION_CONTINANT: Question = {
     clue: [
         {
             image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/langfr-225px-Flag_of_Algeria.svg.png'
+        },
+        {
+            text: "C'est un pays situé au nord de L'Afrique"
         },
         {
             image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/ChadMap.svg/825px-ChadMap.svg.png?20130501204653'
@@ -135,7 +139,47 @@ export const QUESTION_AUDIO: Question = {
     {
       audio: 'https://lasonotheque.org/UPLOAD/wav/1890.wav'
     }
-  ]
+    ],
+    nbOfErrorsToUseClue: 1
+        
+    
+};
+
+export const QUESTION_CORSE: Question = {
+    question: 'Quelle île est située au Sud de la France ?',
+    answers: [
+        {
+            value: 'Malte',
+            isCorrect: false,
+            show: true,
+       },
+       {
+            value: 'La Réunion',
+            isCorrect: false,
+            show: true,
+        },
+        {
+            value: 'La Corse',
+            isCorrect: true,
+            show: true,
+        },
+        {
+            value: 'l\'île de Ré',
+            isCorrect: false,
+            show: true,
+        }
+    ],
+    clue: [
+        {
+            text: "On l\'appelle l'île de Beauté",
+        },
+        {
+            image: 'https://e7.pngegg.com/pngimages/70/395/png-clipart-flag-and-coat-of-arms-of-corsica-corsican-symbol-flag-miscellaneous-white.png'
+        }
+    ],
+    nbOfErrorsToUseClue: 0
+        
+   
 };
 
 export const QUESTION_MIXTE: Question = {
@@ -173,9 +217,11 @@ export const QUESTION_MIXTE: Question = {
 
 
 export const QUESTION_LIST: Question[] = [
+    QUESTION_CORSE,
     QUESTION_PARIS,
     QUESTION_CONTINANT,
     QUESTION_TEXTE,
   QUESTION_AUDIO,
   QUESTION_MIXTE
+
 ];

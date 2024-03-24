@@ -30,12 +30,18 @@ export class GameQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Début du quiz");
+      if (this.question?.nbOfErrorsToUseClue == 0) this.gameService.autoClueOnStart();
   }
   handleAnswerSelected(answer: Answer) {
     console.log("received answer");
     this.gameService.checkAnswer(answer);
   }
+  
   getCurrentClueNumber() {
     return this.gameService.observable$.getValue().clueNumber;
+
+  handleClueUsed(clue: Clue) {
+    this.gameService.useClue(clue);
   }
 }
