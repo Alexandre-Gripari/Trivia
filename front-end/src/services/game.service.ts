@@ -17,6 +17,8 @@ export class GameService {
 
   private clueNumber: number = 0;
 
+  private numberOfErrors: number = 0;
+
   private clueActive: Boolean = false;
 
   private observable: QuestionAndClue = {question: this.question, clueNumber: this.clueNumber, clueActive: this.clueActive};
@@ -26,12 +28,15 @@ export class GameService {
   constructor() {
   }
 
+  
   public checkAnswer(answer: Answer) {
     if (answer.isCorrect) {
       this.index++;
       this.observable.question = this.questions[this.index];
       this.observable.clueNumber = 0;
+      this.numberOfErrors = 0;
       this.observable.clueActive = false;
+      this.autoClueOnStart();
     }
     else {
       for (let i = 0; i < this.observable.question.answers.length; i++) {
@@ -39,13 +44,20 @@ export class GameService {
           this.observable.question.answers[i].show = false;
           }
       }
-      this.observable.clueActive = true;
-    }
+      this.numberOfErrors++;
+      if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue) this.useClue(this.observable.question.clue[this.observable.clueNumber]);
+    } 
     this.observable$.next(this.observable);
   }
 
+  public autoClueOnStart() {
+    if (this.observable.question && this.observable.question.nbOfErrorsToUseClue == 0) this.useClue(this.observable.question.clue[this.observable.clueNumber]);
+  }
+
   public useClue(clue: Clue) {
-    this.observable.clueActive = false;
+    console.log("Clue used");
+    console.log(clue);
+    if (!this.observable.clueActive) this.observable.clueActive = true;
     this.observable.clueNumber+=1
     this.observable$.next(this.observable);
   }

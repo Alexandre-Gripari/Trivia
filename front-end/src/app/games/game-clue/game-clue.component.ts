@@ -27,7 +27,6 @@ export class GameClueComponent implements OnInit {
 
   onClueClick() {
     this.clueUsed.emit(this.clue);
-    console.log(this.clue);
   }
 
 
