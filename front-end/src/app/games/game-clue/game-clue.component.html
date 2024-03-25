@@ -1,5 +1,8 @@
-<div class="game-clue" *ngIf="clue">
-    <button class="indice-button"  (click)="onClueClick()">
-        <p>Indice</p>
-    </button>
+<div class="game-clue">
+    <img *ngIf="clue?.image" class="game-clue__image" [src]="clue?.image">
+    <p class="game-clue__text">{{clue?.text}}</p>
+    <audio *ngIf="clue?.audio" controls>
+        <source [src]="clue?.audio" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
 </div>

@@ -1,11 +1,15 @@
 <div class="game-question">
-    <div class="question">
-        <span>{{question?.question}}</span>
-    </div>
-    <div class="answer-container">
-        <app-game-answer *ngFor="let answer of question?.answers" [answer]="answer" (answerSelected)="handleAnswerSelected($event)"></app-game-answer>
-    </div>
-    <div>
-        <app-game-clue [clue]="clue" (clueUsed)="handleClueUsed($event)"></app-game-clue>
-    </div>
+  <div class="clue" *ngIf="gameService.observable$.value.clueActive">
+    <app-game-clue [clue]="clue"></app-game-clue>
+  </div>
+  <div *ngIf="isFinished">
+    <p>Congratulations, you have finished the quiz!</p>
+  </div>
+  <div class="question">
+    <span>{{question?.question}}</span>
+  </div>
+  <div class="answer-container">
+    <app-game-answer *ngFor="let answer of question?.answers" [answer]="answer" (answerSelected)="handleAnswerSelected($event)"></app-game-answer>
+  </div>
+    <button class="indice-button" *ngIf="gameService.observable$.value.clueNumber < gameService.observable$.value.question.clue.length-1" (click)="handleClueUsed()">Indice</button>
 </div>
