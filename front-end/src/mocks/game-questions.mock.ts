@@ -30,7 +30,7 @@ export const QUESTION_PARIS: Question = {
 
     clue: [
         {
-            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Paris_-_Eiffelturm_und_Marsfeld2.jpg/800px-Paris_-_Eiffelturm_und_Marsfeld2.jpg'
+            image: 'https://cdn-imgix.headout.com/media/images/c90f7eb7a5825e6f5e57a5a62d05399c-25058-BestofParis-EiffelTower-Cruise-Louvre-002.jpg'
         }
     ],
 
@@ -69,7 +69,7 @@ export const QUESTION_CONTINANT: Question = {
         },
         {
           text: "C'est un pays situé au nord de L'Afrique",
-          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/ChadMap.svg/825px-ChadMap.svg.png?20130501204653'
+          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Algeria_%28centered_orthographic_projection%29.svg/langfr-330px-Algeria_%28centered_orthographic_projection%29.svg.png'
         },
         {
           text: "C'est un pays situé au nord de L'Afrique",
