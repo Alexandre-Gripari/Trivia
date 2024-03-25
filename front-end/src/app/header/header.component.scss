@@ -9,7 +9,20 @@
 }
 
 .header {
-  background: $blue;
-  padding: 0.5em;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: black;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+  background-image: linear-gradient(to right, #302b63, #000026, #302b63);
+  //background-image: linear-gradient(to right, #03469e, #00026b, #03469e);
+}
+
+.logo {
+  width: 100px;
+  height: auto;
 }
