@@ -1,0 +1,10 @@
+<div (click)="selectUser()" class="card" *ngIf="user">
+    <div   class="picture_and_name">
+        <h2>
+            <span>{{user.first_name}} {{user.last_name}}</span>
+        </h2>
+    </div>
+    <h2> 
+        <span>Date de naissance : {{birth_date_day}} {{birth_date_month}} {{birth_date_year}}</span>
+    </h2>
+</div>
