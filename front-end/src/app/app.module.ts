@@ -12,6 +12,10 @@ import { QuestionContainerComponent } from './games/question-container/question-
 import { GameQuestionComponent } from './games/game-question/game-question.component';
 import { GameAnswerComponent } from './games/game-answer/game-answer.component';
 import { GameClueComponent } from './games/game-clue/game-clue.component';
+import { UserComponent } from './users/user/user.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserPageComponent } from './users/user-page/user-page.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { GameClueComponent } from './games/game-clue/game-clue.component';
     QuestionContainerComponent,
     GameQuestionComponent,
     GameAnswerComponent,
-    GameClueComponent
+    GameClueComponent,
+    UserComponent,
+    UserListComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

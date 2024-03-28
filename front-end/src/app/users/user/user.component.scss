@@ -1,3 +1,33 @@
+@import '../../../styles/card.scss';
+
+
+
+.user_picture {
+    max-height: 150px;
+    max-width: 150px;
+}
+
 .card {
-    padding: 800px 800px;
+    padding-left: 10px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: lightblue;
+    padding-left: 10px;
+}
+
+img {
+    padding-top: 10px;
+}
+
+h2 {
+    padding-bottom: 10px;
+}
+
+h1,h2 {
+    text-align: center;
 }
