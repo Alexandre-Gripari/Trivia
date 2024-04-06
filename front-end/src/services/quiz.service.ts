@@ -48,7 +48,6 @@ export class QuizService {
   setUserId(id: number) {
     this.user_id = id;
     if (!this.allQuizzes.has(this.user_id)) {
-      this.quizzes = [];
       console.log("No quizzes for this user");
     }
     else this.quizzes = this.allQuizzes.get(this.user_id)!;

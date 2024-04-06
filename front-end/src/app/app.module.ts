@@ -18,6 +18,7 @@ import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserPageComponent } from './users/user-page/user-page.component';
 import { QuizPageComponent } from './quizzes/quiz-page/quiz-page.component';
+import { UserNavigateComponent } from './users/user-navigate/user-navigate.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { QuizPageComponent } from './quizzes/quiz-page/quiz-page.component';
     UserListComponent,
     UserPageComponent,
     QuizPageComponent,
+    UserNavigateComponent,
   ],
   imports: [
     BrowserModule,
