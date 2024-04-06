@@ -2,6 +2,6 @@
     <div class="user" *ngFor="let user of userList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
-        <app-user [user]="user" (userSelected)="userSelected($event)"></app-quiz>
+        <app-user [user]="user" (userSelected)="userSelected($event)"></app-user>
     </div>
   </div>
