@@ -7,7 +7,8 @@ export const PATIENT1: User = {
     birth_date_day: '20',
     birth_date_month: 'Janvier',
     birth_date_year: '1966',
-    personal_quizzes: []
+    personal_quizzes: [],
+    user_id : 0o1
 };
 
 export const PATIENT2: User = {
@@ -17,7 +18,8 @@ export const PATIENT2: User = {
     birth_date_day: '30',
     birth_date_month: 'Avril',
     birth_date_year: '1970',
-    personal_quizzes: []
+    personal_quizzes: [],
+    user_id : 0o2
 };
 
 export const USER_LIST: User[] = [

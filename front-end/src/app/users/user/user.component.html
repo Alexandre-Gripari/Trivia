@@ -1,5 +1,5 @@
 <div (click)="selectUser()" class="card" *ngIf="user">
-    <div   class="picture_and_name">
+    <div class="picture_and_name">
         <img *ngIf="user?.profile_picture" class="user_picture" [src]="user?.profile_picture">
         <h1>
             <span>{{user.first_name}} {{user.last_name}}</span>
@@ -9,5 +9,9 @@
         <h2> 
             <span>{{user.birth_date_day}} {{user.birth_date_month}} {{user.birth_date_year}}</span>
         </h2>
+    </div>
+    <div class="buttons">
+        <button (click)="navigateToQuizList()">Quiz</button>
+        <button (click)="navigateToStats()">Statistiques</button>
     </div>
 </div>

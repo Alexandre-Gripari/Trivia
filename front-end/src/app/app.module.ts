@@ -17,6 +17,7 @@ import { GameClueComponent } from './games/game-clue/game-clue.component';
 import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserPageComponent } from './users/user-page/user-page.component';
+import { QuizPageComponent } from './quizzes/quiz-page/quiz-page.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { UserPageComponent } from './users/user-page/user-page.component';
     GameClueComponent,
     UserComponent,
     UserListComponent,
-    UserPageComponent
+    UserPageComponent,
+    QuizPageComponent,
   ],
   imports: [
     BrowserModule,

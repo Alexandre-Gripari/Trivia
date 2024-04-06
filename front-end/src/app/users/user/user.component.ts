@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { User } from '../../../models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -20,8 +21,7 @@ export class UserComponent implements OnInit {
   @Output()
   userSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {
-  }
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
@@ -29,5 +29,13 @@ export class UserComponent implements OnInit {
   selectUser() {
     console.log("User selected");
     this.userSelected.emit(true);
+  }
+
+  navigateToQuizList() {
+    this.router.navigate(['/quiz', this.user?.user_id]);
+  }
+
+  navigateToStats(){
+    //this.router.navigate(['/stats', this.user?.user_id]);
   }
 }

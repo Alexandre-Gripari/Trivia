@@ -8,4 +8,5 @@ export interface User {
     birth_date_month: string;
     birth_date_year: string;
     personal_quizzes: Quiz[];
+    user_id: number;
 }

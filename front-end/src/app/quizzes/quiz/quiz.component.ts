@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
+import { Router } from '@angular/router';
+import { GameService } from '../../../services/game.service';
 
 @Component({
   selector: 'app-quiz',
@@ -20,13 +22,17 @@ export class QuizComponent implements OnInit {
   @Output()
   quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {
-  }
+  constructor(private router: Router, private gameService: GameService) {}
 
   ngOnInit() {
   }
 
   selectQuiz() {
+    console.log("Quiz selected");
     this.quizSelected.emit(true);
+    if (this.quiz) {
+      this.gameService.setQuestions(this.quiz.questions);
+      this.router.navigate(['/game-page']);
+    }
   }
 }
