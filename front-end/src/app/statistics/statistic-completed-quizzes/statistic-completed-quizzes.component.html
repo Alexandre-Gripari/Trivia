@@ -1,0 +1,10 @@
+<div class="quiz-stats-list">
+    <div class="stats-list">
+        <p>QUIZ EFFECTUES</p>
+        <div class="quiz-stats" *ngFor="let quizStats of quizStatsList">
+            <!--Inputs & Output allow communication between parent & child components.-->
+            <!--More information: https://angular.io/guide/component-interaction-->
+            <app-statistic-quiz-stats [quizStats]="quizStats" (quizStatsSelected)="quizStatsSelected($event)"></app-statistic-quiz-stats>
+        </div>
+    </div>
+</div>

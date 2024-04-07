@@ -1,0 +1,8 @@
+<div class="questions-stats-list">
+    <button (click)="returnToStats()">Retourner à la page des statistques</button>
+    <div class="questions" *ngFor="let question of questionsStatsList">
+        <!--Inputs & Output allow communication between parent & child components.-->
+        <!--More information: https://angular.io/guide/component-interaction-->
+        <app-review [questionStats]="question"></app-review>
+    </div>
+  </div>

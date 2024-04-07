@@ -1,0 +1,55 @@
+.statistic-data {
+    display: grid;
+    grid-template-columns: 1fr 5fr ;
+    grid-template-rows: 1fr;
+}
+
+p {
+    text-align: center;
+}
+
+.numeric-data {
+    background-color: #fff;
+    padding-bottom: 20px;
+    margin-top: 2%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.completed-quizzes, .clues, .times {
+    padding-left: 150px;
+}
+
+.numeric-data>div {
+    margin-top: 20px;
+}
+
+.clues-l {
+    margin-left: 100px;
+}
+
+.times-l {
+    margin-left: 120px;
+}
+
+button {
+    margin-top: 125px;
+    font-size: 30px;
+    padding: 5%;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
