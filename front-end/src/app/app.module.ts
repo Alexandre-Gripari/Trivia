@@ -19,6 +19,13 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserPageComponent } from './users/user-page/user-page.component';
 import { QuizPageComponent } from './quizzes/quiz-page/quiz-page.component';
 import { UserNavigateComponent } from './users/user-navigate/user-navigate.component';
+import { StatisticPageComponent } from './statistics/statistic-page/statistic-page.component';
+import { StatisticDataComponent } from './statistics/statistic-data/statistic-data.component';
+import { StatisticQuizStatsComponent } from './statistics/statistic-quiz-stats/statistic-quiz-stats.component';
+import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component';
+import { ReviewPageComponent } from './reviews/review-page/review-page.component';
+import { ReviewListComponent } from './reviews/review-list/review-list.component';
+import { ReviewComponent } from './reviews/review/review.component';
 import {QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
 import { QuestionsListComponent } from './quiz-edition/questions-list/questions-list.component';
 import { QuestionCreatorComponent } from './question-creator/question-creator.component';
@@ -41,6 +48,13 @@ import { QuestionCreatorComponent } from './question-creator/question-creator.co
     UserPageComponent,
     QuizPageComponent,
     UserNavigateComponent,
+    StatisticPageComponent,
+    StatisticDataComponent,
+    StatisticQuizStatsComponent,
+    StatisticCompletedQuizzesComponent,
+    ReviewPageComponent,
+    ReviewListComponent,
+    ReviewComponent
     QuizEditionComponent,
     QuestionsListComponent,
     QuestionCreatorComponent,
