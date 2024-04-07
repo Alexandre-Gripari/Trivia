@@ -1,0 +1,33 @@
+@import "../../../styles/default-container.scss";
+@import "../../../styles/variables";
+
+.default-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 30%;
+    height: 40%;
+  }
+  
+  .default-container button {
+    font-size: 150%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: $logo-fade;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; 
+    height: 25%; 
+    text-align: center; 
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .default-container button:hover {
+    background-color: $logo-color;
+    transform: scale(1.05) translateZ(10px);
+  }
