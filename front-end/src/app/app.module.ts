@@ -19,6 +19,9 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserPageComponent } from './users/user-page/user-page.component';
 import { QuizPageComponent } from './quizzes/quiz-page/quiz-page.component';
 import { UserNavigateComponent } from './users/user-navigate/user-navigate.component';
+import {QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
+import { QuestionsListComponent } from './quiz-edition/questions-list/questions-list.component';
+import { QuestionCreatorComponent } from './question-creator/question-creator.component';
 
 
 @NgModule({
@@ -38,6 +41,9 @@ import { UserNavigateComponent } from './users/user-navigate/user-navigate.compo
     UserPageComponent,
     QuizPageComponent,
     UserNavigateComponent,
+    QuizEditionComponent,
+    QuestionsListComponent,
+    QuestionCreatorComponent,
   ],
   imports: [
     BrowserModule,
