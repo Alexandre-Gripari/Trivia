@@ -12,4 +12,8 @@ export class UserNavigateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addUser() {
+    console.log("Add user");
+  }
+
 }
