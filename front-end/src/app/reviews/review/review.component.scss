@@ -1,0 +1,19 @@
+.answer-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.question {
+    padding-top: 20px;
+    text-align: center;
+    margin: auto;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
