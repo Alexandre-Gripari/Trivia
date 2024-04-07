@@ -1,1 +1,10 @@
-@import '../../../styles/card.scss';
+@import '../../../styles/nav-bar.scss';
+
+.navigate-container {
+    justify-content: space-evenly;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+  }
