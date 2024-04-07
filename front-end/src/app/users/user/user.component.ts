@@ -36,6 +36,6 @@ export class UserComponent implements OnInit {
   }
 
   navigateToStats(){
-    //this.router.navigate(['/stats', this.user?.user_id]);
+    this.router.navigate(['/stats', this.user?.user_id]);
   }
 }

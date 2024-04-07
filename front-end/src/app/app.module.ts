@@ -54,7 +54,7 @@ import { QuestionCreatorComponent } from './question-creator/question-creator.co
     StatisticCompletedQuizzesComponent,
     ReviewPageComponent,
     ReviewListComponent,
-    ReviewComponent
+    ReviewComponent,
     QuizEditionComponent,
     QuestionsListComponent,
     QuestionCreatorComponent,

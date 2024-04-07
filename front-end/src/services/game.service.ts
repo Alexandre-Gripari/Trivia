@@ -72,10 +72,18 @@ export class GameService {
   }
 
   public setQuestions(question: Question[]) {
+    this.resetGame();
     this.questions = question;
     this.question = this.questions[this.index];
     this.observable.question = this.question;
     this.observable$.next(this.observable);
+  }
+
+  private resetGame() {
+    this.index = 0;
+    this.numberOfErrors = 0;
+    this.observable.clueNumber = -1;
+    this.observable.clueActive = false;
   }
 
 
