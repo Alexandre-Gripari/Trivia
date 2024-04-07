@@ -53,5 +53,13 @@ export class QuizService {
     else this.quizzes = this.allQuizzes.get(this.user_id)!;
     this.quizzes$.next(this.quizzes);
   }
+
+  deleteQuiz(quiz: Quiz) {
+    // We remove the quiz from the list
+    this.quizzes = this.quizzes.filter(q => q !== quiz);
+
+    // We update the observable 
+    this.quizzes$.next(this.quizzes);
+  }
   
 }

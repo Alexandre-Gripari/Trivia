@@ -2,14 +2,14 @@
   <h2>Ajouter un nouveau Quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
     <div class="input-row">
-      <label for="title">
-        Title <br>
+      <div class="input-group">
+        <label for="title">Title</label>
         <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-      </label>
-      <label for="theme">
-        Theme <br>
+      </div>
+      <div class="input-group">
+        <label for="theme">Theme</label>
         <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
-      </label>
+      </div>
       <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
     </div>
   </form>

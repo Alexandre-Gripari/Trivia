@@ -6,7 +6,7 @@
 }
 
 .filter {
-    width: 190%;
+    width: 100%;
     margin-left: 20px;
 }
 
@@ -40,4 +40,7 @@ button {
 .search-bar {
     justify-content: center;
 }
-  
+
+button:hover {
+    background-color: #337536;
+}

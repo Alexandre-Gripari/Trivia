@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
 import { Router } from '@angular/router';
 import { GameService } from '../../../services/game.service';
+import { QuizService } from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -22,7 +23,7 @@ export class QuizComponent implements OnInit {
   @Output()
   quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private gameService: GameService) {}
+  constructor(private router: Router, private gameService: GameService, private quizService : QuizService ) {}
 
   ngOnInit() {
   }
@@ -34,6 +35,20 @@ export class QuizComponent implements OnInit {
       console.log(this.quiz.questions.length);
       this.gameService.setQuestions(this.quiz.questions);
       this.router.navigate(['/game-page']);
+    }
+  }
+
+  editQuiz() {
+    if (this.quiz) {
+      //this.router.navigate(['/edit-quiz', this.quiz.id]);
+    }
+  }
+
+  deleteQuiz() {
+    console.log("Delete quiz");
+    if (this.quiz) {
+      console.log("Delete quiz");
+      this.quizService.deleteQuiz(this.quiz);
     }
   }
 }

@@ -8,6 +8,10 @@
             <option value="Nom">Nom Prénom</option>
             <option value="Birth">Date de naissance</option>
         </select>
+        <select name="filtrer2" class="filter">
+            <option value="Croissante" selected>Croissante</option>
+            <option value="Décroissante">Décroissante</option>
+        </select>
     </div>
 
     <div class = "search-bar">
@@ -16,7 +20,7 @@
     </div>
 
     <div class="button-container">
-        <button class="add-user-button">+</button>
+        <button class="add-user-button" (click)="addUser()">+</button>
     <div>
 
 </div>
