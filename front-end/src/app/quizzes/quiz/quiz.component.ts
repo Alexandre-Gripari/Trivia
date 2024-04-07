@@ -40,7 +40,8 @@ export class QuizComponent implements OnInit {
   
   editQuiz() {
     console.log("Edit quiz");
-    this.router.navigate(['/quiz-edition-page']);
+    this.router.navigate(['/quiz-edition-page'], { state: { quiz: this.quiz } });
+    // remplacer par un appel a un service
   }
 
   deleteQuiz() {

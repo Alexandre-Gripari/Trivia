@@ -29,6 +29,8 @@ import { ReviewComponent } from './reviews/review/review.component';
 import {QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
 import { QuestionsListComponent } from './quiz-edition/questions-list/questions-list.component';
 import { QuestionCreatorComponent } from './question-creator/question-creator.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
+import { HomeContainerComponent} from './home/home-container/home-container.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { QuestionCreatorComponent } from './question-creator/question-creator.co
     QuizEditionComponent,
     QuestionsListComponent,
     QuestionCreatorComponent,
+    HomePageComponent,
+    HomeContainerComponent,
   ],
   imports: [
     BrowserModule,
