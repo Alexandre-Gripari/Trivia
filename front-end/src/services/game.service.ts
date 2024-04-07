@@ -12,9 +12,9 @@ export class GameService {
 
   private index: number = 0;
 
-  private questions: Question[] = QUESTION_LIST;
+  private questions: Question[] = [];
 
-  private question: Question = this.questions[this.index];
+  private question: Question = QUESTION_LIST[0];
 
   private clueNumber: number = -1;
 
@@ -69,6 +69,21 @@ export class GameService {
 
   public finishGame() {
     console.log("Game finished");
+  }
+
+  public setQuestions(question: Question[]) {
+    this.resetGame();
+    this.questions = question;
+    this.question = this.questions[this.index];
+    this.observable.question = this.question;
+    this.observable$.next(this.observable);
+  }
+
+  private resetGame() {
+    this.index = 0;
+    this.numberOfErrors = 0;
+    this.observable.clueNumber = -1;
+    this.observable.clueActive = false;
   }
 
 

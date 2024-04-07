@@ -26,7 +26,11 @@ import { StatisticCompletedQuizzesComponent } from './statistics/statistic-compl
 import { ReviewPageComponent } from './reviews/review-page/review-page.component';
 import { ReviewListComponent } from './reviews/review-list/review-list.component';
 import { ReviewComponent } from './reviews/review/review.component';
-
+import {QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
+import { QuestionsListComponent } from './quiz-edition/questions-list/questions-list.component';
+import { QuestionCreatorComponent } from './question-creator/question-creator.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
+import { HomeContainerComponent} from './home/home-container/home-container.component';
 
 
 @NgModule({
@@ -52,7 +56,12 @@ import { ReviewComponent } from './reviews/review/review.component';
     StatisticCompletedQuizzesComponent,
     ReviewPageComponent,
     ReviewListComponent,
-    ReviewComponent
+    ReviewComponent,
+    QuizEditionComponent,
+    QuestionsListComponent,
+    QuestionCreatorComponent,
+    HomePageComponent,
+    HomeContainerComponent,
   ],
   imports: [
     BrowserModule,
