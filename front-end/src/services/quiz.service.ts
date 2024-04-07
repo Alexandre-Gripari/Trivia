@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
+import { ALLQUIZ } from '../mocks/all-quiz.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,15 @@ export class QuizService {
     * The list of quiz.
     * The list is retrieved from the mock.
     */
-  private quizzes: Quiz[] = QUIZ_LIST;
-
+  private user_id: number = 0;
+  private allQuizzes: Map<number, Quiz[]> = ALLQUIZ;
+  private quizzes: Quiz[] = [];
+ 
   /**
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
-  public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(QUIZ_LIST);
+  public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
 
   constructor() {
   }
@@ -41,4 +44,22 @@ export class QuizService {
     this.quizzes$.next(this.quizzes);
 
   }
+
+  setUserId(id: number) {
+    this.user_id = id;
+    if (!this.allQuizzes.has(this.user_id)) {
+      console.log("No quizzes for this user");
+    }
+    else this.quizzes = this.allQuizzes.get(this.user_id)!;
+    this.quizzes$.next(this.quizzes);
+  }
+
+  deleteQuiz(quiz: Quiz) {
+    // We remove the quiz from the list
+    this.quizzes = this.quizzes.filter(q => q !== quiz);
+
+    // We update the observable 
+    this.quizzes$.next(this.quizzes);
+  }
+  
 }

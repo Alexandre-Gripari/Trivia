@@ -1,7 +1,6 @@
 import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/question.model';
 
-
 export const QUESTION_PARIS: Question = {
     question: 'Quelle est la capitale de la France ?',
 
@@ -229,7 +228,6 @@ export const QUESTION_MIXTE: Question = {
     nbOfErrorsToUseClue: 1
 };
 
-
 export const QUESTION_LIST: Question[] = [
   QUESTION_CORSE,
   QUESTION_PARIS,
@@ -237,5 +235,26 @@ export const QUESTION_LIST: Question[] = [
   QUESTION_TEXTE,
   QUESTION_AUDIO,
   QUESTION_MIXTE
-
+  
 ];
+
+export const QUESTION_LIST2: Question[] = [
+  QUESTION_MIXTE,
+];
+
+export const QUIZ1: Quiz = {
+  name: 'Demo Quiz',
+  theme: 'EverythingGoes',
+  questions: QUESTION_LIST,
+};
+
+export const QUIZ2: Quiz = {
+  name: 'Demo Quiz2',
+  theme: 'EverythingGoes2',
+  questions: QUESTION_LIST2,
+};
+
+export const ALLQUIZ: Map<number, Quiz[]> = new Map([
+    [1, [QUIZ1]],
+    [2, [QUIZ2]]
+  ]);
