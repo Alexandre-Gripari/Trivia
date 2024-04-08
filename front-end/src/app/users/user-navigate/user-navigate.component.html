@@ -2,13 +2,13 @@
     
     <div class="filter-menu">
         <p>Filtrer par :<p>
-        <select name="filtrer" class="filter">
+        <select name="filtrer" class="filter" (change)="filterList($event)">
             <option value="Date" selected>Date d'ajout</option>
             <option value="Priorité">Priorité</option>
             <option value="Nom">Nom Prénom</option>
             <option value="Birth">Date de naissance</option>
         </select>
-        <select name="filtrer2" class="filter">
+        <select name="filtrer2" class="filter" (change)="changeFilter($event)">
             <option value="Croissante" selected>Croissante</option>
             <option value="Décroissante">Décroissante</option>
         </select>

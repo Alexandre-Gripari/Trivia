@@ -29,4 +29,30 @@ export class UserService {
   constructor() {
   }
 
+  sortByDate() {
+    /*this.users.sort((a, b) => {
+      return a.creationDate.getTime() - b.creationDate.getTime();
+    });
+    this.users$.next(this.users);*/
+  }
+
+  sortByName() {
+    this.users.sort((a, b) => {
+      return a.last_name.localeCompare(b.last_name);
+    });
+    this.users$.next(this.users);
+  }
+
+  sortByBirth() {
+    this.users.sort((a, b) => {
+      return Number(a.birth_date_year) - Number(b.birth_date_year);
+    });
+    this.users$.next(this.users);
+  }
+
+  sortReverse() {
+    this.users.reverse();
+    this.users$.next(this.users);
+  }
+
 }

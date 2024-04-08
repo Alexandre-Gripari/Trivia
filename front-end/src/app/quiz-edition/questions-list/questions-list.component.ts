@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../../../models/question.model';
 import { QUESTION_LIST } from '../../../mocks/all-quiz.mock';
 import { Router } from '@angular/router';
+import { Quiz } from '../../../models/quiz.model';
 
 @Component({
   selector: 'app-questions-list',
@@ -11,7 +12,18 @@ import { Router } from '@angular/router';
 export class QuestionsListComponent implements OnInit {
 
   questions: Question[] = QUESTION_LIST;
-  constructor(private router: Router) { }
+  quiz: Quiz = { name: "Quiz 1", questions: this.questions};
+
+  constructor(private router: Router) { 
+    // a terme remplacer par un appel a un service
+    const navigation = window.history.state;
+    if (navigation.quiz) {
+      this.quiz = navigation.quiz;
+    }
+    this.questions = this.quiz.questions;
+  }
+
+  
 
   ngOnInit(): void {
   }
@@ -21,6 +33,8 @@ export class QuestionsListComponent implements OnInit {
   }
   deleteQuestion(question: Question) {
     console.log("delete question");
+    // a terme remplacer par un appel a un service
+    this.questions = this.questions.filter(q => q !== question);
   }
 
   addQuestion() {
