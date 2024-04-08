@@ -287,7 +287,8 @@ export const QUIZ_STATS1: QuizStats = {
     questionsStats: [QUESTION_STAT1, QUESTION_STAT2],
     totalTimeMinutes: 4,
     totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5 
+    totalNumberOfCluesUsed: 5 ,
+    successRate: 20
 };
 
 export const QUIZ_STATS2: QuizStats = {
@@ -296,7 +297,8 @@ export const QUIZ_STATS2: QuizStats = {
     questionsStats: [QUESTION_STAT2, QUESTION_STAT3],
     totalTimeMinutes: 4,
     totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5 
+    totalNumberOfCluesUsed: 5,
+    successRate: 50 
 };
 
 export const QUIZ_STATS3: QuizStats = {
@@ -305,7 +307,8 @@ export const QUIZ_STATS3: QuizStats = {
     questionsStats: [QUESTION_STAT1, QUESTION_STAT2, QUESTION_STAT3],
     totalTimeMinutes: 5,
     totalTimeSeconds: 3,
-    totalNumberOfCluesUsed: 10 
+    totalNumberOfCluesUsed: 10,
+    successRate: 27
 };
 
 export const ALL_STATS_QUIZ: Map<number, QuizStats[]> = new Map([

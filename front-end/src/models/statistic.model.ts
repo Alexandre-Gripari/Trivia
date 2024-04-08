@@ -25,6 +25,7 @@ export interface QuizStats {
 	totalTimeMinutes: number; // Temps passé sur le quiz
 	totalTimeSeconds: number;
 	totalNumberOfCluesUsed: number;
+	successRate: number;
 }
 
 export interface QuestionStats {
