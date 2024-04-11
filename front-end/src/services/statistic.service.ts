@@ -64,4 +64,53 @@ export class StatisticService {
     }
   }
 
+  sortByDate() {
+    this.statsQuizzes.sort((a, b) => {
+      return a.date.getTime() - b.date.getTime();
+    });
+    console.log(this.statsQuizzes);
+    this.statsQuizzesOb$.next(this.statsQuizzes);
+  }
+
+  sortByName() {
+    this.statsQuizzes.sort((a, b) => {
+      return a.Quiz.name.localeCompare(b.Quiz.name);
+    });
+    console.log(this.statsQuizzes);
+    this.statsQuizzesOb$.next(this.statsQuizzes);
+  }
+
+  sortByTheme() {
+    this.statsQuizzes.sort((a, b) => {
+      // Vérifier si la propriété theme est définie pour a et b
+      if (a.Quiz.theme === undefined && b.Quiz.theme === undefined) {
+        return 0; // Les deux thèmes sont undefined, considérez-les comme égaux
+      }
+      if (a.Quiz.theme === undefined) {
+        return 1; // Le thème de a est undefined, placez b avant a
+      }
+      if (b.Quiz.theme === undefined) {
+        return -1; // Le thème de b est undefined, placez a avant b
+      }
+      // Comparaison des thèmes des quiz en utilisant localeCompare
+      return a.Quiz.theme.localeCompare(b.Quiz.theme);
+    });
+    console.log(this.statsQuizzes);
+    this.statsQuizzesOb$.next(this.statsQuizzes);
+  }
+
+  sortBySuccessRate() {
+    this.statsQuizzes.sort((a, b) => {
+      return a.successRate - b.successRate;
+    });
+    console.log(this.statsQuizzes);
+    this.statsQuizzesOb$.next(this.statsQuizzes);
+  }
+
+  sortReverse() {
+    this.statsQuizzes.reverse();
+    console.log(this.statsQuizzes);
+    this.statsQuizzesOb$.next(this.statsQuizzes);
+  }
+
 };
