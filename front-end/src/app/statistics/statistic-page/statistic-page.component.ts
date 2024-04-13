@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { StatisticService } from '../../../services/statistic.service';
 
 
@@ -11,11 +12,17 @@ import { StatisticService } from '../../../services/statistic.service';
 export class StatisticPageComponent implements OnInit {
     
   user_id: number = 0;
-  constructor(private route: ActivatedRoute, public statisticService: StatisticService) { }
+  
+  constructor(private route: ActivatedRoute, public statisticService: StatisticService, private router: Router) { }
 
   ngOnInit(): void {
     this.user_id = +this.route.snapshot.paramMap.get('id')!;
     this.statisticService.setUserId(this.user_id);
+  }
+
+  navigateToQuizList() {
+    this.user_id = +this.route.snapshot.paramMap.get('id')!;
+    this.router.navigate(['/quiz', this.user_id]);
   }
 
   scrollToTop() {

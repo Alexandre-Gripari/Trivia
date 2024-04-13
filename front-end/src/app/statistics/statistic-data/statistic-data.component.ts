@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { StatisticService } from '../../../services/statistic.service';
 import { StatisticData } from '../../../models/statistic.model';
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -24,7 +23,7 @@ export class StatisticDataComponent implements OnInit {
 
   private user_id: number = 0;
 
-  constructor(public statisticService: StatisticService, private route: ActivatedRoute, private router: Router) {
+  constructor(public statisticService: StatisticService) {
     this.statisticService.stats$.subscribe((stats) => {
       this.stats = stats;
     });
@@ -37,10 +36,7 @@ export class StatisticDataComponent implements OnInit {
     console.log('event received from child:', selected);
   }
 
-  navigateToQuizList() {
-    this.user_id = +this.route.snapshot.paramMap.get('id')!;
-    this.router.navigate(['/quiz', this.user_id]);
-  }
+ 
 }
 
 

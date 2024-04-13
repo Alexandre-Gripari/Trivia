@@ -1,6 +1,13 @@
 <div class="quiz-stats-list">
     <div class="stats-list">
         <p>QUIZ EFFECTUES</p>
+        <div class="titles">
+            <span class="name"> NOMS </span>
+            <span class="theme"> THÈMES </span>
+            <span class="date"> DATES </span>
+            <span class="time"> TEMPS </span>
+            <span class="suc_rate"> TAUX DE RÉUSSITE </span>
+        </div>
         <div class="quiz-stats" *ngFor="let quizStats of quizStatsList">
             <!--Inputs & Output allow communication between parent & child components.-->
             <!--More information: https://angular.io/guide/component-interaction-->

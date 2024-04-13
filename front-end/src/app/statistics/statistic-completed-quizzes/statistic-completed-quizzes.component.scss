@@ -10,3 +10,34 @@
 p {
     text-align: center;
 }
+
+.titles {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.name {
+    position: relative;
+    left: 6%;
+}
+
+.theme {
+    position: relative;
+    left: 8%;
+}
+
+.date {
+    position: relative;
+    left: 10%;
+}
+
+.time {
+    position: relative;
+    left: 8%;
+}
+
+.suc_rate {
+    position: relative;
+    left: 1%;
+}
+
