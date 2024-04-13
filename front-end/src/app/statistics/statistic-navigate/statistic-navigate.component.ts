@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { StatisticService } from '../../../services/statistic.service';
 
 
@@ -10,6 +10,7 @@ import { StatisticService } from '../../../services/statistic.service';
 export class StatisticNavigateComponent implements OnInit {
 
   private asc = true;
+  searchTerm: string = "";
 
   constructor(public statisticService: StatisticService) { }
 
@@ -50,6 +51,11 @@ export class StatisticNavigateComponent implements OnInit {
         }
         break;
     }
+  }
+
+  searchBar() {
+    if (this.searchTerm === '') this.statisticService.searchBarFilter('');
+    this.statisticService.searchBarFilter(this.searchTerm);
   }
 
 }

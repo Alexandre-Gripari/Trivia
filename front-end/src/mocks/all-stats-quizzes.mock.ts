@@ -245,7 +245,7 @@ export const QUESTION_LIST2: Question[] = [
 ];
 
 export const QUIZ1: Quiz = {
-  name: 'Demo Quiz',
+  name: 'Demo Quiz1',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
 };
@@ -308,7 +308,7 @@ export const QUIZ_STATS3: QuizStats = {
     totalTimeMinutes: 5,
     totalTimeSeconds: 3,
     totalNumberOfCluesUsed: 10,
-    successRate: 27
+    successRate: 70
 };
 
 export const ALL_STATS_QUIZ: Map<number, QuizStats[]> = new Map([
