@@ -1,7 +1,9 @@
 @import "./variables";
 
 .card {
-  width: 300px;
+  font-size: 12px;
+  width: 75%;
+  height: 75%;
   padding-left: 10px;
   border-radius: 5px;
   background-color: $logo-fade;

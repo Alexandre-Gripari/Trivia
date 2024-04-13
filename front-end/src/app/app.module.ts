@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -31,6 +33,8 @@ import { QuestionsListComponent } from './quiz-edition/questions-list/questions-
 import { QuestionCreatorComponent } from './question-creator/question-creator.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { HomeContainerComponent} from './home/home-container/home-container.component';
+import { GameConfettiComponent } from './games/game-confetti/game-confetti.component';
+
 
 
 @NgModule({
@@ -62,12 +66,14 @@ import { HomeContainerComponent} from './home/home-container/home-container.comp
     QuestionCreatorComponent,
     HomePageComponent,
     HomeContainerComponent,
+    GameConfettiComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, first } from 'rxjs';
 import { User } from '../models/user.model';
 import { USER_LIST } from '../mocks/user-list.mock';
 
@@ -53,6 +53,13 @@ export class UserService {
   sortReverse() {
     this.users.reverse();
     this.users$.next(this.users);
+  }
+
+  searchUser(searchValue: string) {
+    let tmp : User[] = this.users.filter((user) => {
+      return (user.first_name.toLowerCase() + ' ' + user.last_name.toLowerCase()).includes(searchValue.toLowerCase());
+    });
+    this.users$.next(tmp);
   }
 
 }

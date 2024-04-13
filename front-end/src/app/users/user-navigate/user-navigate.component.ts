@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 
+
 @Component({
   selector: 'app-user-navigate',
   templateUrl: './user-navigate.component.html',
   styleUrls: ['./user-navigate.component.scss']
 })
+
 export class UserNavigateComponent implements OnInit {
 
   private asc = true;
+  searchValue: string = '';
 
   constructor(public userService: UserService) { }
 
@@ -53,6 +56,11 @@ export class UserNavigateComponent implements OnInit {
         }
         break;
     }
+  }
+
+  onSearchChange(value: string) {
+    this.searchValue = value;
+    this.userService.searchUser(value); 
   }
 
 }
