@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -22,11 +22,12 @@ import { UserNavigateComponent } from './users/user-navigate/user-navigate.compo
 import { StatisticPageComponent } from './statistics/statistic-page/statistic-page.component';
 import { StatisticDataComponent } from './statistics/statistic-data/statistic-data.component';
 import { StatisticQuizStatsComponent } from './statistics/statistic-quiz-stats/statistic-quiz-stats.component';
-import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component';
+import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component'; 
+import { StatisticNavigateComponent } from './statistics/statistic-navigate/statistic-navigate.component';
 import { ReviewPageComponent } from './reviews/review-page/review-page.component';
 import { ReviewListComponent } from './reviews/review-list/review-list.component';
 import { ReviewComponent } from './reviews/review/review.component';
-import {QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
+import { QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
 import { QuestionsListComponent } from './quiz-edition/questions-list/questions-list.component';
 import { QuestionCreatorComponent } from './question-creator/question-creator.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
@@ -54,6 +55,7 @@ import { HomeContainerComponent} from './home/home-container/home-container.comp
     StatisticDataComponent,
     StatisticQuizStatsComponent,
     StatisticCompletedQuizzesComponent,
+    StatisticNavigateComponent,
     ReviewPageComponent,
     ReviewListComponent,
     ReviewComponent,
@@ -68,6 +70,7 @@ import { HomeContainerComponent} from './home/home-container/home-container.comp
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
