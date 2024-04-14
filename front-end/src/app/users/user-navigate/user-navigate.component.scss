@@ -1,0 +1,47 @@
+@import "../../../styles/nav-bar.scss";
+
+.input-custom {
+    width: 60%;
+    margin-left: 10px;
+}
+
+.filter {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.button-container {
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 75%;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+
+.filter-menu, .search-bar {
+    display: flex;
+    align-items: center;
+    width: 33%;
+}
+
+.search-bar {
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #337536;
+}
+

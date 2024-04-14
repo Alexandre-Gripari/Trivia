@@ -1,0 +1,14 @@
+<div class="review-question">
+    <div class="stats">
+        <span>Temps passé sur la question: {{questionStats?.timeMinutes}} min {{questionStats?.timeSeconds}} s</span>
+        <span>Nombre d'indices utilisés: {{questionStats?.numberOfCluesUsed}}</span>
+        <span>Nombre de mauvaises réponses: {{questionStats?.numberOfBadAnswers}}</span>
+    </div>
+    <div class="question">
+      <span>{{questionStats?.question?.question}}</span>
+    </div>
+    <div class="answer-container">
+      <app-game-answer *ngFor="let answer of questionStats?.question?.answers" [answer]="answer"></app-game-answer>
+    </div>
+</div>
+  
