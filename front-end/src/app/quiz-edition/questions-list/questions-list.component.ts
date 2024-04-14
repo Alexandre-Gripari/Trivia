@@ -14,7 +14,7 @@ export class QuestionsListComponent implements OnInit {
   questions: Question[] = QUESTION_LIST;
   quiz: Quiz = { name: "Quiz 1", questions: this.questions};
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     // a terme remplacer par un appel a un service
     const navigation = window.history.state;
     if (navigation.quiz) {
@@ -23,7 +23,7 @@ export class QuestionsListComponent implements OnInit {
     this.questions = this.quiz.questions;
   }
 
-  
+
 
   ngOnInit(): void {
   }
@@ -36,7 +36,6 @@ export class QuestionsListComponent implements OnInit {
     // a terme remplacer par un appel a un service
     this.questions = this.questions.filter(q => q !== question);
   }
-
   addQuestion() {
     console.log("add question");
     this.router.navigate(['/question-creator']);

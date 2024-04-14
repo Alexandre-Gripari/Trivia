@@ -18,19 +18,27 @@
   <form id="form2">
     <div class="form-group hint-container">
       <label id="hint" for="hints">Indices</label>
+      <p id="hint-counter">Nombre de fausses réponses avant affichage des indices:</p>
+      <input type="number">
       <div class="form-group hint">
         <span>Indice textuel:</span>
         <input type="text" id="text-hint" class="form-control">
+        <p>Ordre d'apparition de l'indice:</p>
+        <input type="number">
       </div>
       <div class="form-group hint">
         <label for="hints" class="file-label">Choisir une image</label>
         <img id="preview" src="" alt="Aperçu du fichier" style="display: none;">
         <input type="file" id="hints" class="form-control hidden" accept="image/*">
+        <p>Ordre d'apparition de l'indice:</p>
+        <input type="number">
       </div>
       <div class="form-group hint">
         <label for="hint-audio" class="file-label">Choisir un audio</label>
         <audio id="audio-preview" controls style="display: none;"></audio>
         <input type="file" id="hint-audio" class="form-control hidden" accept="audio/*" (change)="onAudioChange($event)">
+        <p>Ordre d'apparition de l'indice:</p>
+        <input type="number">
       </div>
    </div>
   </form>
