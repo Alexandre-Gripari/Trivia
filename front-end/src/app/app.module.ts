@@ -34,6 +34,8 @@ import { QuestionCreatorComponent } from './question-creator/question-creator.co
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { HomeContainerComponent} from './home/home-container/home-container.component';
 import { GameConfettiComponent } from './games/game-confetti/game-confetti.component';
+import { UserCreatorContainerComponent } from './user-creator/user-creator-container/user-creator-container.component';
+import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
 
 
 
@@ -67,6 +69,8 @@ import { GameConfettiComponent } from './games/game-confetti/game-confetti.compo
     HomePageComponent,
     HomeContainerComponent,
     GameConfettiComponent,
+    UserCreatorContainerComponent,
+    UserCreatorPageComponent
   ],
   imports: [
     BrowserModule,

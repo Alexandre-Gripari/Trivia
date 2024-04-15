@@ -8,6 +8,7 @@ import { ReviewPageComponent } from './reviews/review-page/review-page.component
 import { QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
 import { QuestionCreatorComponent } from './question-creator/question-creator.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
+import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
 
 const routes: Routes = [
     { path: 'game-page', component: GamePageComponent},
@@ -16,9 +17,10 @@ const routes: Routes = [
     { path: 'quiz/:id', component: QuizPageComponent },
     { path: 'quiz-edition-page', component: QuizEditionComponent },
     { path: 'question-creator', component: QuestionCreatorComponent },
-    {path: 'stats/:id', component: StatisticPageComponent},
-    {path: 'reviews', component: ReviewPageComponent},
-    {path: 'home-page', component: HomePageComponent}
+    { path: 'stats/:id', component: StatisticPageComponent},
+    { path: 'reviews', component: ReviewPageComponent},
+    { path: 'home-page', component: HomePageComponent},
+    { path: 'user-creator-page', component: UserCreatorPageComponent }
 
 ];
 

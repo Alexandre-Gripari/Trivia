@@ -1,0 +1,32 @@
+@import "../../../styles/default-container.scss";
+@import "../../../styles/variables";
+
+.default-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.default-container{
+   height: 80%;
+   width: auto;
+}
+
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: $logo-fade;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+button:hover {
+    background-color: $logo-color;
+}
