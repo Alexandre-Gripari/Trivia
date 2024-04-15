@@ -35,9 +35,9 @@ import { QuestionCreatorComponent } from './question-creator/question-creator.co
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { HomeContainerComponent} from './home/home-container/home-container.component';
 import { GameConfettiComponent } from './games/game-confetti/game-confetti.component';
+import { GameEndPageComponent} from "./games/game-end-page/game-end-page.component";
 import { UserCreatorContainerComponent } from './user-creator/user-creator-container/user-creator-container.component';
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
-
 
 
 @NgModule({
@@ -71,6 +71,7 @@ import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-
     HomePageComponent,
     HomeContainerComponent,
     GameConfettiComponent,
+    GameEndPageComponent,
     UserCreatorContainerComponent,
     UserCreatorPageComponent
   ],

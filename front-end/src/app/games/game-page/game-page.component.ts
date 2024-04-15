@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-page.component.scss']
 })
 export class GamePageComponent implements OnInit {
-    
-    constructor() {
-        
-    }
 
-    ngOnInit() {
-    }
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+  }
 
 }

@@ -3,6 +3,7 @@ import { Quiz } from '../../../models/quiz.model';
 import { Router } from '@angular/router';
 import { GameService } from '../../../services/game.service';
 import { QuizService } from '../../../services/quiz.service';
+import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-quiz',
@@ -26,6 +27,7 @@ export class QuizComponent implements OnInit {
   constructor(private router: Router, private gameService: GameService, private quizService : QuizService ) {}
 
   ngOnInit() {
+    this.quizService.setCurrentQuiz(this.quiz);
   }
 
   selectQuiz() {
@@ -37,7 +39,7 @@ export class QuizComponent implements OnInit {
       this.router.navigate(['/game-page']);
     }
   }
-  
+
   editQuiz() {
     console.log("Edit quiz");
     this.router.navigate(['/quiz-edition-page'], { state: { quiz: this.quiz } });

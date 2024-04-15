@@ -7,6 +7,7 @@ import { USER_LIST } from '../mocks/user-list.mock';
   providedIn: 'root'
 })
 export class UserService {
+  private currentUser: any;
   /**
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
@@ -16,7 +17,7 @@ export class UserService {
     * The list of quiz.
     * The list is retrieved from the mock.
     */
-  
+
    private users: User[] = USER_LIST;
 
   /**
@@ -24,7 +25,7 @@ export class UserService {
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
 
-  public users$: BehaviorSubject<User[]> = new BehaviorSubject(USER_LIST); 
+  public users$: BehaviorSubject<User[]> = new BehaviorSubject(USER_LIST);
 
   constructor() {
   }
@@ -60,6 +61,14 @@ export class UserService {
       return (user.first_name.toLowerCase() + ' ' + user.last_name.toLowerCase()).includes(searchValue.toLowerCase());
     });
     this.users$.next(tmp);
+  }
+
+  setCurrentUser(user: any) {
+    this.currentUser = user;
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
   }
 
 }
