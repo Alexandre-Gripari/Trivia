@@ -20,7 +20,8 @@ export class QuizService {
   private user_id: number = 0;
   private allQuizzes: Map<number, Quiz[]> = ALLQUIZ;
   private quizzes: Quiz[] = [];
- 
+  private currentQuiz: any;
+
   /**
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
@@ -40,7 +41,7 @@ export class QuizService {
     // We add the new quiz to the list
     this.quizzes.push(quiz);
 
-    // We update the observable 
+    // We update the observable
     this.quizzes$.next(this.quizzes);
 
   }
@@ -58,8 +59,15 @@ export class QuizService {
     // We remove the quiz from the list
     this.quizzes = this.quizzes.filter(q => q !== quiz);
 
-    // We update the observable 
+    // We update the observable
     this.quizzes$.next(this.quizzes);
   }
-  
+
+  setCurrentQuiz(user: any) {
+    this.currentQuiz = user;
+  }
+
+  getCurrentQuiz() {
+    return this.currentQuiz;
+  }
 }
