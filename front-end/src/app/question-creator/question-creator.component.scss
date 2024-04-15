@@ -5,6 +5,9 @@ form {
   margin: 0;
 }
 
+#form1, #form2 {
+  width: 100%;
+}
 .form-group {
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -27,6 +30,13 @@ form {
 label {
   display: block;
   font-weight: bold;
+}
+input[type="number"] {
+  width: 20%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 #questionTitle {
