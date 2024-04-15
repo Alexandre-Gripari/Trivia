@@ -245,7 +245,7 @@ export const QUESTION_LIST2: Question[] = [
 ];
 
 export const QUIZ1: Quiz = {
-  name: 'Demo Quiz',
+  name: 'Demo Quiz1',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
 };
@@ -283,29 +283,32 @@ export const QUESTION_STAT3: QuestionStats = {
 
 export const QUIZ_STATS1: QuizStats = {
     Quiz: QUIZ1,
-    date: "30/03/2024",
+    date: new Date(2024,0,1),
     questionsStats: [QUESTION_STAT1, QUESTION_STAT2],
     totalTimeMinutes: 4,
     totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5 
+    totalNumberOfCluesUsed: 5 ,
+    successRate: 20
 };
 
 export const QUIZ_STATS2: QuizStats = {
     Quiz: QUIZ2,
-    date: "27/03/2024",
+    date: new Date(2024,2,27),
     questionsStats: [QUESTION_STAT2, QUESTION_STAT3],
     totalTimeMinutes: 4,
     totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5 
+    totalNumberOfCluesUsed: 5,
+    successRate: 50 
 };
 
 export const QUIZ_STATS3: QuizStats = {
     Quiz: QUIZ1,
-    date: "25/03/2024",
+    date: new Date(2024,2,25),
     questionsStats: [QUESTION_STAT1, QUESTION_STAT2, QUESTION_STAT3],
     totalTimeMinutes: 5,
     totalTimeSeconds: 3,
-    totalNumberOfCluesUsed: 10 
+    totalNumberOfCluesUsed: 10,
+    successRate: 70
 };
 
 export const ALL_STATS_QUIZ: Map<number, QuizStats[]> = new Map([

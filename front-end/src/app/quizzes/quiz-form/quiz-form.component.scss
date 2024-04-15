@@ -1,4 +1,6 @@
 @import '../../../styles/nav-bar.scss';
+@import '../../../styles/variables';
+//@import '../../../styles/default-container';
 
 .navigate-container {
     justify-content: flex-start;
@@ -23,4 +25,21 @@
   
 .input-group label {
     margin-right: 10px;
+}
+
+.menu {
+    //margin top and bottom 
+    background-color: #333;
+    margin: 10vh 0;
+    position: fixed;
+    right: 0;
+    width: 0;
+    height: 80vh; 
+    overflow: hidden;
+    transition: width 0.3s ease;
+    z-index: 2;
+  }
+  
+.menu.open {
+    width: 40vw;
 }

@@ -1,0 +1,36 @@
+.navigate-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    text-align: center; /* Centrer le contenu dans le container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-custom {
+    width: 60%;
+    margin-left: 1%;
+}
+
+.filter {
+    width: 100%;
+    margin-left: 2%;
+    font-size: large;
+}
+
+
+.filter-menu, .search-bar {
+    display: flex;
+    align-items: center;
+    width: 33%;
+    margin-left: 2%;
+}
+
+.search-bar {
+    justify-content: center;
+    width: 50%;
+}
+
+
+

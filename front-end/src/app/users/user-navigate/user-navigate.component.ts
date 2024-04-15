@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,13 +14,14 @@ export class UserNavigateComponent implements OnInit {
   private asc = true;
   searchValue: string = '';
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   addUser() {
     console.log("Add user");
+    this.router.navigate(['/user-creator-page']);
   }
 
   filterList(filter: any) {
