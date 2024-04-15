@@ -1,20 +1,15 @@
 <div class="statistic-data">
-    <div class="numeric-data">
-      <p>INFORMATIONS GENERALES</p>
-      <div class="completed-quizzes">
-        <span>Nombre de quiz effectués: {{stats.numberOfCompletedQuizzes}}</span>
-      </div>
-      <div class="clues">
-        <span class="clues-g">Nombre moyen d'indices utilisés sur l'ensemble des quiz: {{stats.numberOfCluesUsed}}</span>
-        <span class="clues-l">Nombre moyen d'indices utilisés sur les 10 derniers quiz: {{stats.numberOfCluesUsedLatest}}</span>
-      </div>
-      <div class="times">
-        <span class="times-g">Temps moyen passé sur l'ensemble des quiz: {{stats.timeSpentMinutes}} min {{stats.timeSpentSeconds}} s</span>
-        <span class="times-l">Temps moyen passé sur les 10 derniers quiz: {{stats.timeSpentMinutesLatest}} min {{stats.timeSpentSecondsLatest}} s</span>
-      </div>
+    <p>INFORMATIONS GENERALES</p>
+    <div class="completed-quizzes">
+       <span>Nombre de quiz effectués: {{stats.numberOfCompletedQuizzes}}</span>
     </div>
-    <div>
-      <button (click)="navigateToQuizList()">Lancer un quiz</button>
+    <div class="clues">
+      <span class="clues-g">Nombre moyen d'indices utilisés sur l'ensemble des quiz: {{stats.numberOfCluesUsed}}</span>
+      <span class="clues-l">Nombre moyen d'indices utilisés sur les 10 derniers quiz: {{stats.numberOfCluesUsedLatest}}</span>
+    </div>
+    <div class="times">
+      <span class="times-g">Temps moyen passé sur l'ensemble des quiz: {{stats.timeSpentMinutes}} min {{stats.timeSpentSeconds}} s</span>
+      <span class="times-l">Temps moyen passé sur les 10 derniers quiz: {{stats.timeSpentMinutesLatest}} min {{stats.timeSpentSecondsLatest}} s</span>
     </div>
 </div>
   

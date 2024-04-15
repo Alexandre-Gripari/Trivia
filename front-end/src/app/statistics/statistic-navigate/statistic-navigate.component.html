@@ -1,0 +1,22 @@
+<div class="navigate-container">
+    
+    <div class="filter-menu">
+        <p>Filtrer par :<p>
+        <select name="filtrer" class="filter" (change)="filterList($event)">
+            <option value="Date" selected>Date</option>
+            <option value="SuccessRate">Taux de réussite</option>
+            <option value="Nom">Nom</option>
+            <option value="Theme">Thème</option>
+        </select>
+        <select name="filtrer2" class="filter" (change)="changeFilter($event)">
+            <option value="Croissante" selected>Croissante</option>
+            <option value="Décroissante">Décroissante</option>
+        </select>
+    </div>
+
+    <div class = "search-bar">
+        <p>Rechercher un nom de quiz</p>
+        <input class="input-custom" type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchBar()">
+    </div>
+
+</div>

@@ -1,23 +1,22 @@
+@import '../../../styles/card.scss';
+
 .questions {
-    margin-top: 100px;
-    padding-bottom: 10px;
+    margin-top: 10%;
+    padding-bottom: 1%;
 }
 
 button {
-    top: 110px;
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
+    top: 14%;
+    font-size: 80%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    height: 30px;
-    width: 15%;
+    background-color: $logo-color;
+    border-radius: 10px;
+    border: 10px solid $logo-fade;
+    color: orangered;
+    opacity: 0.6;
+    width: 12%;
     text-align: center;
     position: fixed;
+    padding: 1%;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
