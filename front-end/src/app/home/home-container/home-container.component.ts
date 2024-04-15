@@ -25,6 +25,6 @@ export class HomeContainerComponent {
   }
 
   navigateToAddUser() {
-    //this.router.navigate(['/add-user']);
+    this.router.navigate(['/user-creator-page']);
   }
 }

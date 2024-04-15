@@ -1,5 +1,5 @@
 <div class="navigate-container">
-  <h2>Ajouter un nouveau Quiz</h2>
+  <h2>Créer un nouveau Quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
     <div class="input-row">
       <div class="input-group">
@@ -11,8 +11,10 @@
         <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
       </div>
       <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
+      <button type="button" class="button-card" (click)="openMenu()">Ajouter un quiz existant</button>
     </div>
   </form>
 </div>
+<div class="menu default-container" [class.open]="menuOpen"></div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!--<br><br>{{quizForm.getRawValue() | json}}-->
