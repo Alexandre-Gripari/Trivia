@@ -23,6 +23,7 @@ export class StatisticService {
 
     private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS;
     private stats: StatisticData = {
+      id: "id",
       numberOfCompletedQuizzes: 0, 
       numberOfCluesUsed: 0, 
       numberOfCluesUsedLatest: 0, 

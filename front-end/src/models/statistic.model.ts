@@ -4,7 +4,9 @@ import { Question } from './question.model';
 
 
 
-export interface StatisticData { 
+export interface StatisticData {
+	id: String;
+	
 	numberOfCompletedQuizzes: number;
 
     numberOfCluesUsed: number;
@@ -15,10 +17,11 @@ export interface StatisticData {
 
 	timeSpentMinutesLatest: number;
 	timeSpentSecondsLatest: number;
-
 } 
 
 export interface QuizStats {
+	id: String;
+
 	Quiz: Quiz; // Donne le thème et le nom
 	date: Date; // Date à laquelle est effectué le quiz 
 	questionsStats: QuestionStats[]; // Contient toutes les questions répondues avec leurs stats
@@ -29,6 +32,8 @@ export interface QuizStats {
 }
 
 export interface QuestionStats {
+	id: String;
+
 	question: Question; // Donne la question, les réponses et les indices
 	timeMinutes: number; // Temps avant d'obtenir la bonne réponse
 	timeSeconds: number;
