@@ -21,6 +21,14 @@ router.get('/:userId', (req, res) => {
   }
 })
 
+router.get('/:userId/quizzes', (req, res) => {
+  try {
+    res.status(200).json(User.getQuizzes(req.params.userId))
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
+
 router.post('/', (req, res) => {
   try {
     const user = User.create({ ...req.body })

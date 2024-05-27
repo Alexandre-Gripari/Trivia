@@ -3,11 +3,15 @@ import { BehaviorSubject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { ALLQUIZ } from '../mocks/all-quiz.mock';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
+
+  private apiUrl = 'http://localhost:9428/api/'
+
   /**
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
@@ -28,21 +32,14 @@ export class QuizService {
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   addQuiz(quiz: Quiz) {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
 
-    // A new quiz has 0 questions by default
-    quiz.questions = [];
-
-    // We add the new quiz to the list
-    this.quizzes.push(quiz);
-
-    // We update the observable
-    this.quizzes$.next(this.quizzes);
+    return this.http.post<Quiz>(`${this.apiUrl}/quizzes`, quiz);
 
   }
 
@@ -50,24 +47,24 @@ export class QuizService {
     this.user_id = id;
     if (!this.allQuizzes.has(this.user_id)) {
       console.log("No quizzes for this user");
+    } else {
+      this.http.get<Quiz[]>(`/users/${this.apiUrl}/${this.user_id}/quizzes`).subscribe((quizzes) => {
+        this.quizzes = quizzes;
+        this.quizzes$.next(this.quizzes);
+      });
     }
-    else this.quizzes = this.allQuizzes.get(this.user_id)!;
-    this.quizzes$.next(this.quizzes);
   }
 
   deleteQuiz(quiz: Quiz) {
     // We remove the quiz from the list
-    this.quizzes = this.quizzes.filter(q => q !== quiz);
-
-    // We update the observable
-    this.quizzes$.next(this.quizzes);
+    return this.http.delete<Quiz>(`${this.apiUrl}/quizzes/${quiz.id}`);
   }
 
-  setCurrentQuiz(user: any) {
-    this.currentQuiz = user;
+  setCurrentQuiz(quiz: any) {
+    this.currentQuiz = quiz;
   }
 
   getCurrentQuiz() {
-    return this.currentQuiz;
+    return this.http.get<Quiz>(`${this.apiUrl}/quizzes/${this.currentQuiz.id}`);
   }
 }
