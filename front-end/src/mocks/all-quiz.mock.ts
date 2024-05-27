@@ -85,7 +85,7 @@ export const QUESTION_TEXTE: Question = {
 
   answers: [
     {
-      value: 'Madrid',
+      value: 'Voldemort',
       isCorrect: false,
       show: true,
     },
@@ -95,12 +95,12 @@ export const QUESTION_TEXTE: Question = {
       show: true,
     },
     {
-      value: 'Londres',
+      value: 'Severus Rogue',
       isCorrect: false,
       show: true,
     },
     {
-      value: 'Rome',
+      value: 'Ron',
       isCorrect: false,
       show: true,
     }
@@ -119,7 +119,7 @@ export const QUESTION_AUDIO: Question = {
   question: 'Quel bruit fait le chat ?',
   answers: [
     {
-      value: 'Madrid',
+      value: 'Woof',
       isCorrect: false,
       show: true,
     },
@@ -129,12 +129,12 @@ export const QUESTION_AUDIO: Question = {
       show: true,
     },
     {
-      value: 'Londres',
+      value: 'Piou',
       isCorrect: false,
       show: true,
     },
     {
-      value: 'Rome',
+      value: 'Grrrrrr',
       isCorrect: false,
       show: true,
     }
@@ -197,7 +197,7 @@ export const QUESTION_MIXTE: Question = {
     question: "Qui est le meilleur progammeur de l'equipe?",
   answers: [
     {
-      value: 'Madrid',
+      value: 'Malik',
       isCorrect: false,
       show: true,
     },
@@ -207,12 +207,12 @@ export const QUESTION_MIXTE: Question = {
       show: true,
     },
     {
-      value: 'Londres',
+      value: 'Harry Potter',
       isCorrect: false,
       show: true,
     },
     {
-      value: 'Rome',
+      value: 'Obi wan',
       isCorrect: false,
       show: true,
     }
