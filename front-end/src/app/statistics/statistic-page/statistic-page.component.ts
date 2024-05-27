@@ -17,7 +17,7 @@ export class StatisticPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.user_id = +this.route.snapshot.paramMap.get('id')!;
-    this.statisticService.setUserId(this.user_id);
+    this.statisticService.setUserId(this.user_id.toString());
   }
 
   navigateToQuizList() {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
 import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
 import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
@@ -19,7 +20,7 @@ export class StatisticService {
     * The list is retrieved from the mock. 
     */
   
-    private user_id: number = 0;
+    private user_id: String = "";
 
     private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS;
     private stats: StatisticData = {
@@ -41,7 +42,10 @@ export class StatisticService {
 
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
-    
+    private serverUrl = "http://localhost:9428/api/"
+    private statsUrl = this.serverUrl + '/statistics';
+    private dataStatsPath = 'datastats';
+    private quizStats = 'quizstats';
 
   /**
    * Observable which contains the list of the quiz.
@@ -50,10 +54,30 @@ export class StatisticService {
 
   
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  setUserId(id: number) {
+  setUserId(userId: String): void {
+    this.setUserStats(userId);
+    this.setUserStatsQuizzes(userId);
+  }
+
+  setUserStats(userId: String): void {
+    const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + userId;
+    this.http.get<StatisticData>(urlWithId).subscribe((stats) => {
+      this.stats$.next(stats);
+    });
+  }
+
+  setUserStatsQuizzes(userId: String): void {
+    const urlWithId = this.statsUrl + '/' + this.quizStats + '/' + userId;
+    this.http.get<QuizStats[]>(urlWithId).subscribe((statsQuizzes) => {
+      this.statsQuizzesOb$.next(statsQuizzes);
+    });
+  }
+
+
+  /* setUserId(id: number) {
     this.user_id = id;
     if (!this.allStatistics.has(this.user_id)) {
       console.log("No statistics for this user");
@@ -65,7 +89,7 @@ export class StatisticService {
       this.stats$.next(this.stats);
       this.statsQuizzesOb$.next(this.statsQuizzes);
     }
-  }
+  } */
 
   sortByDate() {
     this.statsQuizzesFiltred.sort((a, b) => {
