@@ -400,18 +400,21 @@ export const QUESTION_LIST3: Question[] = [
 ];
 
 export const QUIZ1: Quiz = {
+  id : 1,
   name: 'Demo Quiz',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
 };
 
 export const QUIZ2: Quiz = {
+  id : 2,
   name: 'Demo Quiz2',
   theme: 'EverythingGoes2',
   questions: QUESTION_LIST2,
 };
 
 export const QUIZ3: Quiz = {
+  id : 3,
   name: 'Demo Quiz3',
   theme: 'Histoire',
   questions: QUESTION_LIST3,

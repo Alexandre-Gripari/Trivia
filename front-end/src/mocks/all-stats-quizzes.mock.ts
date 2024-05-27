@@ -257,12 +257,14 @@ export const QUESTION_LIST2: Question[] = [
 ];
 
 export const QUIZ1: Quiz = {
+  id : 1,
   name: 'Demo Quiz1',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
 };
 
 export const QUIZ2: Quiz = {
+  id : 2,
   name: 'Demo Quiz2',
   theme: 'EverythingGoes2',
   questions: QUESTION_LIST2,
