@@ -10,6 +10,7 @@ export interface Question {
     answers: Answer[];
     clue: Clue[];
     nbOfErrorsToUseClue: number;
+    quizId: number;
 }
 
 export interface Clue {

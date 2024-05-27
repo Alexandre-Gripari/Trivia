@@ -11,7 +11,7 @@ module.exports = class BaseModel {
     if (!schema) throw new Error('You must provide a schema in constructor of BaseModel')
     this.schema = Joi.object().keys({ ...schema, id: Joi.number().required() })
     this.items = []
-    this.name = name
+    this.name = name;
     this.filePath = `${__dirname}/../../database/${process.env.DB_FOLDER ?? ''}${this.name.toLowerCase()}.data.json`
     this.load()
   }
