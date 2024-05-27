@@ -34,8 +34,10 @@ export const QUESTION_PARIS: Question = {
         }
     ],
 
-    nbOfErrorsToUseClue: 2
-    
+    nbOfErrorsToUseClue: 2,
+
+  quizId: 1584387277368
+
 };
 
 export const QUESTION_CONTINANT: Question = {
@@ -74,11 +76,13 @@ export const QUESTION_CONTINANT: Question = {
         {
           text: "C'est un pays situé au nord de L'Afrique",
           image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/langfr-225px-Flag_of_Algeria.svg.png'
-            
+
         }
     ],
 
-    nbOfErrorsToUseClue: 1
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_TEXTE: Question = {
@@ -113,7 +117,9 @@ export const QUESTION_TEXTE: Question = {
     }
   ],
 
-  nbOfErrorsToUseClue: 1
+  nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 
 };
 export const QUESTION_AUDIO: Question = {
@@ -151,9 +157,11 @@ export const QUESTION_AUDIO: Question = {
       audio: 'https://lasonotheque.org/UPLOAD/wav/1890.wav'
     }
     ],
-    nbOfErrorsToUseClue: 1
-        
-    
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
+
+
 };
 
 export const QUESTION_CORSE: Question = {
@@ -189,9 +197,11 @@ export const QUESTION_CORSE: Question = {
           image: 'https://e7.pngegg.com/pngimages/70/395/png-clipart-flag-and-coat-of-arms-of-corsica-corsican-symbol-flag-miscellaneous-white.png'
         }
     ],
-    nbOfErrorsToUseClue: 0
-        
-   
+    nbOfErrorsToUseClue: 0,
+
+  quizId: 1584387277368
+
+
 };
 
 export const QUESTION_MIXTE: Question = {
@@ -226,7 +236,9 @@ export const QUESTION_MIXTE: Question = {
     }
   ],
 
-    nbOfErrorsToUseClue: 1
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 
