@@ -12,6 +12,6 @@
     <div class="answer-container">
       <app-game-answer *ngFor="let answer of question?.answers" [answer]="answer" (answerSelected)="handleAnswerSelected($event)"></app-game-answer>
     </div>
-      <button class="indice-button" *ngIf="gameService.observable$.value.clueNumber < gameService.observable$.value.question.clue.length-1" (click)="handleClueUsed()">Indice</button>
+      <button class="indice-button" *ngIf="gameService.observable$.value.clueNumber < gameService.observable$.value.question.clues.length-1" (click)="handleClueUsed()">Indice</button>
   </ng-template>
 </div>

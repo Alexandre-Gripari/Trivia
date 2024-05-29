@@ -29,7 +29,7 @@ export const QUESTION_PARIS: Question = {
         }
     ],
 
-    clue: [
+    clues: [
         {
             image: 'https://cdn-imgix.headout.com/media/images/c90f7eb7a5825e6f5e57a5a62d05399c-25058-BestofParis-EiffelTower-Cruise-Louvre-002.jpg'
         }
@@ -66,7 +66,7 @@ export const QUESTION_CONTINANT: Question = {
         }
     ],
 
-    clue: [
+    clues: [
         {
           text: "C'est un pays situé au nord de L'Afrique"
         },
@@ -112,7 +112,7 @@ export const QUESTION_TEXTE: Question = {
     }
   ],
 
-  clue: [
+  clues: [
     {
       text: 'La réponse est dans la question hein'
     }
@@ -147,7 +147,7 @@ export const QUESTION_AUDIO: Question = {
       show: true,
     }
   ],
-  clue: [
+  clues: [
     {
       image:'https://www.la-spa.fr/app/app/uploads/2023/07/prendre-soin_duree-vie-chat.jpg',
       text: 'C\'est ça un chat',
@@ -189,7 +189,7 @@ export const QUESTION_CORSE: Question = {
             show: true,
         }
     ],
-    clue: [
+    clues: [
         {
           text: "On l\'appelle l'île de Beauté",
         },
@@ -229,7 +229,7 @@ export const QUESTION_MIXTE: Question = {
       show: true,
     }
   ],
-  clue: [
+  clues: [
     {
       text: "C'est Greg",
       image: 'https://media.tenor.com/9Q6kwQ_D-bMAAAAM/bassem-dance.gif',

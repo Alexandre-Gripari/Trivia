@@ -35,9 +35,6 @@ export class QuizComponent implements OnInit {
     this.quizSelected.emit(true);
     if (this.quiz && this.quiz.questions.length > 0) {
       console.log(this.quiz.questions.length);
-      //récupère l'id dans l'url
-      let id = this.router.url.split('/')[2];
-
       this.gameService.setQuestions(this.quiz.questions);
       this.router.navigate(['/game-page']);
     }

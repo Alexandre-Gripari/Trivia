@@ -55,11 +55,9 @@ export class QuizService {
 
   setUserId(id: number) {
     this.user_id = id;
-    if (!this.allQuizzes.has(this.user_id)) {
-      console.log("No quizzes for this user");
-    } else {
-      this.updateQuizList();
-    }
+    this.quizzes = [];
+    this.quizzes$.next(this.quizzes);
+    this.updateQuizList();
   }
 
   deleteQuiz(quiz: Quiz) {
@@ -87,6 +85,7 @@ export class QuizService {
       this.quizzes = quizzes;
       for (let quiz of this.quizzes) {
         this.http.get<Question[]>(`${this.apiUrl}quizzes/${quiz.id}/questions`).subscribe((questions) => {
+          //console.log(`Questions for quiz ${quiz.id}:`, questions);
           quiz.questions = questions;
           this.quizzes$.next(this.quizzes);
         });
