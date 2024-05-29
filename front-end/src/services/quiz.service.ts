@@ -39,7 +39,16 @@ export class QuizService {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
 
-    return this.http.post<Quiz>(`${this.apiUrl}/quizzes`, quiz);
+    const quizWithUserId = { ...quiz, userId: this.user_id };
+    this.http.post<Quiz>(`${this.apiUrl}quizzes`, quizWithUserId).subscribe(
+    response => {
+      console.log('Quiz added successfully', response);
+      this.updateQuizList();
+    },
+    error => {
+      console.error('There was an error during the request', error);
+    }
+  );
 
   }
 
@@ -48,16 +57,20 @@ export class QuizService {
     if (!this.allQuizzes.has(this.user_id)) {
       console.log("No quizzes for this user");
     } else {
-      this.http.get<Quiz[]>(`/users/${this.apiUrl}/${this.user_id}/quizzes`).subscribe((quizzes) => {
-        this.quizzes = quizzes;
-        this.quizzes$.next(this.quizzes);
-      });
+      this.updateQuizList();
     }
   }
 
   deleteQuiz(quiz: Quiz) {
-    // We remove the quiz from the list
-    return this.http.delete<Quiz>(`${this.apiUrl}/quizzes/${quiz.id}`);
+    this.http.delete<Quiz>(`${this.apiUrl}quizzes/${quiz.id}`).subscribe(
+      response => {
+        console.log('Quiz deleted successfully', response);
+        this.updateQuizList();
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
   }
 
   setCurrentQuiz(quiz: any) {
@@ -65,6 +78,13 @@ export class QuizService {
   }
 
   getCurrentQuiz() {
-    return this.http.get<Quiz>(`${this.apiUrl}/quizzes/${this.currentQuiz.id}`);
+    this.http.get<Quiz>(`${this.apiUrl}quizzes/${this.currentQuiz.id}/`);
+  }
+
+  updateQuizList() {
+    this.http.get<Quiz[]>(`${this.apiUrl}users/${this.user_id}/quizzes`).subscribe((quizzes) => {
+      this.quizzes = quizzes;
+      this.quizzes$.next(this.quizzes);
+    });
   }
 }

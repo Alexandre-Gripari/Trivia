@@ -16,6 +16,7 @@ export class QuizListComponent implements OnInit {
     this.quizService.quizzes$.subscribe((quizList) => {
       this.quizList = quizList;
     });
+    console.log('quizList:', this.quizList);
   }
 
   ngOnInit(): void {
