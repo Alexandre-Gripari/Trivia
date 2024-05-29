@@ -4,6 +4,7 @@ import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { ALLQUIZ } from '../mocks/all-quiz.mock';
 import { HttpClient } from '@angular/common/http';
+import { Question } from 'src/models/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -84,7 +85,15 @@ export class QuizService {
   updateQuizList() {
     this.http.get<Quiz[]>(`${this.apiUrl}users/${this.user_id}/quizzes`).subscribe((quizzes) => {
       this.quizzes = quizzes;
-      this.quizzes$.next(this.quizzes);
+      for (let quiz of this.quizzes) {
+        this.http.get<Question[]>(`${this.apiUrl}quizzes/${quiz.id}/questions`).subscribe((questions) => {
+          quiz.questions = questions;
+          this.quizzes$.next(this.quizzes);
+        });
+      }
     });
+    
+
+
   }
 }

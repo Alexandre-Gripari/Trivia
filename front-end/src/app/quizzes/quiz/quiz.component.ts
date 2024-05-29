@@ -38,7 +38,7 @@ export class QuizComponent implements OnInit {
       //récupère l'id dans l'url
       let id = this.router.url.split('/')[2];
 
-      this.gameService.setQuestions(id);
+      this.gameService.setQuestions(this.quiz.questions);
       this.router.navigate(['/game-page']);
     }
   }
