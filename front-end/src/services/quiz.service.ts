@@ -40,6 +40,7 @@ export class QuizService {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
 
+
     const quizWithUserId = {
       name: quiz.name,
       theme: quiz.theme,
@@ -49,6 +50,7 @@ export class QuizService {
     response => {
       console.log('Quiz added successfully', response);
       this.updateQuizList(this.user_id);
+      this.updateAllQuizList();
     },
     error => {
       console.error('There was an error during the request', error);
@@ -69,6 +71,7 @@ export class QuizService {
       response => {
         console.log('Quiz deleted successfully', response);
         this.updateQuizList(this.user_id);
+        this.updateAllQuizList();
       },
       error => {
         console.error('There was an error during the request', error);
@@ -108,6 +111,11 @@ export class QuizService {
       this.allQuiz = quizzes;
       this.allQuiz$.next(this.allQuiz);
     });
+  }
+
+  updateAllQuizList() {
+    this.getAllQuiz();
+
   }
 
   getAllOtherQuizzes() {

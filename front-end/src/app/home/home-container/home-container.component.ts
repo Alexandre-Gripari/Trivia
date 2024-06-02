@@ -27,4 +27,8 @@ export class HomeContainerComponent {
   navigateToAddUser() {
     this.router.navigate(['/user-creator-page']);
   }
+
+  navigateToQuizList() {
+    this.router.navigate(['/all-quizzes']);
+  }
 }

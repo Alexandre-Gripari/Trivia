@@ -43,7 +43,7 @@ import { AudioHintContainerComponent } from './question-creator/audio-hint-conta
 import { AnswersContainerComponent } from './question-creator/answers-container/answers-container.component';
 import { QuizminiComponent } from './quizzes/quizmini/quizmini.component';
 import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
-
+import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +85,7 @@ import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
     AnswersContainerComponent
     QuizminiComponent,
     NavBarComponent,  
+    AllQuizzesComponent
   ],
   imports: [
     BrowserModule,
