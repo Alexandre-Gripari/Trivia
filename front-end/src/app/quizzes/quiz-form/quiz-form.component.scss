@@ -1,5 +1,6 @@
 @import '../../../styles/nav-bar.scss';
 @import '../../../styles/variables';
+@import "../../../styles/card-container.scss";
 //@import '../../../styles/default-container';
 
 .navigate-container {
@@ -30,11 +31,11 @@
 .menu {
     //margin top and bottom 
     background-color: #333;
-    margin: 10vh 0;
+    margin: 1vh 0;
     position: fixed;
     right: 0;
     width: 0;
-    height: 80vh; 
+    height: 90vh; 
     overflow: hidden;
     transition: width 0.3s ease;
     z-index: 2;
@@ -43,3 +44,6 @@
 .menu.open {
     width: 40vw;
 }
+
+  
+

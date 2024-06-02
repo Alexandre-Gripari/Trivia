@@ -15,6 +15,15 @@
     </div>
   </form>
 </div>
-<div class="menu default-container" [class.open]="menuOpen"></div>
+<div class="menu default-container" [class.open]="menuOpen">
+  <div class="filter-bar">
+    <!-- Filter bar code -->
+  </div>
+  <div class="quiz-list">
+    <div class="quiz" *ngFor="let quiz of allQuiz">
+    <app-quizmini (click)="toggleSelectedQuiz(quiz)" [selected]="isSelected(quiz)" [quiz]="quiz"></app-quizmini>
+  </div>
+  <button type="button" (click)="addSelectedQuizzes()">Add Selected Quizzes</button>
+</div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!--<br><br>{{quizForm.getRawValue() | json}}-->

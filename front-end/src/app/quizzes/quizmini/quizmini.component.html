@@ -1,0 +1,12 @@
+<div class="card" *ngIf="quiz" [ngClass]="{'selected': selected}">
+    <h2>
+        <span>Nom : {{quiz.name}}</span>
+    </h2>
+    <h3>
+        <span>Thème : {{quiz.theme}}</span>
+    </h3>
+    <h4>
+        <span>Nombre de questions : {{quiz.questions.length}}</span>
+    </h4>
+</div>
+

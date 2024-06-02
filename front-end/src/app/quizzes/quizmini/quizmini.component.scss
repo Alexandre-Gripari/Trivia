@@ -1,0 +1,17 @@
+@import '../../../styles/card.scss';
+
+
+
+.card:hover {
+    background-color: $logo-fade;
+    padding-left: 10px;
+    transform: scale(1.05) translateZ(10px);
+}
+
+.card.selected {
+    background-color: $logo-color /* Change this to the color you want */
+}
+
+  
+  
+  

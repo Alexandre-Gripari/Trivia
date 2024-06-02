@@ -42,5 +42,6 @@ export const QUIZ_LIST: Quiz[] = [
         name: 'Les Capitales',
         theme: 'Geography',
         questions: [QUESTION_PARIS],
+        userId: 1
     }
 ];

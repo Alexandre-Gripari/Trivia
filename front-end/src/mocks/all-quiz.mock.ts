@@ -404,6 +404,7 @@ export const QUIZ1: Quiz = {
   name: 'Demo Quiz',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
+  userId: 1
 };
 
 export const QUIZ2: Quiz = {
@@ -411,6 +412,7 @@ export const QUIZ2: Quiz = {
   name: 'Demo Quiz2',
   theme: 'EverythingGoes2',
   questions: QUESTION_LIST2,
+  userId: 1
 };
 
 export const QUIZ3: Quiz = {
@@ -418,6 +420,7 @@ export const QUIZ3: Quiz = {
   name: 'Demo Quiz3',
   theme: 'Histoire',
   questions: QUESTION_LIST3,
+  userId: 1
 };
 
 export const ALLQUIZ: Map<number, Quiz[]> = new Map([

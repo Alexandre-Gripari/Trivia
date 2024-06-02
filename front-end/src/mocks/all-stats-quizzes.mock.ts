@@ -261,6 +261,7 @@ export const QUIZ1: Quiz = {
   name: 'Demo Quiz1',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
+  userId: 1
 };
 
 export const QUIZ2: Quiz = {
@@ -268,6 +269,7 @@ export const QUIZ2: Quiz = {
   name: 'Demo Quiz2',
   theme: 'EverythingGoes2',
   questions: QUESTION_LIST2,
+  userId: 1
 };
 
 export const QUESTION_STAT1: QuestionStats = {
