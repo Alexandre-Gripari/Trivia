@@ -5,4 +5,5 @@ export interface Quiz {
     theme?: string;
     questions: Question[];
     id: number;
+    userId?: number;
 }

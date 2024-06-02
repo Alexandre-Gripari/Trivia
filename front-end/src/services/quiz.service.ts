@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
-import { QUIZ_LIST } from '../mocks/quiz-list.mock';
-import { ALLQUIZ } from '../mocks/all-quiz.mock';
 import { HttpClient } from '@angular/common/http';
+import { Question } from 'src/models/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +21,17 @@ export class QuizService {
     * The list is retrieved from the mock.
     */
   private user_id: number = 0;
-  private allQuizzes: Map<number, Quiz[]> = ALLQUIZ;
   private quizzes: Quiz[] = [];
   private currentQuiz: any;
+  private allQuiz: Quiz[] = [];
 
   /**
    * Observable which contains the list of the quiz.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
+  public allQuiz$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.allQuiz);
+
 
   constructor(private http: HttpClient) {
   }
@@ -39,11 +40,15 @@ export class QuizService {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subject
 
-    const quizWithUserId = { ...quiz, userId: this.user_id };
+    const quizWithUserId = {
+      name: quiz.name,
+      theme: quiz.theme,
+      userId: this.user_id,
+    }
     this.http.post<Quiz>(`${this.apiUrl}quizzes`, quizWithUserId).subscribe(
     response => {
       console.log('Quiz added successfully', response);
-      this.updateQuizList();
+      this.updateQuizList(this.user_id);
     },
     error => {
       console.error('There was an error during the request', error);
@@ -54,18 +59,16 @@ export class QuizService {
 
   setUserId(id: number) {
     this.user_id = id;
-    if (!this.allQuizzes.has(this.user_id)) {
-      console.log("No quizzes for this user");
-    } else {
-      this.updateQuizList();
-    }
+    this.quizzes = [];
+    this.quizzes$.next(this.quizzes);
+    this.updateQuizList(this.user_id);
   }
 
   deleteQuiz(quiz: Quiz) {
     this.http.delete<Quiz>(`${this.apiUrl}quizzes/${quiz.id}`).subscribe(
       response => {
         console.log('Quiz deleted successfully', response);
-        this.updateQuizList();
+        this.updateQuizList(this.user_id);
       },
       error => {
         console.error('There was an error during the request', error);
@@ -73,18 +76,111 @@ export class QuizService {
     );
   }
 
+  getQuizzesFromUser(id : number){
+    return this.http.get<Quiz[]>(`${this.apiUrl}users/${id}/quizzes`)
+  }
+
   setCurrentQuiz(quiz: any) {
     this.currentQuiz = quiz;
   }
 
   getCurrentQuiz() {
-    this.http.get<Quiz>(`${this.apiUrl}quizzes/${this.currentQuiz.id}/`);
+    return this.http.get<Quiz>(`${this.apiUrl}quizzes/${this.currentQuiz.id}/`);
   }
 
-  updateQuizList() {
-    this.http.get<Quiz[]>(`${this.apiUrl}users/${this.user_id}/quizzes`).subscribe((quizzes) => {
+  updateQuizList(id: number) {
+    console.log('Updating quiz list for user', id);
+    this.getQuizzesFromUser(id).subscribe((quizzes) => {
       this.quizzes = quizzes;
-      this.quizzes$.next(this.quizzes);
+      console.log('Quizzes:', this.quizzes);
+      for (let quiz of this.quizzes) {
+        this.http.get<Question[]>(`${this.apiUrl}quizzes/${quiz.id}/questions`).subscribe((questions) => {
+          console.log(`Questions for quiz ${quiz.id}:`, questions);
+          quiz.questions = questions;
+          this.quizzes$.next(this.quizzes);
+        });
+      }
     });
   }
+
+  getAllQuiz() {
+    this.http.get<Quiz[]>(`${this.apiUrl}quizzes`).subscribe((quizzes) => {
+      this.allQuiz = quizzes;
+      this.allQuiz$.next(this.allQuiz);
+    });
+  }
+
+  getAllOtherQuizzes() {
+    // Get all quizzes expect the ones in this.quizzes
+    this.http.get<Quiz[]>(`${this.apiUrl}quizzes`).subscribe((quizzes) => {
+      const quizzesNotAssociatedWithUser = quizzes.filter(quiz => quiz.userId !== this.user_id);
+      this.allQuiz = quizzesNotAssociatedWithUser;
+      this.allQuiz$.next(this.allQuiz);
+    }, error => {
+      console.error('There was an error during the request', error);
+    });
+  }
+
+  addUserToQuiz(quiz: Quiz) {
+    const updatedQuiz = { 
+      id: quiz.id, 
+      userId: this.user_id,
+    };
+    console.log('Adding user to quiz', updatedQuiz);
+    this.http.put<Quiz>(`${this.apiUrl}quizzes/${updatedQuiz.id}`, updatedQuiz).subscribe(
+      response => {
+        console.log('User added to quiz successfully', response);
+        this.updateQuizList(this.user_id);
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
+
+  reverseAllQuiz() {
+    this.allQuiz.reverse();
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByName() {
+    this.allQuiz.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByTheme() {
+    this.allQuiz.sort((a, b) => {
+      if (a.theme == undefined) { a.theme = ""; }
+      if (b.theme == undefined) { b.theme = ""; }
+      return a.theme.localeCompare(b.theme);
+        
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByDate() {
+    this.allQuiz.sort((a, b) => {
+      return a.id - b.id;
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByQuestion() {
+    this.allQuiz.sort((a, b) => {
+      return a.questions.length - b.questions.length;
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  searchQuiz(value: string) {
+    let tmp : Quiz[] = this.allQuiz.filter((quiz) => {
+      return quiz.name.toLowerCase().includes(value.toLowerCase()) || quiz.theme && quiz.theme.toLowerCase().includes(value.toLowerCase());
+    });
+    this.allQuiz$.next(tmp);
+  }
+
+
+    
 }

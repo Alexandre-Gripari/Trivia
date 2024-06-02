@@ -10,11 +10,23 @@
         <label for="theme">Theme</label>
         <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
       </div>
-      <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
-      <button type="button" class="button-card" (click)="openMenu()">Ajouter un quiz existant</button>
+      <button type="submit" class="button" (click)="addQuiz()">Create</button>
+      <button type="button" class="button" (click)="openMenu()">Ajouter un quiz existant</button>
     </div>
   </form>
 </div>
-<div class="menu default-container" [class.open]="menuOpen"></div>
+<div class="menu" [class.open]="menuOpen">
+  <div class="button-container">
+    <button type="button" class="button" (click)="addSelectedQuizzes()">Add Selected Quizzes</button>
+    <button type="button" class="button" (click)="closeMenu()">Retour</button>
+  </div>
+  <div class="filter-bar">
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div class="quiz-list card-container">
+    <div class="quiz" *ngFor="let quiz of allQuiz">
+    <app-quizmini (click)="toggleSelectedQuiz(quiz)" [selected]="isSelected(quiz)" [quiz]="quiz"></app-quizmini>
+  </div>
+</div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!--<br><br>{{quizForm.getRawValue() | json}}-->

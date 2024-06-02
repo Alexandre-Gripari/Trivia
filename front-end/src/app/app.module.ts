@@ -38,6 +38,8 @@ import { GameConfettiComponent } from './games/game-confetti/game-confetti.compo
 import { GameEndPageComponent} from "./games/game-end-page/game-end-page.component";
 import { UserCreatorContainerComponent } from './user-creator/user-creator-container/user-creator-container.component';
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
+import { QuizminiComponent } from './quizzes/quizmini/quizmini.component';
+import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-
     GameConfettiComponent,
     GameEndPageComponent,
     UserCreatorContainerComponent,
-    UserCreatorPageComponent
+    UserCreatorPageComponent,
+    QuizminiComponent,
+    NavBarComponent,  
   ],
   imports: [
     BrowserModule,

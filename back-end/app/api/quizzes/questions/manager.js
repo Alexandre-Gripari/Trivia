@@ -14,6 +14,8 @@ const NotFoundError = require('../../../utils/errors/not-found-error.js')
 const filterQuestionsFromQuizz = (quizId) => {
   const questions = Question.get()
   const parsedId = parseInt(quizId, 10)
+  /*console.log('parsedId', parsedId)
+  console.log('questions', questions)*/
   return questions.filter((question) => question.quizId === parsedId)
 }
 

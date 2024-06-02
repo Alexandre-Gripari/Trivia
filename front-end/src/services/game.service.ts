@@ -3,12 +3,15 @@ import { BehaviorSubject } from 'rxjs';
 import { Answer, Question, Clue } from '../models/question.model';
 import { QUESTION_LIST } from '../mocks/game-questions.mock';
 import { QuestionAndClue } from '../models/game.model';
-import { Router } from '@angular/router';
+
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
+
+  private apiUrl = 'http://localhost:9428/api/'
 
   private index: number = 0;
 
@@ -25,6 +28,9 @@ export class GameService {
   private observable: QuestionAndClue = {question: this.question, clueNumber: this.clueNumber, clueActive: this.clueActive};
 
   public observable$: BehaviorSubject<QuestionAndClue> = new BehaviorSubject(this.observable);
+
+  constructor(private http: HttpClient) {
+  }
   
   public checkAnswer(answer: Answer) {
     if (answer.isCorrect) {
@@ -43,14 +49,14 @@ export class GameService {
           }
       }
       this.numberOfErrors++;
-      if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clue.length - 1) this.useClue(this.observable.question.clue[this.observable.clueNumber]);
+      if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clues.length - 1) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
     }
     this.observable$.next(this.observable);
   }
 
 
   public autoClueOnStart() {
-    if (this.observable.question && this.observable.question.nbOfErrorsToUseClue == 0) this.useClue(this.observable.question.clue[this.observable.clueNumber]);
+    if (this.observable.question && this.observable.question.nbOfErrorsToUseClue == 0) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
   }
 
   public useClue(clue: Clue) {
@@ -75,7 +81,14 @@ export class GameService {
     this.resetGame();
     this.questions = question;
     this.question = this.questions[this.index];
+    console.log(this.question);
+    for (let question of this.questions) {
+      for (let answer of question.answers) {
+        answer.show = true;
+      }
+    }
     this.observable.question = this.question;
+    
     this.observable$.next(this.observable);
   }
 

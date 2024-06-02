@@ -3,7 +3,7 @@
 const { Quiz } = require('../../models');
 
 const getQuiz = (userId) => {
-    return Quiz.get().filter((quiz) => quiz.userId == userId);
+    return Quiz.get().filter((quiz) => quiz.userId === Number(userId));
   }
 
 module.exports = getQuiz;
