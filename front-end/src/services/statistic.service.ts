@@ -57,10 +57,10 @@ export class StatisticService {
   constructor(private http: HttpClient) {
   }
 
-  setUserId(userId: String): void {
+  setUserId(userId: number): void {
     console.log("userId in service: "+userId);
-    this.setUserStats(userId);
-    //this.setUserStatsQuizzes(userId);
+    this.setUserStats(userId.toString());
+    this.setUserStatsQuizzes(userId);
   }
 
   setUserStats(userId: String): void {
@@ -71,11 +71,14 @@ export class StatisticService {
     });
   }
 
-  setUserStatsQuizzes(userId: String): void {
-    const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
+  setUserStatsQuizzes(userId: number): void {
+    /* const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
     this.http.get<QuizStats[]>(urlWithId).subscribe((statsQuizzes) => {
       this.statsQuizzesOb$.next(statsQuizzes);
-    });
+    }); */
+    this.statsQuizzes = this.allStatsQuizzes.get(userId)!;
+    this.statsQuizzesFiltred = this.statsQuizzes.slice();
+    this.statsQuizzesOb$.next(this.statsQuizzes);
   }
 
 
@@ -107,11 +110,11 @@ export class StatisticService {
 
   sortByName() {
     this.statsQuizzes.sort((a, b) => {
-      return a.Quiz.name.localeCompare(b.Quiz.name);
+      return a.name.localeCompare(b.name);
     });
 
     this.statsQuizzesFiltred.sort((a, b) => {
-      return a.Quiz.name.localeCompare(b.Quiz.name);
+      return a.name.localeCompare(b.name);
     });
 
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
@@ -120,32 +123,32 @@ export class StatisticService {
   sortByTheme() {
     this.statsQuizzes.sort((a, b) => {
       // Vérifier si la propriété theme est définie pour a et b
-      if (a.Quiz.theme === undefined && b.Quiz.theme === undefined) {
+      if (a.theme === undefined && b.theme === undefined) {
         return 0; // Les deux thèmes sont undefined, considérez-les comme égaux
       }
-      if (a.Quiz.theme === undefined) {
+      if (a.theme === undefined) {
         return 1; // Le thème de a est undefined, placez b avant a
       }
-      if (b.Quiz.theme === undefined) {
+      if (b.theme === undefined) {
         return -1; // Le thème de b est undefined, placez a avant b
       }
       // Comparaison des thèmes des quiz en utilisant localeCompare
-      return a.Quiz.theme.localeCompare(b.Quiz.theme);
+      return a.theme.localeCompare(b.theme);
     });
 
     this.statsQuizzesFiltred.sort((a, b) => {
       // Vérifier si la propriété theme est définie pour a et b
-      if (a.Quiz.theme === undefined && b.Quiz.theme === undefined) {
+      if (a.theme === undefined && b.theme === undefined) {
         return 0; // Les deux thèmes sont undefined, considérez-les comme égaux
       }
-      if (a.Quiz.theme === undefined) {
+      if (a.theme === undefined) {
         return 1; // Le thème de a est undefined, placez b avant a
       }
-      if (b.Quiz.theme === undefined) {
+      if (b.theme === undefined) {
         return -1; // Le thème de b est undefined, placez a avant b
       }
       // Comparaison des thèmes des quiz en utilisant localeCompare
-      return a.Quiz.theme.localeCompare(b.Quiz.theme);
+      return a.theme.localeCompare(b.theme);
     });
 
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
@@ -171,7 +174,7 @@ export class StatisticService {
 
   searchBarFilter(input: String) {
       this.statsQuizzesFiltred = this.statsQuizzes.filter(item =>
-        item.Quiz.name.toLowerCase().includes(input.toLowerCase())
+        item.name.toLowerCase().includes(input.toLowerCase())
       );
       this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }

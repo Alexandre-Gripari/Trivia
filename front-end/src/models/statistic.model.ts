@@ -21,8 +21,8 @@ export interface StatisticData {
 
 export interface QuizStats {
 	id: number;
-
-	Quiz: Quiz; // Donne le thème et le nom
+	name: string;
+    theme?: string;
 	date: Date; // Date à laquelle est effectué le quiz 
 	questionsStats: QuestionStats[]; // Contient toutes les questions répondues avec leurs stats
 	totalTimeMinutes: number; // Temps passé sur le quiz

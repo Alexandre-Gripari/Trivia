@@ -1,7 +1,7 @@
 <div class="statistic-quiz-stats" *ngIf="quizStats">
     <button (click)="onQuizStatsClick()">
-        <span>{{quizStats?.Quiz?.name}}</span>
-        <span>{{quizStats?.Quiz?.theme}}</span>
+        <span>{{quizStats?.name}}</span>
+        <span>{{quizStats?.theme}}</span>
         <span>{{ quizStats?.date | date:'dd/MM/yyyy' }}</span>
         <span>{{quizStats?.totalTimeMinutes}}m  {{quizStats?.totalTimeSeconds}} s</span>
         <span>{{quizStats?.successRate}}%</span>

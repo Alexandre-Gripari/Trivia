@@ -4,9 +4,6 @@ const { getStats } = require('./manager');
 const router = new Router({ mergeParams: true })
 
 router.get('/:userId', (req, res) => {
-  console.log("Entered the GET route for /datastats/:userId");
-  console.log("Request params:", req.params);
-
   try {
     const stats = getStats(req.params.userId);
     console.log("Stats retrieved:", stats);
