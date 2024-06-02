@@ -1,45 +1,15 @@
 <div class="form-container">
-  <form id="form1">
     <div class="form-group">
       <label id="qT"for="questionTitle">Intitulé de la question</label>
       <input type="text" id="questionTitle" class="form-control">
     </div>
-    <div class="form-group answers-grid">
-    <div *ngFor="let i of [0, 1, 2, 3]" class="answer-group">
-      <label for="answer{{i}}">Réponse n°{{i + 1}}:
-        <input class="form-check-input" type="checkbox" id="isCorrect{{i}}">
-        <input type="text" id="answer{{i}}" class="form-control">
-      </label>
-    </div>
-  </div>
-    <button type="submit" class="btn btn-success">Valider</button>
-    <button type="reset" class="btn btn-danger">Annuler</button>
-  </form>
-  <form id="form2">
+  <app-answers-container></app-answers-container>
     <div class="form-group hint-container">
       <label id="hint" for="hints">Indices</label>
-      <p id="hint-counter">Nombre de fausses réponses avant affichage des indices:</p>
-      <input type="number">
-      <div class="form-group hint">
-        <span>Indice textuel:</span>
-        <input type="text" id="text-hint" class="form-control">
-        <p>Ordre d'apparition de l'indice:</p>
-        <input type="number">
-      </div>
-      <div class="form-group hint">
-        <label for="hints" class="file-label">Choisir une image</label>
-        <img id="preview" src="" alt="Aperçu du fichier" style="display: none;">
-        <input type="file" id="hints" class="form-control hidden" accept="image/*">
-        <p>Ordre d'apparition de l'indice:</p>
-        <input type="number">
-      </div>
-      <div class="form-group hint">
-        <label for="hint-audio" class="file-label">Choisir un audio</label>
-        <audio id="audio-preview" controls style="display: none;"></audio>
-        <input type="file" id="hint-audio" class="form-control hidden" accept="audio/*" (change)="onAudioChange($event)">
-        <p>Ordre d'apparition de l'indice:</p>
-        <input type="number">
-      </div>
+      <app-text-hint-container></app-text-hint-container>
+      <app-image-hint-container></app-image-hint-container>
+      <app-audio-hint-container></app-audio-hint-container>
    </div>
-  </form>
+  <button type="submit" class="btn btn-success">Valider</button>
+  <button type="reset" class="btn btn-danger">Annuler</button>
 </div>
