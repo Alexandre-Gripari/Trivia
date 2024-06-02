@@ -21,8 +21,13 @@ export class QuizFormComponent implements OnInit {
   public quizForm: FormGroup;
     menuOpen = false;
 
+  public allQuiz: Quiz[] = [];
+  public selectedQuizzes: Quiz[] = [];
+
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
-    // Form creation
+    this.quizService.allQuiz$.subscribe((quizzes) => {
+      this.allQuiz = quizzes;
+    });
     this.quizForm = this.formBuilder.group({
       name: [''],
       theme: ['']
@@ -53,10 +58,39 @@ export class QuizFormComponent implements OnInit {
     
   }
 
-
-
   openMenu() {
     this.menuOpen = !this.menuOpen;
+    this.quizService.getAllOtherQuizzes();
+    
+
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+  }
+
+  addSelectedQuizzes() {
+    console.log('Add selected quizzes');
+    this.selectedQuizzes.forEach((quiz) => {
+      console.log('Add quiz: ', quiz);
+      this.quizService.addQuiz(quiz);
+    });
+    this.closeMenu();
+    this.selectedQuizzes = [];
+
+  }
+
+  toggleSelectedQuiz(quiz: Quiz) {
+    if (this.isSelected(quiz)) {
+      this.selectedQuizzes = this.selectedQuizzes.filter((q) => q !== quiz);
+    } else {
+      this.selectedQuizzes.push(quiz);
+    }
+    console.log(this.selectedQuizzes);
+  }
+
+  isSelected(quiz: Quiz) {
+    return this.selectedQuizzes.includes(quiz);
   }
 
 }

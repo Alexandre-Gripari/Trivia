@@ -25,7 +25,7 @@ export class GameQuestionComponent implements OnInit {
       if (observable.question === undefined) this.isFinished = true;
       else {
         this.question = observable.question;
-        this.clue = observable.question.clue[this.getCurrentClueNumber()];
+        this.clue = observable.question.clues[this.getCurrentClueNumber()];
       }
     });
   }

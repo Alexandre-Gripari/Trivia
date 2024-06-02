@@ -41,6 +41,8 @@ import { ImageHintContainerComponent } from './question-creator/image-hint-conta
 import { TextHintContainerComponent } from './question-creator/text-hint-container/text-hint-container.component';
 import { AudioHintContainerComponent } from './question-creator/audio-hint-container/audio-hint-container.component';
 import { AnswersContainerComponent } from './question-creator/answers-container/answers-container.component';
+import { QuizminiComponent } from './quizzes/quizmini/quizmini.component';
+import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { AnswersContainerComponent } from './question-creator/answers-container/
     TextHintContainerComponent,
     AudioHintContainerComponent,
     AnswersContainerComponent
+    QuizminiComponent,
+    NavBarComponent,  
   ],
   imports: [
     BrowserModule,
