@@ -24,7 +24,7 @@ export class StatisticService {
 
     private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS;
     private stats: StatisticData = {
-      id: "id",
+      id: 0,
       numberOfCompletedQuizzes: 0, 
       numberOfCluesUsed: 0, 
       numberOfCluesUsedLatest: 0, 
@@ -43,9 +43,9 @@ export class StatisticService {
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
     private serverUrl = "http://localhost:9428/api/"
-    private statsUrl = this.serverUrl + '/statistics';
+    private statsUrl = this.serverUrl + 'statistics';
     private dataStatsPath = 'datastats';
-    private quizStats = 'quizstats';
+    private quizStatsPath = 'quizstats';
 
   /**
    * Observable which contains the list of the quiz.
@@ -58,19 +58,21 @@ export class StatisticService {
   }
 
   setUserId(userId: String): void {
+    console.log("userId in service: "+userId);
     this.setUserStats(userId);
-    this.setUserStatsQuizzes(userId);
+    //this.setUserStatsQuizzes(userId);
   }
 
   setUserStats(userId: String): void {
     const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + userId;
     this.http.get<StatisticData>(urlWithId).subscribe((stats) => {
+      console.log(stats.numberOfCluesUsed);
       this.stats$.next(stats);
     });
   }
 
   setUserStatsQuizzes(userId: String): void {
-    const urlWithId = this.statsUrl + '/' + this.quizStats + '/' + userId;
+    const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
     this.http.get<QuizStats[]>(urlWithId).subscribe((statsQuizzes) => {
       this.statsQuizzesOb$.next(statsQuizzes);
     });

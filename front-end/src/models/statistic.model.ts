@@ -5,7 +5,7 @@ import { Question } from './question.model';
 
 
 export interface StatisticData {
-	id: String;
+	id: number;
 	
 	numberOfCompletedQuizzes: number;
 
@@ -20,7 +20,7 @@ export interface StatisticData {
 } 
 
 export interface QuizStats {
-	id: String;
+	id: number;
 
 	Quiz: Quiz; // Donne le thème et le nom
 	date: Date; // Date à laquelle est effectué le quiz 
@@ -32,7 +32,7 @@ export interface QuizStats {
 }
 
 export interface QuestionStats {
-	id: String;
+	id: number;
 
 	question: Question; // Donne la question, les réponses et les indices
 	timeMinutes: number; // Temps avant d'obtenir la bonne réponse

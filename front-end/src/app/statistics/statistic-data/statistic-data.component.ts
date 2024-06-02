@@ -4,6 +4,7 @@ import { StatisticData } from '../../../models/statistic.model';
 
 
 
+
 @Component({
   selector: 'app-statistic-data',
   templateUrl: './statistic-data.component.html',
@@ -12,13 +13,14 @@ import { StatisticData } from '../../../models/statistic.model';
 export class StatisticDataComponent implements OnInit {
 
   public stats: StatisticData = {
+    id:0,
     numberOfCompletedQuizzes:0, 
     numberOfCluesUsed:0,
     numberOfCluesUsedLatest:0,
     timeSpentMinutes:0,
     timeSpentSeconds:0,
     timeSpentMinutesLatest:0,
-    timeSpentSecondsLatest:0
+    timeSpentSecondsLatest:0,
   };
 
   private user_id: number = 0;

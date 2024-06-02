@@ -257,14 +257,16 @@ export const QUIZ2: Quiz = {
 };
 
 export const QUESTION_STAT1: QuestionStats = {
+  id: 1,
   question: QUESTION_CORSE,
   timeMinutes: 4,
   timeSeconds: 25,
   numberOfCluesUsed: 2,
-  numberOfBadAnswers: 1
+  numberOfBadAnswers: 1,
 };
 
 export const QUESTION_STAT2: QuestionStats = {
+  id: 2,
   question: QUESTION_PARIS,
   timeMinutes: 2,
   timeSeconds: 4,
@@ -273,6 +275,7 @@ export const QUESTION_STAT2: QuestionStats = {
 };
 
 export const QUESTION_STAT3: QuestionStats = {
+  id: 3,
   question: QUESTION_CONTINANT,
   timeMinutes: 3,
   timeSeconds: 20,
@@ -282,13 +285,14 @@ export const QUESTION_STAT3: QuestionStats = {
 
 
 export const QUIZ_STATS1: QuizStats = {
-    Quiz: QUIZ1,
-    date: new Date(2024,0,1),
-    questionsStats: [QUESTION_STAT1, QUESTION_STAT2],
-    totalTimeMinutes: 4,
-    totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5 ,
-    successRate: 20
+  Quiz: QUIZ1,
+  date: new Date(2024, 0, 1),
+  questionsStats: [QUESTION_STAT1, QUESTION_STAT2],
+  totalTimeMinutes: 4,
+  totalTimeSeconds: 24,
+  totalNumberOfCluesUsed: 5,
+  successRate: 20,
+  id: 1
 };
 
 export const QUIZ_STATS2: QuizStats = {
@@ -298,7 +302,8 @@ export const QUIZ_STATS2: QuizStats = {
     totalTimeMinutes: 4,
     totalTimeSeconds: 24,
     totalNumberOfCluesUsed: 5,
-    successRate: 50 
+    successRate: 50, 
+    id: 2
 };
 
 export const QUIZ_STATS3: QuizStats = {
@@ -308,7 +313,8 @@ export const QUIZ_STATS3: QuizStats = {
     totalTimeMinutes: 5,
     totalTimeSeconds: 3,
     totalNumberOfCluesUsed: 10,
-    successRate: 70
+    successRate: 70,
+    id: 3
 };
 
 export const ALL_STATS_QUIZ: Map<number, QuizStats[]> = new Map([

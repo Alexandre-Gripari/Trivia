@@ -5,9 +5,7 @@ const QuizStats = require('./quizstats')
 
 const router = new Router()
 
-router.use('/datastats/:userId', DataStatsRouter);
-router.use('/quizstats/:userId', QuizStats);
+router.use('/datastats', DataStatsRouter);
+//router.use('/quizstats', QuizStats);
 
-
-
-
+module.exports = router;

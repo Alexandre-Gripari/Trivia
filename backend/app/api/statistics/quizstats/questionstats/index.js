@@ -1,6 +1,8 @@
 const { Router } = require('express')
 
-router.get('/', (req, res) => {
+const router = new Router();
+
+/* router.get('/', (req, res) => {
     try {
       // Check if quizId exists, if not it will throw a NotFoundError
       Quiz.getById(req.params.quizId)
@@ -8,5 +10,6 @@ router.get('/', (req, res) => {
     } catch (err) {
       manageAllErrors(res, err)
     }
-})
+}) */
 
+module.exports = router;
