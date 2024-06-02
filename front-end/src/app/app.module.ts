@@ -40,7 +40,7 @@ import { UserCreatorContainerComponent } from './user-creator/user-creator-conta
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
 import { QuizminiComponent } from './quizzes/quizmini/quizmini.component';
 import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
-
+import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +78,7 @@ import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
     UserCreatorPageComponent,
     QuizminiComponent,
     NavBarComponent,  
+    AllQuizzesComponent
   ],
   imports: [
     BrowserModule,
