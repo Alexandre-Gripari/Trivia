@@ -10,7 +10,8 @@ export class UserCreatorContainerComponent implements OnInit {
   userForm: FormGroup = this.formBuilder.group({
     firstName: '',
     lastName: '',
-    email: ''
+    birthDate: '',
+    alzheimerStage: '',
   });
 
   constructor(private formBuilder: FormBuilder) { }
