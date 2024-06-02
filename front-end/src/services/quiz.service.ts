@@ -137,5 +137,50 @@ export class QuizService {
       }
     );
   }
+
+  reverseAllQuiz() {
+    this.allQuiz.reverse();
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByName() {
+    this.allQuiz.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByTheme() {
+    this.allQuiz.sort((a, b) => {
+      if (a.theme == undefined) { a.theme = ""; }
+      if (b.theme == undefined) { b.theme = ""; }
+      return a.theme.localeCompare(b.theme);
+        
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByDate() {
+    this.allQuiz.sort((a, b) => {
+      return a.id - b.id;
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  sortAllQuizByQuestion() {
+    this.allQuiz.sort((a, b) => {
+      return a.questions.length - b.questions.length;
+    });
+    this.allQuiz$.next(this.allQuiz);
+  }
+
+  searchQuiz(value: string) {
+    let tmp : Quiz[] = this.allQuiz.filter((quiz) => {
+      return quiz.name.toLowerCase().includes(value.toLowerCase()) || quiz.theme && quiz.theme.toLowerCase().includes(value.toLowerCase());
+    });
+    this.allQuiz$.next(tmp);
+  }
+
+
     
 }
