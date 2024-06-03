@@ -35,8 +35,10 @@ export const QUESTION_PARIS: Question = {
         }
     ],
 
-    nbOfErrorsToUseClue: 2
-    
+    nbOfErrorsToUseClue: 2,
+
+  quizId: 1584387277368
+
 };
 
 export const QUESTION_CONTINANT: Question = {
@@ -75,11 +77,13 @@ export const QUESTION_CONTINANT: Question = {
         {
           text: "C'est un pays situé au nord de L'Afrique",
           image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/langfr-225px-Flag_of_Algeria.svg.png'
-            
+
         }
     ],
 
-    nbOfErrorsToUseClue: 1
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_TEXTE: Question = {
@@ -114,7 +118,9 @@ export const QUESTION_TEXTE: Question = {
     }
   ],
 
-  nbOfErrorsToUseClue: 1
+  nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 
 };
 export const QUESTION_AUDIO: Question = {
@@ -152,9 +158,11 @@ export const QUESTION_AUDIO: Question = {
       audio: 'https://lasonotheque.org/UPLOAD/wav/1890.wav'
     }
     ],
-    nbOfErrorsToUseClue: 1
-        
-    
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
+
+
 };
 
 export const QUESTION_CORSE: Question = {
@@ -190,9 +198,11 @@ export const QUESTION_CORSE: Question = {
           image: 'https://e7.pngegg.com/pngimages/70/395/png-clipart-flag-and-coat-of-arms-of-corsica-corsican-symbol-flag-miscellaneous-white.png'
         }
     ],
-    nbOfErrorsToUseClue: 0
-        
-   
+    nbOfErrorsToUseClue: 0,
+
+  quizId: 1584387277368
+
+
 };
 
 export const QUESTION_MIXTE: Question = {
@@ -227,7 +237,9 @@ export const QUESTION_MIXTE: Question = {
     }
   ],
 
-    nbOfErrorsToUseClue: 1
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_LIST: Question[] = [
@@ -237,7 +249,7 @@ export const QUESTION_LIST: Question[] = [
   QUESTION_TEXTE,
   QUESTION_AUDIO,
   QUESTION_MIXTE
-  
+
 ];
 
 export const QUESTION_LIST2: Question[] = [
@@ -245,12 +257,14 @@ export const QUESTION_LIST2: Question[] = [
 ];
 
 export const QUIZ1: Quiz = {
+  id : 1,
   name: 'Demo Quiz1',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
 };
 
 export const QUIZ2: Quiz = {
+  id : 2,
   name: 'Demo Quiz2',
   theme: 'EverythingGoes2',
   questions: QUESTION_LIST2,
@@ -297,15 +311,15 @@ export const QUIZ_STATS1: QuizStats = {
 };
 
 export const QUIZ_STATS2: QuizStats = {
-    date: new Date(2024,2,27),
-    questionsStats: [QUESTION_STAT2, QUESTION_STAT3],
-    totalTimeMinutes: 4,
-    totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5,
-    successRate: 50, 
-    id: 2,
-    name: "Demo Quiz2",
-    theme: "EverythingGoes2"
+  date: new Date(2024, 2, 27),
+  questionsStats: [QUESTION_STAT2, QUESTION_STAT3],
+  totalTimeMinutes: 4,
+  totalTimeSeconds: 24,
+  totalNumberOfCluesUsed: 5,
+  successRate: 50,
+  id: 0,
+  name: "Demo Quiz2",
+  theme: "EverythingGoes2"
 };
 
 export const QUIZ_STATS3: QuizStats = {
