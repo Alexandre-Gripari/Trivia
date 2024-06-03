@@ -16,16 +16,23 @@ export class UserListComponent implements OnInit {
   private allUsers: User[] = [];
 
   constructor(public userService: UserService) {
-    this.userService.users$.subscribe((userList) => {
+    /*this.userService.users$.subscribe((userList) => {
       this.allUsers = userList;
       this.userList = this.allUsers;
       //this.userList = this.allUsers.slice(0, 8);
-    });
+    });*/
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe(
+      (data: User[]) => {
+        this.userList = data;
+      },
+      (error) => {
+        console.error('Error fetching user list', error);
+      }
+    );
   }
-
   userSelected(selected: boolean) {
     console.log('event received from child:', selected);
   }
@@ -35,7 +42,7 @@ export class UserListComponent implements OnInit {
       console.log('scrolling');
       let pos = this.scrollContainer.nativeElement.scrollTop + this.scrollContainer.nativeElement.offsetHeight;
       let max = this.scrollContainer.nativeElement.scrollHeight;
-  
+
       if (Math.round(pos) === max) {
         this.loadMoreUsers();
       }
@@ -49,4 +56,3 @@ export class UserListComponent implements OnInit {
   }*/
 
 }
-

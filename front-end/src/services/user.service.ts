@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, first } from 'rxjs';
+import {BehaviorSubject, catchError, first, throwError} from 'rxjs';
 import { User } from '../models/user.model';
 import { USER_LIST } from '../mocks/user-list.mock';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private apiUrl = 'http://localhost:9428/api/users';
   private currentUser: any;
   /**
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
 
-   /**
-    * The list of quiz.
-    * The list is retrieved from the mock.
-    */
+  /**
+   * The list of quiz.
+   * The list is retrieved from the mock.
+   */
 
-   private users: User[] = USER_LIST;
+  private users: User[] = USER_LIST;
 
   /**
    * Observable which contains the list of the quiz.
@@ -27,7 +30,7 @@ export class UserService {
 
   public users$: BehaviorSubject<User[]> = new BehaviorSubject(USER_LIST);
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   sortByDate() {
@@ -46,7 +49,7 @@ export class UserService {
 
   sortByBirth() {
     this.users.sort((a, b) => {
-      return Number(a.birth_date_year) - Number(b.birth_date_year);
+      return Number(a.birth_date.substring(6,10)) - Number(b.birth_date.substring(6,10));
     });
     this.users$.next(this.users);
   }
@@ -69,6 +72,37 @@ export class UserService {
 
   getCurrentUser() {
     return this.currentUser;
+  }
+
+  createUser(user: User | FormData): Observable<User> {
+    if (user instanceof FormData) {
+      return this.http.post<User>(this.apiUrl, user);
+    } else {
+      return this.http.post<User>(this.apiUrl, user);
+    }
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
+  }
+
+  updateUser(userId: number, userData: User): Observable<User> {
+    const url = `${this.apiUrl}/${userId}`;
+    return this.http.put<User>(url, userData).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError(error);
+  }
+
+  deleteUser(userId: number): Observable<void> {
+    const url = `${this.apiUrl}/${userId}`;
+    return this.http.delete<void>(url).pipe(
+      catchError(this.handleError)
+    );
   }
 
 }
