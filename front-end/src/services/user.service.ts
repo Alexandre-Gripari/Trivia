@@ -2,23 +2,26 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, first } from 'rxjs';
 import { User } from '../models/user.model';
 import { USER_LIST } from '../mocks/user-list.mock';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private apiUrl = 'http://localhost:9428';
   private currentUser: any;
   /**
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
 
-   /**
-    * The list of quiz.
-    * The list is retrieved from the mock.
-    */
+  /**
+   * The list of quiz.
+   * The list is retrieved from the mock.
+   */
 
-   private users: User[] = USER_LIST;
+  private users: User[] = USER_LIST;
 
   /**
    * Observable which contains the list of the quiz.
@@ -27,7 +30,7 @@ export class UserService {
 
   public users$: BehaviorSubject<User[]> = new BehaviorSubject(USER_LIST);
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   sortByDate() {
@@ -69,6 +72,10 @@ export class UserService {
 
   getCurrentUser() {
     return this.currentUser;
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
   }
 
 }
