@@ -1,28 +1,86 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../models/user.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-creator-container',
   templateUrl: './user-creator-container.component.html',
   styleUrls: ['./user-creator-container.component.scss']
 })
-export class UserCreatorContainerComponent implements OnInit {
-  userForm: FormGroup = this.formBuilder.group({
-    firstName: '',
-    lastName: '',
-    email: ''
-  });
 
-  constructor(private formBuilder: FormBuilder) { }
+export class UserCreatorContainerComponent implements OnInit {
+  @Input() user: User | any;
+  userForm: FormGroup;
+  filePreview: string | ArrayBuffer | null | undefined = undefined;
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+    this.userForm = this.formBuilder.group({
+      first_name: '',
+      last_name: '',
+      birth_date: '',
+      alzheimerStage: '',
+      profilepicture: '',
+    });
+  }
+
 
   ngOnInit() {
+    this.userForm = this.formBuilder.group({
+      first_name: [this.user ? this.user.first_name : ''],
+      last_name: [this.user ? this.user.last_name : ''],
+      birth_date: [this.user ? this.user.birth_date : ''],
+      alzheimerStage: [this.user ? this.user.alzheimerStage : ''],
+      profilepicture: [''],
+    });
   }
 
   onSubmit() {
-    console.log(this.userForm.value);
+    const user: User = this.userForm.value;
+    if (this.user && this.user.profilepicture instanceof File) {
+      const formData = new FormData();
+      formData.append('first_name', user.first_name);
+      formData.append('last_name', user.last_name);
+      formData.append('birth_date', user.birth_date);
+      formData.append('alzheimerStage', user.alzheimerStage);
+      formData.append('profilepicture', this.user.profilepicture);
+
+      this.userService.createUser(formData).subscribe(
+        response => {
+          console.log('User created', response);
+        },
+        error => {
+          console.error('Error creating user', error);
+        }
+      );
+    } else {
+      this.userService.createUser(user).subscribe(
+        response => {
+          console.log('User created', response);
+        },
+        error => {
+          console.error('Error creating user', error);
+        }
+      );
+    }
+
+    this.router.navigate(['/user-page']);
   }
 
-  deleteUser() {
-    console.log("User deleted");
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.user.profilepicture = file;
+
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.filePreview = e.target?.result;
+        this.userForm.patchValue({ profilepicture: this.filePreview });
+      };
+      reader.readAsDataURL(file);
+    }
   }
 }
+

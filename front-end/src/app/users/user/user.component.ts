@@ -36,14 +36,15 @@ export class UserComponent implements OnInit {
   }
 
   navigateToQuizList() {
-    this.router.navigate(['/quiz', this.user?.user_id]);
+    this.router.navigate(['/quiz', this.user?.id]);
   }
 
   navigateToStats(){
-    this.router.navigate(['/stats', this.user?.user_id]);
+    this.router.navigate(['/stats', this.user?.id]);
   }
 
   modifieUser(){
-    this.router.navigate(['/user-creator-page']);
+    const user: User | undefined = this.user;
+    this.router.navigate(['/users/edit', this.user?.id], { state: { user } });
   }
 }
