@@ -1,0 +1,16 @@
+<div class="form-group hint">
+  <input #textInput type="text" class="form-control" (change)="onTextChange($event)">
+  <button id="addText" (click)="onShowTextClick()">Ajouter un texte</button>
+  <div id="text-hints-container" *ngFor="let textHint of textHints; index as i">
+    <div class="text-hints">
+      <span>{{ textHint }}</span>
+      <div id="text-hint-order">
+        <p>Ordre d'apparition de l'indice:</p>
+        <input type="number" min="0" max="3">
+      </div>
+      <div id="text-hint-buttons">
+        <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>

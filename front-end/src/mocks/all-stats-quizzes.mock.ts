@@ -29,7 +29,7 @@ export const QUESTION_PARIS: Question = {
         }
     ],
 
-    clue: [
+    clues: [
         {
             image: 'https://cdn-imgix.headout.com/media/images/c90f7eb7a5825e6f5e57a5a62d05399c-25058-BestofParis-EiffelTower-Cruise-Louvre-002.jpg'
         }
@@ -66,7 +66,7 @@ export const QUESTION_CONTINANT: Question = {
         }
     ],
 
-    clue: [
+    clues: [
         {
           text: "C'est un pays situé au nord de L'Afrique"
         },
@@ -112,7 +112,7 @@ export const QUESTION_TEXTE: Question = {
     }
   ],
 
-  clue: [
+  clues: [
     {
       text: 'La réponse est dans la question hein'
     }
@@ -147,7 +147,7 @@ export const QUESTION_AUDIO: Question = {
       show: true,
     }
   ],
-  clue: [
+  clues: [
     {
       image:'https://www.la-spa.fr/app/app/uploads/2023/07/prendre-soin_duree-vie-chat.jpg',
       text: 'C\'est ça un chat',
@@ -189,7 +189,7 @@ export const QUESTION_CORSE: Question = {
             show: true,
         }
     ],
-    clue: [
+    clues: [
         {
           text: "On l\'appelle l'île de Beauté",
         },
@@ -229,7 +229,7 @@ export const QUESTION_MIXTE: Question = {
       show: true,
     }
   ],
-  clue: [
+  clues: [
     {
       text: "C'est Greg",
       image: 'https://media.tenor.com/9Q6kwQ_D-bMAAAAM/bassem-dance.gif',
@@ -257,26 +257,32 @@ export const QUESTION_LIST2: Question[] = [
 ];
 
 export const QUIZ1: Quiz = {
+  id : 1,
   name: 'Demo Quiz1',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
+  userId: 1
 };
 
 export const QUIZ2: Quiz = {
+  id : 2,
   name: 'Demo Quiz2',
   theme: 'EverythingGoes2',
   questions: QUESTION_LIST2,
+  userId: 1
 };
 
 export const QUESTION_STAT1: QuestionStats = {
+  id: 1,
   question: QUESTION_CORSE,
   timeMinutes: 4,
   timeSeconds: 25,
   numberOfCluesUsed: 2,
-  numberOfBadAnswers: 1
+  numberOfBadAnswers: 1,
 };
 
 export const QUESTION_STAT2: QuestionStats = {
+  id: 2,
   question: QUESTION_PARIS,
   timeMinutes: 2,
   timeSeconds: 4,
@@ -285,6 +291,7 @@ export const QUESTION_STAT2: QuestionStats = {
 };
 
 export const QUESTION_STAT3: QuestionStats = {
+  id: 3,
   question: QUESTION_CONTINANT,
   timeMinutes: 3,
   timeSeconds: 20,
@@ -294,33 +301,39 @@ export const QUESTION_STAT3: QuestionStats = {
 
 
 export const QUIZ_STATS1: QuizStats = {
-    Quiz: QUIZ1,
-    date: new Date(2024,0,1),
-    questionsStats: [QUESTION_STAT1, QUESTION_STAT2],
-    totalTimeMinutes: 4,
-    totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5 ,
-    successRate: 20
+  date: new Date(2024, 0, 1),
+  questionsStats: [QUESTION_STAT1, QUESTION_STAT2],
+  totalTimeMinutes: 4,
+  totalTimeSeconds: 24,
+  totalNumberOfCluesUsed: 5,
+  successRate: 20,
+  id: 1,
+  name: "Demo Quiz1",
+  theme: "EverythingGoes"
 };
 
 export const QUIZ_STATS2: QuizStats = {
-    Quiz: QUIZ2,
-    date: new Date(2024,2,27),
-    questionsStats: [QUESTION_STAT2, QUESTION_STAT3],
-    totalTimeMinutes: 4,
-    totalTimeSeconds: 24,
-    totalNumberOfCluesUsed: 5,
-    successRate: 50
+  date: new Date(2024, 2, 27),
+  questionsStats: [QUESTION_STAT2, QUESTION_STAT3],
+  totalTimeMinutes: 4,
+  totalTimeSeconds: 24,
+  totalNumberOfCluesUsed: 5,
+  successRate: 50,
+  id: 0,
+  name: "Demo Quiz2",
+  theme: "EverythingGoes2"
 };
 
 export const QUIZ_STATS3: QuizStats = {
-    Quiz: QUIZ1,
     date: new Date(2024,2,25),
     questionsStats: [QUESTION_STAT1, QUESTION_STAT2, QUESTION_STAT3],
     totalTimeMinutes: 5,
     totalTimeSeconds: 3,
     totalNumberOfCluesUsed: 10,
-    successRate: 70
+    successRate: 70,
+    id: 3,
+    name: "Demo Quiz3",
+    theme: "EverythingGoes3"
 };
 
 export const ALL_STATS_QUIZ: Map<number, QuizStats[]> = new Map([

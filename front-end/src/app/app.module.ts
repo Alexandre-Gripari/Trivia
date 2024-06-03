@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
@@ -40,7 +39,13 @@ import { UserCreatorContainerComponent } from './user-creator/user-creator-conta
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
 import { UserEditContainerComponent } from './user-edit/user-edit-container/user-edit-container.component';
 import { UserEditPageComponent } from './user-edit/user-edit-page/user-edit-page.component';
-
+import { ImageHintContainerComponent } from './question-creator/image-hint-container/image-hint-container.component';
+import { TextHintContainerComponent } from './question-creator/text-hint-container/text-hint-container.component';
+import { AudioHintContainerComponent } from './question-creator/audio-hint-container/audio-hint-container.component';
+import { AnswersContainerComponent } from './question-creator/answers-container/answers-container.component';
+import { QuizminiComponent } from './quizzes/quizmini/quizmini.component';
+import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
+import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +82,14 @@ import { UserEditPageComponent } from './user-edit/user-edit-page/user-edit-page
     UserCreatorContainerComponent,
     UserCreatorPageComponent,
     UserEditContainerComponent,
-    UserEditPageComponent
+    UserEditPageComponent,
+    ImageHintContainerComponent,
+    TextHintContainerComponent,
+    AudioHintContainerComponent,
+    AnswersContainerComponent
+    QuizminiComponent,
+    NavBarComponent,  
+    AllQuizzesComponent
   ],
   imports: [
     BrowserModule,

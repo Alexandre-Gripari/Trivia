@@ -12,7 +12,7 @@ import { Quiz } from '../../../models/quiz.model';
 export class QuestionsListComponent implements OnInit {
 
   questions: Question[] = QUESTION_LIST;
-  quiz: Quiz = { name: "Quiz 1", questions: this.questions};
+  quiz: Quiz = { name: "Quiz 1", questions: this.questions, id: 1, userId: 1};
 
   constructor(private router: Router) {
     // a terme remplacer par un appel a un service

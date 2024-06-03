@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
 import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
 import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
@@ -19,10 +20,11 @@ export class StatisticService {
     * The list is retrieved from the mock. 
     */
   
-    private user_id: number = 0;
+    private user_id: String = "";
 
     private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS;
     private stats: StatisticData = {
+      id: 0,
       numberOfCompletedQuizzes: 0, 
       numberOfCluesUsed: 0, 
       numberOfCluesUsedLatest: 0, 
@@ -40,7 +42,10 @@ export class StatisticService {
 
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
-    
+    private serverUrl = "http://localhost:9428/api/"
+    private statsUrl = this.serverUrl + 'statistics';
+    private dataStatsPath = 'datastats';
+    private quizStatsPath = 'quizstats';
 
   /**
    * Observable which contains the list of the quiz.
@@ -49,10 +54,35 @@ export class StatisticService {
 
   
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  setUserId(id: number) {
+  setUserId(userId: number): void {
+    console.log("userId in service: "+userId);
+    this.setUserStats(userId.toString());
+    this.setUserStatsQuizzes(userId);
+  }
+
+  setUserStats(userId: String): void {
+    const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + userId;
+    this.http.get<StatisticData>(urlWithId).subscribe((stats) => {
+      console.log(stats.numberOfCluesUsed);
+      this.stats$.next(stats);
+    });
+  }
+
+  setUserStatsQuizzes(userId: number): void {
+    /* const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
+    this.http.get<QuizStats[]>(urlWithId).subscribe((statsQuizzes) => {
+      this.statsQuizzesOb$.next(statsQuizzes);
+    }); */
+    this.statsQuizzes = this.allStatsQuizzes.get(userId)!;
+    this.statsQuizzesFiltred = this.statsQuizzes.slice();
+    this.statsQuizzesOb$.next(this.statsQuizzes);
+  }
+
+
+  /* setUserId(id: number) {
     this.user_id = id;
     if (!this.allStatistics.has(this.user_id)) {
       console.log("No statistics for this user");
@@ -64,7 +94,7 @@ export class StatisticService {
       this.stats$.next(this.stats);
       this.statsQuizzesOb$.next(this.statsQuizzes);
     }
-  }
+  } */
 
   sortByDate() {
     this.statsQuizzesFiltred.sort((a, b) => {
@@ -80,11 +110,11 @@ export class StatisticService {
 
   sortByName() {
     this.statsQuizzes.sort((a, b) => {
-      return a.Quiz.name.localeCompare(b.Quiz.name);
+      return a.name.localeCompare(b.name);
     });
 
     this.statsQuizzesFiltred.sort((a, b) => {
-      return a.Quiz.name.localeCompare(b.Quiz.name);
+      return a.name.localeCompare(b.name);
     });
 
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
@@ -93,32 +123,32 @@ export class StatisticService {
   sortByTheme() {
     this.statsQuizzes.sort((a, b) => {
       // Vérifier si la propriété theme est définie pour a et b
-      if (a.Quiz.theme === undefined && b.Quiz.theme === undefined) {
+      if (a.theme === undefined && b.theme === undefined) {
         return 0; // Les deux thèmes sont undefined, considérez-les comme égaux
       }
-      if (a.Quiz.theme === undefined) {
+      if (a.theme === undefined) {
         return 1; // Le thème de a est undefined, placez b avant a
       }
-      if (b.Quiz.theme === undefined) {
+      if (b.theme === undefined) {
         return -1; // Le thème de b est undefined, placez a avant b
       }
       // Comparaison des thèmes des quiz en utilisant localeCompare
-      return a.Quiz.theme.localeCompare(b.Quiz.theme);
+      return a.theme.localeCompare(b.theme);
     });
 
     this.statsQuizzesFiltred.sort((a, b) => {
       // Vérifier si la propriété theme est définie pour a et b
-      if (a.Quiz.theme === undefined && b.Quiz.theme === undefined) {
+      if (a.theme === undefined && b.theme === undefined) {
         return 0; // Les deux thèmes sont undefined, considérez-les comme égaux
       }
-      if (a.Quiz.theme === undefined) {
+      if (a.theme === undefined) {
         return 1; // Le thème de a est undefined, placez b avant a
       }
-      if (b.Quiz.theme === undefined) {
+      if (b.theme === undefined) {
         return -1; // Le thème de b est undefined, placez a avant b
       }
       // Comparaison des thèmes des quiz en utilisant localeCompare
-      return a.Quiz.theme.localeCompare(b.Quiz.theme);
+      return a.theme.localeCompare(b.theme);
     });
 
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
@@ -144,7 +174,7 @@ export class StatisticService {
 
   searchBarFilter(input: String) {
       this.statsQuizzesFiltred = this.statsQuizzes.filter(item =>
-        item.Quiz.name.toLowerCase().includes(input.toLowerCase())
+        item.name.toLowerCase().includes(input.toLowerCase())
       );
       this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }

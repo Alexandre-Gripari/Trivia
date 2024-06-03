@@ -26,7 +26,7 @@ export const QUESTION_PARIS: Question = {
             show: true,
         }
     ],
-    clue: [
+    clues: [
         {
             image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Paris_-_Eiffelturm_und_Marsfeld2.jpg/800px-Paris_-_Eiffelturm_und_Marsfeld2.jpg'
         }
@@ -36,10 +36,12 @@ export const QUESTION_PARIS: Question = {
   quizId: 1584387277368
 };
 
-export const QUIZ_LIST: Quiz[] = [
+export const QUIZ_LIST: Quiz[] = [   
     {
+        id : 1,
         name: 'Les Capitales',
         theme: 'Geography',
         questions: [QUESTION_PARIS],
+        userId: 1
     }
 ];

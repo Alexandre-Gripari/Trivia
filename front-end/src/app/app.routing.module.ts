@@ -10,7 +10,7 @@ import { QuestionCreatorComponent } from './question-creator/question-creator.co
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
 import { UserEditPageComponent } from './user-edit/user-edit-page/user-edit-page.component';
-
+import { AllQuizzesComponent } from './all-quizzes/all-quizzes.component';
 
 const routes: Routes = [
     { path: 'game-page', component: GamePageComponent},
@@ -23,8 +23,8 @@ const routes: Routes = [
     { path: 'reviews', component: ReviewPageComponent},
     { path: 'home-page', component: HomePageComponent},
     { path: 'user-creator-page', component: UserCreatorPageComponent },
-    { path: 'users/edit/:id', component: UserEditPageComponent }
-
+    { path: 'users/edit/:id', component: UserEditPageComponent },
+    { path: 'all-quizzes', component: AllQuizzesComponent }
 ];
 
 @NgModule({
