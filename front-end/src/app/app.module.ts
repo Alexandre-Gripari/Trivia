@@ -24,7 +24,7 @@ import { UserNavigateComponent } from './users/user-navigate/user-navigate.compo
 import { StatisticPageComponent } from './statistics/statistic-page/statistic-page.component';
 import { StatisticDataComponent } from './statistics/statistic-data/statistic-data.component';
 import { StatisticQuizStatsComponent } from './statistics/statistic-quiz-stats/statistic-quiz-stats.component';
-import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component'; 
+import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component';
 import { StatisticNavigateComponent } from './statistics/statistic-navigate/statistic-navigate.component';
 import { ReviewPageComponent } from './reviews/review-page/review-page.component';
 import { ReviewListComponent } from './reviews/review-list/review-list.component';
@@ -38,6 +38,8 @@ import { GameConfettiComponent } from './games/game-confetti/game-confetti.compo
 import { GameEndPageComponent} from "./games/game-end-page/game-end-page.component";
 import { UserCreatorContainerComponent } from './user-creator/user-creator-container/user-creator-container.component';
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
+import { UserEditContainerComponent } from './user-edit/user-edit-container/user-edit-container.component';
+import { UserEditPageComponent } from './user-edit/user-edit-page/user-edit-page.component';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-
     GameConfettiComponent,
     GameEndPageComponent,
     UserCreatorContainerComponent,
-    UserCreatorPageComponent
+    UserCreatorPageComponent,
+    UserEditContainerComponent,
+    UserEditPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,33 +1,32 @@
-<div class="default-container">
+  <div class="default-container">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div>
-            <label for="firstName">First Name:</label>
-            <input id="firstName" type="text" formControlName="firstName">
+            <label for="first_name">First Name:</label>
+            <input id="first_name" type="text" formControlName="first_name">
         </div>
-      
+
         <div>
-            <label for="lastName">Last Name:</label>
-            <input id="lastName" type="text" formControlName="lastName">
+            <label for="last_name">Last Name:</label>
+            <input id="last_name" type="text" formControlName="last_name">
         </div>
-        
+
         <div>
-            <label for="birthdate">Birthdate:</label>
-            <input id="birthdate" type="date" formControlName="birthdate">
+            <label for="birth_date">Birthdate:</label>
+            <input id="birth_date" type="date" formControlName="birth_date">
         </div>
-      
+
         <div>
             <label for="alzheimerStage">Alzheimer's Stage:</label>
             <input id="alzheimerStage" type="number" formControlName="alzheimerStage">
         </div>
-      
+
         <div>
-            <label for="image">Photo de profile:</label>
-            <input id="image" type="file" formControlName="image">
+            <label for="profilepicture">Photo de profile:</label>
+            <input id="profilepicture" type="file" formControlName="profilepicture">
         </div>
-        
+
         <div>
             <button type="submit">Create User</button>
-            <button type="button" (click)="deleteUser()">Delete User</button>
         </div>
 
     </form>
