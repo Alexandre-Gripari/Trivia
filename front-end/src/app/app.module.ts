@@ -82,7 +82,7 @@ import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
     ImageHintContainerComponent,
     TextHintContainerComponent,
     AudioHintContainerComponent,
-    AnswersContainerComponent
+    AnswersContainerComponent,
     QuizminiComponent,
     NavBarComponent,  
     AllQuizzesComponent
