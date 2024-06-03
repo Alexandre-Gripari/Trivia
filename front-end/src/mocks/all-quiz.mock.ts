@@ -27,14 +27,15 @@ export const QUESTION_PARIS: Question = {
         }
     ],
 
-    clue: [
+    clues: [
         {
             image: 'https://cdn-imgix.headout.com/media/images/c90f7eb7a5825e6f5e57a5a62d05399c-25058-BestofParis-EiffelTower-Cruise-Louvre-002.jpg'
         }
     ],
 
-    nbOfErrorsToUseClue: 2
-    
+    nbOfErrorsToUseClue: 2,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_CONTINANT: Question = {
@@ -62,7 +63,7 @@ export const QUESTION_CONTINANT: Question = {
         }
     ],
 
-    clue: [
+    clues: [
         {
           text: "C'est un pays situé au nord de L'Afrique"
         },
@@ -73,11 +74,13 @@ export const QUESTION_CONTINANT: Question = {
         {
           text: "C'est un pays situé au nord de L'Afrique",
           image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/langfr-225px-Flag_of_Algeria.svg.png'
-            
+
         }
     ],
 
-    nbOfErrorsToUseClue: 1
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_TEXTE: Question = {
@@ -85,7 +88,7 @@ export const QUESTION_TEXTE: Question = {
 
   answers: [
     {
-      value: 'Madrid',
+      value: 'Voldemort',
       isCorrect: false,
       show: true,
     },
@@ -95,31 +98,33 @@ export const QUESTION_TEXTE: Question = {
       show: true,
     },
     {
-      value: 'Londres',
+      value: 'Severus Rogue',
       isCorrect: false,
       show: true,
     },
     {
-      value: 'Rome',
+      value: 'Ron',
       isCorrect: false,
       show: true,
     }
   ],
 
-  clue: [
+  clues: [
     {
       text: 'La réponse est dans la question hein'
     }
   ],
 
-  nbOfErrorsToUseClue: 1
+  nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 
 };
 export const QUESTION_AUDIO: Question = {
   question: 'Quel bruit fait le chat ?',
   answers: [
     {
-      value: 'Madrid',
+      value: 'Woof',
       isCorrect: false,
       show: true,
     },
@@ -129,17 +134,17 @@ export const QUESTION_AUDIO: Question = {
       show: true,
     },
     {
-      value: 'Londres',
+      value: 'Piou',
       isCorrect: false,
       show: true,
     },
     {
-      value: 'Rome',
+      value: 'Grrrrrr',
       isCorrect: false,
       show: true,
     }
   ],
-  clue: [
+  clues: [
     {
       image:'https://www.la-spa.fr/app/app/uploads/2023/07/prendre-soin_duree-vie-chat.jpg',
       text: 'C\'est ça un chat',
@@ -150,9 +155,9 @@ export const QUESTION_AUDIO: Question = {
       audio: 'https://lasonotheque.org/UPLOAD/wav/1890.wav'
     }
     ],
-    nbOfErrorsToUseClue: 1
-        
-    
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_CORSE: Question = {
@@ -179,7 +184,7 @@ export const QUESTION_CORSE: Question = {
             show: true,
         }
     ],
-    clue: [
+    clues: [
         {
           text: "On l\'appelle l'île de Beauté",
         },
@@ -188,16 +193,16 @@ export const QUESTION_CORSE: Question = {
           image: 'https://e7.pngegg.com/pngimages/70/395/png-clipart-flag-and-coat-of-arms-of-corsica-corsican-symbol-flag-miscellaneous-white.png'
         }
     ],
-    nbOfErrorsToUseClue: 0
-        
-   
+    nbOfErrorsToUseClue: 0,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_MIXTE: Question = {
     question: "Qui est le meilleur progammeur de l'equipe?",
   answers: [
     {
-      value: 'Madrid',
+      value: 'Malik',
       isCorrect: false,
       show: true,
     },
@@ -207,17 +212,17 @@ export const QUESTION_MIXTE: Question = {
       show: true,
     },
     {
-      value: 'Londres',
+      value: 'Harry Potter',
       isCorrect: false,
       show: true,
     },
     {
-      value: 'Rome',
+      value: 'Obi wan',
       isCorrect: false,
       show: true,
     }
   ],
-  clue: [
+  clues: [
     {
       text: "C'est Greg",
       image: 'https://media.tenor.com/9Q6kwQ_D-bMAAAAM/bassem-dance.gif',
@@ -225,7 +230,9 @@ export const QUESTION_MIXTE: Question = {
     }
   ],
 
-    nbOfErrorsToUseClue: 1
+    nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 
@@ -255,13 +262,15 @@ answers: [
   }
 ],
 
-clue: [
+clues: [
   {
     text: 'Ceci est un indice'
   }
 ],
 
-nbOfErrorsToUseClue: 1
+nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 
 };
 export const QUESTION_2MONDIALE: Question = {
@@ -288,11 +297,11 @@ answers: [
     show: true,
   }
 ],
-clue: [
+clues: [
 ],
-  nbOfErrorsToUseClue: 1
-      
-  
+  nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_NAPOLEON: Question = {
@@ -319,7 +328,7 @@ export const QUESTION_NAPOLEON: Question = {
           show: true,
       }
   ],
-  clue: [
+  clues: [
       {
         text: "Elle se situe dans l'Atlantique Sud",
       },
@@ -328,9 +337,9 @@ export const QUESTION_NAPOLEON: Question = {
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/G%C3%A9olocalisation_Saint-H%C3%A9l%C3%A8ne.jpg/220px-G%C3%A9olocalisation_Saint-H%C3%A9l%C3%A8ne.jpg'
       }
   ],
-  nbOfErrorsToUseClue: 1
-      
- 
+  nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 export const QUESTION_Amérique: Question = {
@@ -357,13 +366,15 @@ answers: [
     show: true,
   }
 ],
-clue: [
+clues: [
   {
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Ridolfo_Ghirlandaio_Columbus.jpg/220px-Ridolfo_Ghirlandaio_Columbus.jpg',
   }
 ],
 
-  nbOfErrorsToUseClue: 1
+  nbOfErrorsToUseClue: 1,
+
+  quizId: 1584387277368
 };
 
 
@@ -374,7 +385,7 @@ export const QUESTION_LIST: Question[] = [
   QUESTION_CONTINANT,
   QUESTION_TEXTE,
   QUESTION_AUDIO,
-  QUESTION_MIXTE 
+  QUESTION_MIXTE
 ];
 
 export const QUESTION_LIST2: Question[] = [
@@ -389,21 +400,27 @@ export const QUESTION_LIST3: Question[] = [
 ];
 
 export const QUIZ1: Quiz = {
+  id : 1,
   name: 'Demo Quiz',
   theme: 'EverythingGoes',
   questions: QUESTION_LIST,
+  userId: 1
 };
 
 export const QUIZ2: Quiz = {
+  id : 2,
   name: 'Demo Quiz2',
   theme: 'EverythingGoes2',
   questions: QUESTION_LIST2,
+  userId: 1
 };
 
 export const QUIZ3: Quiz = {
+  id : 3,
   name: 'Demo Quiz3',
   theme: 'Histoire',
   questions: QUESTION_LIST3,
+  userId: 1
 };
 
 export const ALLQUIZ: Map<number, Quiz[]> = new Map([

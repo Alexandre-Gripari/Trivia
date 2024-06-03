@@ -1,0 +1,17 @@
+<div class="form-group hint">
+  <button id="addAudio" (click)="onShowAudioClick()">Choisir un audio</button>
+  <div id="audio-hints-container" *ngFor="let fileName of fileNames; index as i">
+    <div class="audio-hints">
+      <span>{{ fileName }}</span>
+      <audio controls [src]="displayedAudios[i]"></audio>
+      <div id="audio-hint-order">
+        <p>Ordre d'apparition de l'indice:</p>
+        <input type="number" min="0" max="3">
+      </div>
+      <div id="audio-hint-buttons">
+        <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+      </div>
+    </div>
+  </div>
+  <input #fileInput type="file" class="form-control hidden" accept="audio/*" (change)="onFileChange($event)">
+</div>

@@ -9,6 +9,7 @@ import { QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edit
 import { QuestionCreatorComponent } from './question-creator/question-creator.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
+import { AllQuizzesComponent } from './all-quizzes/all-quizzes.component';
 
 const routes: Routes = [
     { path: 'game-page', component: GamePageComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: 'stats/:id', component: StatisticPageComponent},
     { path: 'reviews', component: ReviewPageComponent},
     { path: 'home-page', component: HomePageComponent},
-    { path: 'user-creator-page', component: UserCreatorPageComponent }
+    { path: 'user-creator-page', component: UserCreatorPageComponent },
+    { path: 'all-quizzes', component: AllQuizzesComponent }
 
 ];
 

@@ -8,8 +8,9 @@ export interface Answer {
 export interface Question {
     question: string;
     answers: Answer[];
-    clue: Clue[];
+    clues: Clue[];
     nbOfErrorsToUseClue: number;
+    quizId: number;
 }
 
 export interface Clue {

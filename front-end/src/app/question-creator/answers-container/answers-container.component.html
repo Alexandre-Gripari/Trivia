@@ -1,0 +1,8 @@
+<div class="form-group answers-grid">
+  <div *ngFor="let i of [0, 1, 2, 3]" class="answer-group">
+    <label for="answer{{i}}">Réponse n°{{i + 1}}:
+      <input class="form-check-input" type="checkbox" id="isCorrect{{i}}">
+      <input type="text" id="answer{{i}}" class="form-control">
+    </label>
+  </div>
+</div>

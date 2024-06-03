@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
@@ -24,7 +23,7 @@ import { UserNavigateComponent } from './users/user-navigate/user-navigate.compo
 import { StatisticPageComponent } from './statistics/statistic-page/statistic-page.component';
 import { StatisticDataComponent } from './statistics/statistic-data/statistic-data.component';
 import { StatisticQuizStatsComponent } from './statistics/statistic-quiz-stats/statistic-quiz-stats.component';
-import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component'; 
+import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component';
 import { StatisticNavigateComponent } from './statistics/statistic-navigate/statistic-navigate.component';
 import { ReviewPageComponent } from './reviews/review-page/review-page.component';
 import { ReviewListComponent } from './reviews/review-list/review-list.component';
@@ -35,10 +34,16 @@ import { QuestionCreatorComponent } from './question-creator/question-creator.co
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { HomeContainerComponent} from './home/home-container/home-container.component';
 import { GameConfettiComponent } from './games/game-confetti/game-confetti.component';
+import { GameEndPageComponent} from "./games/game-end-page/game-end-page.component";
 import { UserCreatorContainerComponent } from './user-creator/user-creator-container/user-creator-container.component';
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
-
-
+import { ImageHintContainerComponent } from './question-creator/image-hint-container/image-hint-container.component';
+import { TextHintContainerComponent } from './question-creator/text-hint-container/text-hint-container.component';
+import { AudioHintContainerComponent } from './question-creator/audio-hint-container/audio-hint-container.component';
+import { AnswersContainerComponent } from './question-creator/answers-container/answers-container.component';
+import { QuizminiComponent } from './quizzes/quizmini/quizmini.component';
+import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
+import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -71,8 +76,16 @@ import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-
     HomePageComponent,
     HomeContainerComponent,
     GameConfettiComponent,
+    GameEndPageComponent,
     UserCreatorContainerComponent,
-    UserCreatorPageComponent
+    UserCreatorPageComponent,
+    ImageHintContainerComponent,
+    TextHintContainerComponent,
+    AudioHintContainerComponent,
+    AnswersContainerComponent
+    QuizminiComponent,
+    NavBarComponent,  
+    AllQuizzesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameService } from '../../../services/game.service';
 import { Clue, Question, Answer } from '../../../models/question.model';
+import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-game-question',
@@ -21,9 +22,11 @@ export class GameQuestionComponent implements OnInit {
 
   constructor(public gameService: GameService) {
     this.gameService.observable$.subscribe((observable) => {
-      this.question = observable.question;
-      this.clue = observable.question.clue[this.getCurrentClueNumber()];
       if (observable.question === undefined) this.isFinished = true;
+      else {
+        this.question = observable.question;
+        this.clue = observable.question.clues[this.getCurrentClueNumber()];
+      }
     });
   }
 
@@ -36,7 +39,7 @@ export class GameQuestionComponent implements OnInit {
     console.log("received answer");
     this.gameService.checkAnswer(answer);
   }
-  
+
   getCurrentClueNumber() {
     return this.gameService.observable$.getValue().clueNumber;
   }

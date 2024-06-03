@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { User } from '../../../models/user.model';
 import { Router } from '@angular/router';
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-user',
@@ -21,9 +22,12 @@ export class UserComponent implements OnInit {
   @Output()
   userSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {
+  }
 
   ngOnInit() {
+    this.userService.setCurrentUser(this.user);
+    console.log("user de setUser : " + this.user);
   }
 
   selectUser() {

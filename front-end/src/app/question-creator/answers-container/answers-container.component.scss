@@ -1,0 +1,41 @@
+.form-group {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.answers-grid {
+  display: grid;
+  grid-template-columns: repeat(2,250px);
+  gap: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+.answer-group input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.answer-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[type="checkbox"] {
+  transform: scale(2);
+}
