@@ -1,14 +1,15 @@
 @import '../../../styles/card.scss';
+@import "../../../styles/variables";
 
-button {
+.quiz-stats-button {
     display: flex;
     justify-content: space-between;
     font-size: 150%;
-    border-radius: 10px;
-    border: 10px solid $logo-fade;
-    color: orangered;
-    opacity: 0.6;
-    background-color: $logo-color;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #302b63;
+    transition: background-color 0.3s ease;
     cursor: pointer;
     height: 25%;
     width: 80%;
@@ -16,6 +17,13 @@ button {
     margin: auto;
     margin-bottom: 2%;
     padding: 1%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    background-color: $logo-color;
+    transform: scale(1.05) translateZ(10px);
 }
 
 p, span {
