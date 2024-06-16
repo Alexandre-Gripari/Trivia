@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, ViewChild, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
-import {User} from "../../../models/user.model";
+import {GameConfettiComponent} from "../game-confetti/game-confetti.component";
 import {UserService} from "../../../services/user.service";
 import {QuizService} from "../../../services/quiz.service";
 import { GameService } from '../../../services/game.service';
@@ -12,17 +12,31 @@ import { GameService } from '../../../services/game.service';
 })
 
 export class GameEndPageComponent implements OnInit {
+
+  @ViewChild('confetti') confettiComponent!: GameConfettiComponent;
+
   user : any;
   quiz: any;
+
+  private confettiCanvas: HTMLCanvasElement;
 
   @Output()
   quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private userService: UserService, private quizService: QuizService, private gameService: GameService) {}
+  constructor(private router: Router, private userService: UserService, private quizService: QuizService, private gameService: GameService) {
+    this.confettiCanvas = document.getElementById('confetti-canvas') as HTMLCanvasElement;
+  }
 
   ngOnInit() {
     this.user = this.userService.getCurrentUser();
-    this.quiz = this.quizService.getCurrentQuiz()
+    this.quiz = this.quizService.getCurrentQuiz();
+
+  }
+
+  ngAfterViewInit(): void {
+    // Now you can access the confetti component and its methods
+
+    this.startConfettiAnimation();
   }
 
   navigateToSameQuiz() {
@@ -35,5 +49,12 @@ export class GameEndPageComponent implements OnInit {
     console.log("user de getUser : " + this.user);
     this.router.navigate(['/quiz', this.user?.user_id]);
   }
+
+  startConfettiAnimation() {
+    console.log("start confetti");
+    this.confettiComponent.startConfetti();
+  }
+
+
 
 }

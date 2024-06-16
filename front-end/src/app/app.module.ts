@@ -89,7 +89,8 @@ import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
     AnswersContainerComponent,
     QuizminiComponent,
     NavBarComponent,  
-    AllQuizzesComponent
+    AllQuizzesComponent,
+    GameConfettiComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +98,9 @@ import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+  ],
+  exports : [
+    GameConfettiComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
