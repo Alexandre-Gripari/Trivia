@@ -1,7 +1,31 @@
-const { QuizStats, QuestionStats } = require('../../../models')
+const { Question } = require('../../../../models')
+const { Questionstats } = require('../../../../models')
 
-const filterQuestionsFromQuizz = (quizId) => {
-    const questionsStats = QuestionStats.get()
-    const parsedId = parseInt(quizId, 10)
-    return questionsStats.filter((question) => questionsStats.quizId === parsedId)
+
+const retrieveQuestion = (questionId) => {
+  const question = Question.getById(questionId);
+  return question;
+}
+
+const filterQuestionsStatsFromQuizz = (quizStatsId) => {
+    const questionsStats = Questionstats.get();
+    const parsedId = parseInt(quizStatsId, 10);
+    filteredQuestionsStats = questionsStats.filter((questionStats) => questionStats.quizStatsId === parsedId);
+    const mappedQuestionsStats = filteredQuestionsStats.map((questionStat) => {
+      return {
+          id: questionStat.id,
+          question: retrieveQuestion(questionStat.questionId),
+          timeMinutes: questionStat.timeMinutes, 
+	        timeSeconds: questionStat.timeSeconds,
+	        numberOfCluesUsed: questionStat.numberOfCluesUsed,
+	        numberOfBadAnswers: questionStat.numberOfBadAnswers,
+      };
+  });
+
+  return mappedQuestionsStats;
+
+  }
+
+  module.exports = {
+    filterQuestionsStatsFromQuizz
   }

@@ -7,7 +7,6 @@ const router = new Router({ mergeParams: true })
 router.get('/:userId', (req, res) => {
     try {
       const statsQuizzes = getStatsQuizzes(req.params.userId);
-      console.log("StatsQuizzes retrieved:", statsQuizzes);
       res.status(200).json(statsQuizzes);
     } catch (err) {
       if (err.message === 'NotFoundError') {
