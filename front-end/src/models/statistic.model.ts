@@ -33,11 +33,18 @@ export interface QuizStats {
 
 export interface QuestionStats {
 	id: number;
-
-	question: Question; // Donne la question, les réponses et les indices
-	timeMinutes: number; // Temps avant d'obtenir la bonne réponse
+	question: string;
+	answerStats: AnswerStats[]; 
+	timeMinutes: number;
 	timeSeconds: number;
 	numberOfCluesUsed: number;
 	numberOfBadAnswers: number;
+}
+
+export interface AnswerStats {
+	id: number;
+	value: string;
+	isCorrect: boolean;
+	choose: boolean;
 }
 

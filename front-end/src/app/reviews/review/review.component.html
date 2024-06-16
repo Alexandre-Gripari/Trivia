@@ -5,10 +5,10 @@
         <span>Nombre de mauvaises réponses: {{questionStats?.numberOfBadAnswers}}</span>
     </div>
     <div class="question">
-      <span>{{questionStats?.question?.question}}</span>
+      <span>{{questionStats?.question}}</span>
     </div>
     <div class="answer-container">
-      <app-game-answer *ngFor="let answer of questionStats?.question?.answers" [answer]="answer"></app-game-answer>
+      <app-statistic-answer-stats *ngFor="let answer of questionStats?.answerStats" [answerStats]="answer"></app-statistic-answer-stats>
     </div>
 </div>
   

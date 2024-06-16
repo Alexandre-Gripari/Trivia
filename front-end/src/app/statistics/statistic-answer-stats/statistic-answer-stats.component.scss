@@ -1,0 +1,29 @@
+button {
+    font-size: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Default color */
+    color: #fff;
+    cursor: default;
+    transition: background-color 0.3s ease;
+    height: 20%;
+    width: 75%;
+    text-align: center;
+}
+
+p {
+    margin: auto;
+}
+
+/* Add styles for correct, incorrect, and default answers */
+.correct-answer {
+    background-color: #4CAF50; /* Green */
+}
+
+.incorrect-chosen-answer {
+    background-color: #FF0000; /* Red */
+}
+
+.default-answer {
+    background-color: #007bff; /* Default blue */
+}

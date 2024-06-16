@@ -29,9 +29,17 @@
 }
 
 .launch {
+    position: fixed;
     grid-column: 1/2;
     grid-row: 1/2;
+    width: 10%;
+    height: 10%;
+    top: 14.5%;
     align-self: center;
+    margin-left: 0.5%;
+    justify-content: center;
+    vertical-align: middle; /* Assurez-vous que le texte est aligné verticalement */
+    line-height: normal; /* Ajustez si nécessaire */
 }
 
 .scroll-top-button {
@@ -41,6 +49,7 @@
     height: 15%;
     grid-column: 1/2;
     grid-row: 2/3;
+    margin-left: 0.5%;
 }
 
 button {

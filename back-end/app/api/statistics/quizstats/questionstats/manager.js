@@ -1,11 +1,6 @@
-const { Question } = require('../../../../models')
 const { Questionstats } = require('../../../../models')
+const { retrieveAnswers } = require('./answerstats/manager')
 
-
-const retrieveQuestion = (questionId) => {
-  const question = Question.getById(questionId);
-  return question;
-}
 
 const filterQuestionsStatsFromQuizz = (quizStatsId) => {
     const questionsStats = Questionstats.get();
@@ -14,7 +9,8 @@ const filterQuestionsStatsFromQuizz = (quizStatsId) => {
     const mappedQuestionsStats = filteredQuestionsStats.map((questionStat) => {
       return {
           id: questionStat.id,
-          question: retrieveQuestion(questionStat.questionId),
+          question: questionStat.question,
+          answerStats: retrieveAnswers(questionStat.id),
           timeMinutes: questionStat.timeMinutes, 
 	        timeSeconds: questionStat.timeSeconds,
 	        numberOfCluesUsed: questionStat.numberOfCluesUsed,

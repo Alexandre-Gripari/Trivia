@@ -23,6 +23,7 @@ import { UserNavigateComponent } from './users/user-navigate/user-navigate.compo
 import { StatisticPageComponent } from './statistics/statistic-page/statistic-page.component';
 import { StatisticDataComponent } from './statistics/statistic-data/statistic-data.component';
 import { StatisticQuizStatsComponent } from './statistics/statistic-quiz-stats/statistic-quiz-stats.component';
+import { StatisticAnswerStatsComponent} from './statistics/statistic-answer-stats/statistic-answer-stats.component';
 import { StatisticCompletedQuizzesComponent } from './statistics/statistic-completed-quizzes/statistic-completed-quizzes.component';
 import { StatisticNavigateComponent } from './statistics/statistic-navigate/statistic-navigate.component';
 import { ReviewPageComponent } from './reviews/review-page/review-page.component';
@@ -67,6 +68,7 @@ import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
     StatisticPageComponent,
     StatisticDataComponent,
     StatisticQuizStatsComponent,
+    StatisticAnswerStatsComponent,
     StatisticCompletedQuizzesComponent,
     StatisticNavigateComponent,
     ReviewPageComponent,

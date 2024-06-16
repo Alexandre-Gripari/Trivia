@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
-import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
-import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
+//import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
+//import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
 
 
 @Injectable({
@@ -34,7 +34,7 @@ export class StatisticService {
       timeSpentSecondsLatest: 0
     };
 
-    private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
+    //private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
     private statsQuizzes: QuizStats[] = [];
     private statsQuizzesFiltred: QuizStats[] = [];
         
