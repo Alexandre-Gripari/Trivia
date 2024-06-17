@@ -22,7 +22,10 @@ export class GameQuestionComponent implements OnInit {
 
   constructor(public gameService: GameService) {
     this.gameService.observable$.subscribe((observable) => {
-      if (observable.question === undefined) this.isFinished = true;
+      if (observable.question === undefined) {
+        this.isFinished = true;
+        console.log("Fin du quiz");
+      }
       else {
         this.question = observable.question;
         this.clue = observable.question.clues[this.getCurrentClueNumber()];

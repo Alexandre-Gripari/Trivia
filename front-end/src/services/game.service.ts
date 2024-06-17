@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Answer, Question, Clue } from '../models/question.model';
 import { QUESTION_LIST } from '../mocks/game-questions.mock';
 import { QuestionAndClue } from '../models/game.model';
+import { EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { AnswerStats, QuestionStats, QuizStats } from 'src/models/statistic.model';
@@ -13,6 +14,8 @@ import { AnswerStats, QuestionStats, QuizStats } from 'src/models/statistic.mode
   providedIn: 'root'
 })
 export class GameService {
+
+  private inactivityTimer: any;
 
   private apiUrl = 'http://localhost:9428/api/'
 
@@ -32,7 +35,6 @@ export class GameService {
 
   public observable$: BehaviorSubject<QuestionAndClue> = new BehaviorSubject(this.observable);
 
-  //Backend
   private quizName: string = "";
   private quizTheme: string = "";
 
@@ -52,12 +54,14 @@ export class GameService {
 
 
   private numberOfCluesPerQuizUsed: number = 0;
-  //
+  public gameFinished: EventEmitter<void> = new EventEmitter();
 
   constructor(private http: HttpClient) {
+    this.resetInactivityTimer();
   }
   
   public checkAnswer(answer: Answer) {
+    this.resetInactivityTimer();
     if (answer.isCorrect) {
       
       // Gestion du backend
@@ -94,6 +98,32 @@ export class GameService {
     this.observable$.next(this.observable);
 }
 
+      setTimeout(() => {
+        this.index++;
+        this.observable.question = this.questions[this.index];
+        this.observable.clueNumber = -1;
+        this.numberOfErrors = 0;
+        this.observable.clueActive = false;
+        this.autoClueOnStart();
+        this.readQuestionAloud();
+        if (this.index >= this.questions.length) this.finishGame();
+        this.observable$.next(this.observable);
+      }, 1000); 
+    }
+    else {
+      for (let i = 0; i < this.observable.question.answers.length; i++) {
+        if (this.observable.question.answers[i] === answer) {
+          this.observable.question.answers[i].show = false;
+          }
+      }
+      this.numberOfErrors++;
+      if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clues.length - 1) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
+    }
+    setTimeout(() => {
+      this.observable$.next(this.observable);
+    }, 1000);
+
+  }
 
 
   public autoClueOnStart() {
@@ -108,6 +138,7 @@ export class GameService {
   }
 
   public useClueWithButton(){
+    this.resetInactivityTimer();
     if (!this.observable.clueActive) this.observable.clueActive = true;
     this.numberOfCluesPerQuestionUsed+=1 //Backend
     this.observable.clueNumber+=1
@@ -139,6 +170,7 @@ export class GameService {
     }
     this.observable.question = this.question;
     this.observable$.next(this.observable);
+    this.readQuestionAloud();
   }
 
   //Partie Backend
@@ -291,6 +323,39 @@ export class GameService {
     this.minutesTaken = 0;
     this.secondsTaken = 0;
   }
+
+  public readQuestionAloud() {
+    console.log("Reading question aloud");
+    const questionText = this.observable.question
+    const synth = window.speechSynthesis;
+    const utterThis = new SpeechSynthesisUtterance(questionText.question);
+  
+    // Ajustements 
+    utterThis.rate = 0.75; // Réduit la vitesse de parole
+    utterThis.volume = 1; // Volume par défaut, ajustez selon besoin
+    utterThis.pitch = 1; // Pitch par défaut
+  
+    const voices = synth.getVoices();
+    let voice = voices.find(voice => voice.lang.startsWith('fr-FR')); // Prefer European French if available
+    if (!voice) {
+      voice = voices.find(voice => voice.lang.startsWith('fr')); // Fallback to any French voice
+    }
+    if (voice) utterThis.voice = voice;
+    synth.speak(utterThis);
+  }
+
+  public resetInactivityTimer() {
+    clearTimeout(this.inactivityTimer);
+    this.inactivityTimer = setTimeout(() => {
+      this.onInactivity();
+    }, 60000);
+  }
+
+  private onInactivity() {
+    this.readQuestionAloud();
+    
+  }
+
 
 
 }

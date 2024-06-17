@@ -9,6 +9,8 @@ import { Answer } from '../../../models/question.model';
 })
 export class GameAnswerComponent implements OnInit {
 
+  clickedCorrect = false;
+
   /**
    * Input here could be undefined, if the parent component doesn't give any quiz.
    * If you remove `undefined`, you will have an error saying:
@@ -29,6 +31,13 @@ export class GameAnswerComponent implements OnInit {
   onAnswerClick() {
     this.answerSelected.emit(this.answer);
     console.log(this.answer);
+    
+    if (this.answer && this.answer.isCorrect) {
+      this.clickedCorrect = true;
+    } else {
+      this.clickedCorrect = false;
+    }
+    
   }
 
 
