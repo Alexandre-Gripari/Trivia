@@ -139,7 +139,7 @@ export class GameService {
     clearTimeout(this.inactivityTimer);
     this.inactivityTimer = setTimeout(() => {
       this.onInactivity();
-    }, 6000);
+    }, 60000);
   }
 
   private onInactivity() {
