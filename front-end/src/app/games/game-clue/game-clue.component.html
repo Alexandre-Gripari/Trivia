@@ -1,6 +1,6 @@
 <div class="game-clue">
     <img *ngIf="clue?.image" class="game-clue__image" [src]="clue?.image">
-    <p class="game-clue__text">{{clue?.text}}</p>
+    <p class="game-clue__text" label="clue">{{clue?.text}}</p>
     <audio *ngIf="clue?.audio" controls>
         <source [src]="clue?.audio" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
