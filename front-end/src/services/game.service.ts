@@ -63,17 +63,7 @@ export class GameService {
   public checkAnswer(answer: Answer) {
     this.resetInactivityTimer();
     if (answer.isCorrect) {
-      setTimeout(() => {
-        this.index++;
-        this.observable.question = this.questions[this.index];
-        this.observable.clueNumber = -1;
-        this.numberOfErrors = 0;
-        this.observable.clueActive = false;
-        this.autoClueOnStart();
-        this.readQuestionAloud();
-        if (this.index >= this.questions.length) this.finishGame();
-        this.observable$.next(this.observable);
-      }, 1000); 
+
       // Gestion du backend
       this.stopTimer(); // Arrêter le timer ici
       this.addQuestionStats(this.observable.question.question, this.minutesTaken, this.secondsTaken, this.numberOfCluesPerQuestionUsed, this.numberOfBadAnswersPerQuestion); 
@@ -84,16 +74,19 @@ export class GameService {
           this.addAnswerStats(this.observable.question.answers[i], false, false); 
         }
       }
-      //
+      // Fin gestion du backend
 
-      this.index++;
-      this.observable.question = this.questions[this.index];
-      this.observable.clueNumber = -1;
-      this.numberOfErrors = 0;
-      this.observable.clueActive = false;
-      this.autoClueOnStart();
-      if (this.index < this.questions.length) this.startTimer(); // Démarrer le timer pour la nouvelle question
-      if (this.index >= this.questions.length) this.finishGame();
+      setTimeout(() => {
+        this.index++;
+        this.observable.question = this.questions[this.index];
+        this.observable.clueNumber = -1;
+        this.numberOfErrors = 0;
+        this.observable.clueActive = false;
+        this.autoClueOnStart();
+        this.readQuestionAloud();
+      }, 1000); 
+      
+      
     } 
     else {
         this.numberOfBadAnswersPerQuestion+=1 //Backend
@@ -107,6 +100,8 @@ export class GameService {
         if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clues.length - 1) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
     } 
     setTimeout(() => {
+      if (this.index >= this.questions.length) this.finishGame();
+      else this.startTimer();  
       this.observable$.next(this.observable);
     }, 1000);
 
@@ -198,7 +193,7 @@ export class GameService {
       question: question,
       answerStats: [],
       timeMinutes: timeMinutes,
-	    timeSeconds: timeSeconds-2,
+	    timeSeconds: timeSeconds-1,
 	    numberOfCluesUsed: numberOfCluesUsed,
 	    numberOfBadAnswers: numberOfBadAnswers,
     }
@@ -231,7 +226,6 @@ export class GameService {
 	    totalNumberOfCluesUsed: totalCluesUsed,
 	    successRate: successRate
     }
-
     this.postQuizStats(quizStats);
   }
 
