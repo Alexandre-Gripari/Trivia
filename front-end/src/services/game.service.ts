@@ -63,7 +63,17 @@ export class GameService {
   public checkAnswer(answer: Answer) {
     this.resetInactivityTimer();
     if (answer.isCorrect) {
-      
+      setTimeout(() => {
+        this.index++;
+        this.observable.question = this.questions[this.index];
+        this.observable.clueNumber = -1;
+        this.numberOfErrors = 0;
+        this.observable.clueActive = false;
+        this.autoClueOnStart();
+        this.readQuestionAloud();
+        if (this.index >= this.questions.length) this.finishGame();
+        this.observable$.next(this.observable);
+      }, 1000); 
       // Gestion du backend
       this.stopTimer(); // Arrêter le timer ici
       this.addQuestionStats(this.observable.question.question, this.minutesTaken, this.secondsTaken, this.numberOfCluesPerQuestionUsed, this.numberOfBadAnswersPerQuestion); 
@@ -84,7 +94,8 @@ export class GameService {
       this.autoClueOnStart();
       if (this.index < this.questions.length) this.startTimer(); // Démarrer le timer pour la nouvelle question
       if (this.index >= this.questions.length) this.finishGame();
-    } else {
+    } 
+    else {
         this.numberOfBadAnswersPerQuestion+=1 //Backend
         for (let i = 0; i < this.observable.question.answers.length; i++) {
             if (this.observable.question.answers[i] === answer) {
@@ -94,31 +105,7 @@ export class GameService {
         }
         this.numberOfErrors++;
         if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clues.length - 1) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
-    }
-    this.observable$.next(this.observable);
-}
-
-      setTimeout(() => {
-        this.index++;
-        this.observable.question = this.questions[this.index];
-        this.observable.clueNumber = -1;
-        this.numberOfErrors = 0;
-        this.observable.clueActive = false;
-        this.autoClueOnStart();
-        this.readQuestionAloud();
-        if (this.index >= this.questions.length) this.finishGame();
-        this.observable$.next(this.observable);
-      }, 1000); 
-    }
-    else {
-      for (let i = 0; i < this.observable.question.answers.length; i++) {
-        if (this.observable.question.answers[i] === answer) {
-          this.observable.question.answers[i].show = false;
-          }
-      }
-      this.numberOfErrors++;
-      if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clues.length - 1) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
-    }
+    } 
     setTimeout(() => {
       this.observable$.next(this.observable);
     }, 1000);
@@ -359,3 +346,4 @@ export class GameService {
 
 
 }
+
