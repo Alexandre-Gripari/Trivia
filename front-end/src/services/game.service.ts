@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GameService {
 
+  private inactivityTimer: any;
+
   private apiUrl = 'http://localhost:9428/api/'
 
   private index: number = 0;
@@ -33,9 +35,11 @@ export class GameService {
   public gameFinished: EventEmitter<void> = new EventEmitter();
 
   constructor(private http: HttpClient) {
+    this.resetInactivityTimer();
   }
   
   public checkAnswer(answer: Answer) {
+    this.resetInactivityTimer();
     if (answer.isCorrect) {
       setTimeout(() => {
         this.index++;
@@ -78,6 +82,7 @@ export class GameService {
   }
 
   public useClueWithButton(){
+    this.resetInactivityTimer();
     if (!this.observable.clueActive) this.observable.clueActive = true;
     this.observable.clueNumber+=1
     this.observable$.next(this.observable);
@@ -128,6 +133,18 @@ export class GameService {
     }
     if (voice) utterThis.voice = voice;
     synth.speak(utterThis);
+  }
+
+  public resetInactivityTimer() {
+    clearTimeout(this.inactivityTimer);
+    this.inactivityTimer = setTimeout(() => {
+      this.onInactivity();
+    }, 6000);
+  }
+
+  private onInactivity() {
+    this.readQuestionAloud();
+    
   }
 
 
