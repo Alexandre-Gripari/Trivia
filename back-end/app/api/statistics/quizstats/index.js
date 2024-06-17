@@ -1,13 +1,15 @@
 const { Router } = require('express');
 const { getStatsQuizzes } = require('./manager');
+const { Quizstats } = require('../../../models');
+const QuestionStatsRouter = require('./questionstats')
 
 const router = new Router({ mergeParams: true })
 
+router.use('/questionstats', QuestionStatsRouter)
 
 router.get('/:userId', (req, res) => {
     try {
       const statsQuizzes = getStatsQuizzes(req.params.userId);
-      console.log("StatsQuizzes retrieved:", statsQuizzes);
       res.status(200).json(statsQuizzes);
     } catch (err) {
       if (err.message === 'NotFoundError') {
@@ -19,5 +21,14 @@ router.get('/:userId', (req, res) => {
       }
     }
   });
+
+  router.post('/', (req, res) => {
+    try {
+      const quiz = Quizstats.create({ ...req.body })
+      res.status(201).json(quiz)
+    } catch (err) {
+      manageAllErrors(res, err)
+    }
+  })
   
   module.exports = router;

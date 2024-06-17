@@ -1,15 +1,18 @@
-const { Router } = require('express')
+const { Router } = require('express');
+const { Questionstats } = require('../../../../models');
+const AnswerStatsRouter = require('./answerstats')
 
-const router = new Router();
+const router = new Router({ mergeParams: true })
 
-/* router.get('/', (req, res) => {
-    try {
-      // Check if quizId exists, if not it will throw a NotFoundError
-      Quiz.getById(req.params.quizId)
-      res.status(200).json(filterQuestionsFromQuizz(req.params.quizId))
-    } catch (err) {
-      manageAllErrors(res, err)
-    }
-}) */
+router.use('/answerstats', AnswerStatsRouter)
+
+router.post('/', (req, res) => {
+  try {
+    const quiz = Questionstats.create({ ...req.body })
+    res.status(201).json(quiz)
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
 
 module.exports = router;

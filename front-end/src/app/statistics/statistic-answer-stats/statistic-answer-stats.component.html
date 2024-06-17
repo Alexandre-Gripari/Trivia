@@ -1,0 +1,9 @@
+<div class="stats-answer" *ngIf="answerStats">
+    <button [ngClass]="{
+        'correct-answer': answerStats.isCorrect,
+        'incorrect-chosen-answer': !answerStats.isCorrect && answerStats.choose,
+        'default-answer': !answerStats.isCorrect && !answerStats.choose
+    }">
+        <p>{{ answerStats?.value }}</p>
+    </button>
+</div>

@@ -1,4 +1,4 @@
-import { QuestionStats } from "../models/statistic.model"
+/* import { QuestionStats } from "../models/statistic.model"
 import { QuizStats } from "../models/statistic.model";
 import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/question.model';
@@ -344,3 +344,4 @@ export const ALL_STATS_QUIZ: Map<number, QuizStats[]> = new Map([
 
 
 
+ */

@@ -18,7 +18,6 @@ export class ReviewListComponent implements OnInit {
   constructor(public reviewService: ReviewService, private location: Location) {
     this.reviewService.questionsStats$.subscribe((questionsStatsList) => {
       this.questionsStatsList = questionsStatsList;
-      console.log(this.questionsStatsList);
     });
   }
 

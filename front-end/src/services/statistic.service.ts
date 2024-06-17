@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
-import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
-import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
+//import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
+//import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
 
 
 @Injectable({
@@ -20,9 +20,9 @@ export class StatisticService {
     * The list is retrieved from the mock. 
     */
   
-    private user_id: String = "";
-
-    private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS;
+   /*  private user_id: String = "";
+    private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS; */
+    
     private stats: StatisticData = {
       id: 0,
       numberOfCompletedQuizzes: 0, 
@@ -34,7 +34,7 @@ export class StatisticService {
       timeSpentSecondsLatest: 0
     };
 
-    private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
+    //private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
     private statsQuizzes: QuizStats[] = [];
     private statsQuizzesFiltred: QuizStats[] = [];
         
@@ -58,7 +58,6 @@ export class StatisticService {
   }
 
   setUserId(userId: number): void {
-    console.log("userId in service: "+userId);
     this.setUserStats(userId.toString());
     this.setUserStatsQuizzes(userId);
   }
@@ -66,19 +65,20 @@ export class StatisticService {
   setUserStats(userId: String): void {
     const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + userId;
     this.http.get<StatisticData>(urlWithId).subscribe((stats) => {
-      console.log(stats.numberOfCluesUsed);
-      this.stats$.next(stats);
+    this.stats$.next(stats);
     });
   }
 
   setUserStatsQuizzes(userId: number): void {
-    /* const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
+    const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
     this.http.get<QuizStats[]>(urlWithId).subscribe((statsQuizzes) => {
       this.statsQuizzesOb$.next(statsQuizzes);
-    }); */
-    this.statsQuizzes = this.allStatsQuizzes.get(userId)!;
+      this.statsQuizzes = statsQuizzes;
+      this.statsQuizzesFiltred = this.statsQuizzes.slice();
+    }); 
+    /* this.statsQuizzes = this.allStatsQuizzes.get(userId)!;
     this.statsQuizzesFiltred = this.statsQuizzes.slice();
-    this.statsQuizzesOb$.next(this.statsQuizzes);
+    this.statsQuizzesOb$.next(this.statsQuizzes); */
   }
 
 

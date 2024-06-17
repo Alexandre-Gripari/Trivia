@@ -1,5 +1,5 @@
 <div class="statistic-quiz-stats" *ngIf="quizStats">
-    <button (click)="onQuizStatsClick()">
+    <button class="quiz-stats-button" (click)="onQuizStatsClick()">
         <span>{{quizStats?.name}}</span>
         <span>{{quizStats?.theme}}</span>
         <span>{{ quizStats?.date | date:'dd/MM/yyyy' }}</span>

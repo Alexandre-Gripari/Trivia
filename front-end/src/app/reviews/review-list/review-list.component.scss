@@ -8,15 +8,24 @@
 button {
     top: 14%;
     font-size: 80%;
+    margin-left: 0.5%;
     cursor: pointer;
-    background-color: $logo-color;
+    background-color: $logo-fade;
     border-radius: 10px;
-    border: 10px solid $logo-fade;
-    color: orangered;
-    opacity: 0.6;
-    width: 12%;
+    color: white;
+    width: 10%;
     text-align: center;
     position: fixed;
     padding: 1%;
 }
 
+button:hover {
+    background-color: $logo-color;
+}
+
+p {
+    text-align: center;
+    font-size: 200%;
+    margin-left: 8%;
+    margin-top: 4.5%;
+}

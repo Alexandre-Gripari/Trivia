@@ -2,18 +2,25 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    margin-left: 18%;
 }
 
 .question {
-    padding-top: 20px;
+    padding-top: 1%;
     text-align: center;
+    margin-left: 10%;
     margin: auto;
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 150%;
+    margin-bottom: 1%;
+    margin-left: 8%;
 }
+
 
 .stats {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-left: 5%;
+    font-size: 125%;
 }
+
