@@ -26,7 +26,7 @@ export class GameEndPageComponent implements OnInit {
   }
 
   navigateToSameQuiz() {
-    this.gameService.setQuestions(this.quiz.questions);
+    this.gameService.setQuestions(this.quiz.questions, this.quiz.name, this.quiz.theme);
     console.log("OK");
     this.router.navigate(['/game-page']);
   }
