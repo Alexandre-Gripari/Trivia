@@ -85,7 +85,6 @@ export class GameService {
 
   public finishGame() {
     console.log("Game finished");
-    this.gameFinished.emit();
   }
 
   public setQuestions(question: Question[]) {

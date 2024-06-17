@@ -37,6 +37,11 @@ export class GameEndPageComponent implements OnInit {
     // Now you can access the confetti component and its methods
 
     this.startConfettiAnimation();
+    // delete the confetti after 10 seconds
+    setTimeout(() => {
+      this.confettiComponent.stopConfetti();
+    }, 10000);
+
   }
 
   navigateToSameQuiz() {

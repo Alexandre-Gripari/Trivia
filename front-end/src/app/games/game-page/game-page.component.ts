@@ -11,18 +11,16 @@ export class GamePageComponent implements OnInit {
 
   @ViewChild('confetti') confettiComponent!: GameConfettiComponent;
 
-  public clue: Clue | undefined;
-
   public question: Question | undefined;
-
-  public answers: Answer[] | undefined;
-
-  isFinished: Boolean = false;
-
+ 
   constructor(gameService: GameService) {
     gameService.observable$.subscribe((observable) => {
       if (observable.question === undefined) {
         this.startConfettiAnimation();
+        // delete the confetti after 10 seconds
+        setTimeout(() => {
+          this.confettiComponent.stopConfetti();
+        }, 10000);
       }
     });
   }

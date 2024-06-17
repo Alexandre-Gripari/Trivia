@@ -8,6 +8,7 @@
     justify-content: flex-start;
     flex-direction: row;
     align-items: center;
+    margin-top: 50px;
 }
 
 .input-row {
@@ -15,6 +16,10 @@
     justify-content: flex-start;
     flex-direction: row;
     align-items: center;
+}
+
+.filter-bar {
+    margin-top: 0px;
 }
   
 .input-group {
@@ -43,13 +48,14 @@
   }
   
 .menu.open {
-    width: 40vw;
+    width: 70vw;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 0;
   }
 
 .button-container button {

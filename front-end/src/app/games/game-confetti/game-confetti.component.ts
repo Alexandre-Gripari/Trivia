@@ -15,7 +15,7 @@ export class GameConfettiComponent implements OnInit {
   }
 
   startConfetti() {
-    this.createConfettiParticles(250);
+    this.createConfettiParticles(150);
     this.animateConfetti();
   }
 
@@ -32,6 +32,10 @@ export class GameConfettiComponent implements OnInit {
       particle.draw(this.context);
     });
     requestAnimationFrame(this.animateConfetti.bind(this));
+  }
+
+  stopConfetti() {
+    this.confettis = [];
   }
 }
 
