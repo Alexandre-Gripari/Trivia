@@ -6,7 +6,7 @@
       <span>{{ textHint }}</span>
       <div id="text-hint-order">
         <p>Ordre d'apparition de l'indice:</p>
-        <input type="number" min="0" max="3">
+        <input type="number" min="0" max="3" [(ngModel)]="clues[i].order" (change)="onNumberChange()">
       </div>
       <div id="text-hint-buttons">
         <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>

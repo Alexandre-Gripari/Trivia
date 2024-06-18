@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { HttpClient } from '@angular/common/http';
 import { Question } from 'src/models/question.model';
+import { Clue } from 'src/models/question.model';
+import { Answer } from 'src/models/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,10 @@ export class QuizService {
   private quizzes: Quiz[] = [];
   private currentQuiz: any;
   private allQuiz: Quiz[] = [];
+  private questions: any[] = [];
+  private quizData = { title: '', theme: '' };
+
+
 
   /**
    * Observable which contains the list of the quiz.
@@ -48,6 +54,12 @@ export class QuizService {
     }
     this.http.post<Quiz>(`${this.apiUrl}quizzes`, quizWithUserId).subscribe(
     response => {
+      
+      quiz.questions.forEach(question => {
+        this.createQuestion(question, response.id);
+      }
+      );
+
       console.log('Quiz added successfully', response);
       this.updateQuizList(this.user_id);
       this.updateAllQuizList();
@@ -109,6 +121,7 @@ export class QuizService {
   getAllQuiz() {
     this.http.get<Quiz[]>(`${this.apiUrl}quizzes`).subscribe((quizzes) => {
       this.allQuiz = quizzes;
+      console.log('All quizzes:', this.allQuiz);
       this.allQuiz$.next(this.allQuiz);
     });
   }
@@ -187,6 +200,169 @@ export class QuizService {
       return quiz.name.toLowerCase().includes(value.toLowerCase()) || quiz.theme && quiz.theme.toLowerCase().includes(value.toLowerCase());
     });
     this.allQuiz$.next(tmp);
+  }
+
+  deleteQuestion(question: Question) {
+    this.http.delete<Question>(`${this.apiUrl}questions/${question.id}`).subscribe(
+      response => {
+        console.log('Question deleted successfully', response);
+        this.updateQuizList(this.user_id);
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
+
+  // to move in a more appropriate service
+
+  createQuiz(name: string, theme: string, questions: Question[]) {
+    const quiz = { 
+      theme: theme,
+      name: name,
+      userId: this.user_id,
+    };
+    this.http.post<Quiz>(`${this.apiUrl}quizzes`, quiz).subscribe(
+      response => {
+        // Assuming response includes the newly created quiz's ID
+        const quizId = response.id;
+        questions.forEach(question => {
+          this.createQuestion(question, quizId); // Pass quizId to each question
+        });
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
+  
+  createQuestion(question: Question, quizId: number) {
+    // Include quizId in the question object or API call as needed
+
+    console.log('Creating question', question.answers);
+
+    const realAnswers1 = {
+      type: "option",
+      value: question.answers[0].value,
+      isCorrect: question.answers[0].isCorrect,
+      questionId: 3
+    }
+
+    const realAnswers2 = {
+      type: "option",
+      value: question.answers[1].value,
+      isCorrect: question.answers[1].isCorrect,
+      questionId: 3
+    }
+
+    const realAnswers3 = {
+      type: "option",
+      value: question.answers[2].value,
+      isCorrect: question.answers[2].isCorrect,
+      questionId: 3
+    }
+
+    const realAnswers4 = {
+      type: "option",
+      value: question.answers[3].value,
+      isCorrect: question.answers[3].isCorrect,
+      questionId: 3
+    }
+
+    const realQuestion = {
+      question: question.question,
+      quizId: quizId,
+      answers : [realAnswers1, realAnswers2, realAnswers3, realAnswers4],
+      clues : question.clues,
+      nbOfErrorsToUseClue : question.nbOfErrorsToUseClue
+    }
+
+    console.log('Creating question', realQuestion);
+
+    this.http.post<Question>(`${this.apiUrl}quizzes/${quizId}/questions`, realQuestion).subscribe(
+      response => {
+        console.log('Question added successfully', response);
+        // Assuming response includes the newly created question's ID
+        const questionId = response.id;
+        // If the question has answers, create them
+        question.answers.forEach(answer => {
+          this.createAnswer(answer, questionId, quizId); // Pass questionId to each answer
+        });
+        // If the question has clues, create them
+        question.clues.forEach(clue => {
+          this.createClue(clue, questionId, quizId); // Pass questionId to each clue
+        });
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
+  
+  createAnswer(answer: Answer, questionId: number, quizId: number) {
+    
+    const realAnswer = {
+      type: "option",
+      value: answer.value,
+      isCorrect: answer.isCorrect,
+      questionId: questionId
+    }
+
+    this.http.post<any>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/answer`, realAnswer).subscribe(
+      response => {
+        console.log('Answer added successfully', response);
+        // No need to update quiz list here
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
+  
+  createClue(clue: Clue, questionId: number, quizId: number) {
+    
+    const realClue = {
+      questionId: questionId,
+      image : clue.image,
+      text : clue.text,
+      audio : clue.audio
+    }
+
+    this.http.post<any>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/answer`, realClue).subscribe(
+      response => {
+        console.log('Clue added successfully', response);
+        // No need to update quiz list here
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
+
+  registerQuestion(question : any, answers : any, indice : any) {
+    const realQuestion : Question = {
+      question: question,
+      answers: answers,
+      clues: indice,
+      nbOfErrorsToUseClue: 1,
+      quizId: 36, //temporal quiz id
+      id: 35    // temporal question id
+    }
+
+    this.questions.push(realQuestion);
+  }
+
+  getQuestions() {
+    return this.questions;
+  }
+
+  setQuizData(title: string, theme: string) {
+    this.quizData.title = title;
+    this.quizData.theme = theme;
+  }
+  
+  getQuizData() {
+    return this.quizData;
   }
 
 

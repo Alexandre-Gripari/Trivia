@@ -12,6 +12,11 @@
   flex-direction: column;
 }
 
+input[type="text"]:focus {
+  border-color: #302B63FF;
+  outline: none;
+}
+
 #image-hints-container {
   display: flex;
   flex-direction: column;
@@ -36,9 +41,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-#image-hint-buttons {
 }
 
 input[type="number"] {

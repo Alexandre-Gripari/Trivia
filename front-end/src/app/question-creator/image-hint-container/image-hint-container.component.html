@@ -1,12 +1,13 @@
 <div class="form-group hint">
-  <button id="addImage" (click)="onShowImageClick()">Choisir une image</button>
+  <input type="text" [(ngModel)]="imageUrls" placeholder="Ou collez l'URL de l'image ici" class="form-control" (paste)="onImageUrlPaste($event)">
+  <button id="addImage" class="" (click)="onShowImageClick()">Choisir une image</button>
   <div id="image-hints-container" *ngFor="let fileName of fileNames; index as i">
     <div class="image-hints">
       <span>{{ fileName }}</span>
       <img [src]="displayedImages[i]" *ngIf="isImageDisplayed[i]">
       <div id="image-hint-order">
         <p>Ordre d'apparition de l'indice:</p>
-        <input type="number" min="0" max="3">
+        <input type="number" min="0" max="3" [(ngModel)]="clues[i].order" (change)="onNumberChange()">
       </div>
       <div id="image-hint-buttons">
         <button class="hint-buttons" id="display-button" (click)="onDisplayButtonClick(i)">

@@ -34,7 +34,7 @@ export class QuizComponent implements OnInit {
     console.log("Quiz selected");
     this.quizSelected.emit(true);
     if (this.quiz && this.quiz.questions.length > 0) {
-      console.log(this.quiz.questions.length);
+      console.log(this.quiz.questions);
       this.gameService.setQuestions(this.quiz.questions, this.quiz.name, this.quiz.theme);
       this.router.navigate(['/game-page']);
     }
