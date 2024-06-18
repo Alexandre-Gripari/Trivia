@@ -1,7 +1,7 @@
 import { E2EComponentFixture } from "e2e/e2e-component.fixture";
 
 export class UserCardFixture extends E2EComponentFixture {
-  
+
     getQuizButton() {
         return this.page.getByRole('button', { name: 'QUIZ' });
     }
@@ -25,9 +25,4 @@ export class UserCardFixture extends E2EComponentFixture {
     clickEditButton() {
         return this.getEditButton().click();
     }
-
-
-
-    
-
 }
