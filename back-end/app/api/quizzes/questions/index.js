@@ -55,7 +55,8 @@ router.post('/', (req, res) => {
 router.put('/:questionId', (req, res) => {
   try {
     const question = getQuestionFromQuiz(req.params.quizId, req.params.questionId)
-    const updatedQuestion = Question.update(req.params.questionId, { label: req.body.label, quizId: question.quizId })
+    const updatedQuestion = Question.update(req.params.questionId, req.body)
+    console.log(updatedQuestion)
     res.status(200).json(updatedQuestion)
   } catch (err) {
     manageAllErrors(res, err)

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { GameService } from '../../../services/game.service';
 import { QuizService } from '../../../services/quiz.service';
 import {User} from "../../../models/user.model";
+import { QuizUpdateService } from 'src/services/quizupdate.service';
 
 @Component({
   selector: 'app-quiz',
@@ -24,7 +25,7 @@ export class QuizComponent implements OnInit {
   @Output()
   quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private gameService: GameService, private quizService : QuizService ) {}
+  constructor(private router: Router, private gameService: GameService, private quizService : QuizService, private quizUpdateServie : QuizUpdateService ) {}
 
   ngOnInit() {
     this.quizService.setCurrentQuiz(this.quiz);
@@ -42,8 +43,11 @@ export class QuizComponent implements OnInit {
 
   editQuiz() {
     console.log("Edit quiz");
-    this.router.navigate(['/quiz-edition-page'], { state: { quiz: this.quiz } });
-    // remplacer par un appel a un service
+    if (this.quiz) {
+      this.quizUpdateServie.setCurrentQuiz(this.quiz);
+      this.router.navigate(['/quiz-update-page']);
+    }
+      
   }
 
   deleteQuiz() {

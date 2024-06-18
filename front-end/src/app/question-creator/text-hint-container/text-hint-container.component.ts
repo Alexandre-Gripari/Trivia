@@ -11,29 +11,12 @@ export class TextHintContainerComponent implements OnInit {
   nbHints: number = 0;
 
   @Output() 
-  hintsChangeTxt: EventEmitter<BasicClue[]> = new EventEmitter();
+  hintsChangeTxt: EventEmitter<String[]> = new EventEmitter();
 
   @ViewChild('textInput') textInput!: ElementRef;
   textHints: string[] = [];
 
-  clues: BasicClue[] =[
-    {
-      order: 99,
-      indices : this.textHints[0]
-    },
-    {
-      order: 99,
-      indices : this.textHints[1]
-    },
-    {
-      order: 99,
-      indices : this.textHints[2]
-    },
-    {
-      order: 99,
-      indices : this.textHints[3]
-    }
-  ];
+  clues: string[] = [];
 
   constructor() { }
 
@@ -41,10 +24,9 @@ export class TextHintContainerComponent implements OnInit {
   }
 
   onShowTextClick(): void {
-    if (this.textInput && this.textInput.nativeElement) {
+    if (this.textInput && this.textInput.nativeElement && this.textInput.nativeElement.value !== '') {
+      this.clues.push(this.textInput.nativeElement.value);
       this.textInput.nativeElement.value = '';
-      this.clues[this.nbHints].indices = this.textHints[this.nbHints];
-      this.nbHints++;
       this.updateHints();
     }
   }
@@ -52,11 +34,12 @@ export class TextHintContainerComponent implements OnInit {
   onTextChange(event: any): void {
     const text = event.target.value;
     this.textHints.push(text);
+    this.updateHints();
   }
 
   onDeleteButtonClick(index: number): void {
     this.textHints.splice(index, 1);
-    this.nbHints--;
+
   }
 
   updateHints() {
@@ -64,8 +47,23 @@ export class TextHintContainerComponent implements OnInit {
     this.hintsChangeTxt.emit(this.clues);
   }
 
-  onNumberChange(): void {
-    this.updateHints();
+  moveUp(index: number): void {
+    if (index > 0) {
+      [this.textHints[index], this.textHints[index - 1]] = [this.textHints[index - 1], this.textHints[index]];
+      this.clues = this.textHints;
+      this.updateHints();
+    }
   }
+  
+  moveDown(index: number): void {
+    if (index < this.textHints.length - 1) {
+      [this.textHints[index], this.textHints[index + 1]] = [this.textHints[index + 1], this.textHints[index]];
+      this.clues = this.textHints;
+      this.updateHints();
+    }
+
+  }
+
+  
 
 }

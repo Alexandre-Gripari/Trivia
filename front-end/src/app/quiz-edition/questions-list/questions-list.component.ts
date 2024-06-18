@@ -49,5 +49,9 @@ export class QuestionsListComponent implements OnInit {
     this.questionsUpdated.emit(this.questions);
   }
 
+  setQuestionsCurrentQuiz() {
+    this.quizService.getCurrentQuiz().questions;
+  }
+
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from 'src/models/question.model';
 import { QuizService } from 'src/services/quiz.service';
@@ -14,6 +14,8 @@ export class QuizEditionComponent implements OnInit {
   quizTitle: string = '';
   quizTheme: string = '';
   questions: Question[] = [];
+
+  currentQuiz : any;
 
   constructor(private quizService: QuizService, private router : Router){
   }

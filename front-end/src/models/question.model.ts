@@ -27,3 +27,5 @@ export interface BasicClue {
     order: number;
     indices : string;
   }
+
+  

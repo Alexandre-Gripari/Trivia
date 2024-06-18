@@ -16,27 +16,10 @@ export class ImageHintContainerComponent implements OnInit {
   imageUrls: string = '';
   nbHints: number = 0;
   
-  clues: BasicClue[] =[
-    {
-      order: 99,
-      indices : this.fileDataUrls[0]
-    },
-    {
-      order: 99,
-      indices : this.fileDataUrls[1]
-    },
-    {
-      order: 99,
-      indices : this.fileDataUrls[2]
-    },
-    {
-      order: 99,
-      indices : this.fileDataUrls[3]
-    }
-  ];
+  clues: string[] = [];
 
   @Output()
-  hintsChangeImg: EventEmitter<BasicClue[]> = new EventEmitter();
+  hintsChangeImg: EventEmitter<string[]> = new EventEmitter();
 
   constructor() { }
 
@@ -58,9 +41,10 @@ export class ImageHintContainerComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e) => {
       this.fileDataUrls.push(e.target?.result as string);
+      this.clues.push(e.target?.result as string);
+      this.updateHints();
     };
     reader.readAsDataURL(file);
-
     this.isImageDisplayed.push(false);
   }
 
@@ -80,7 +64,8 @@ export class ImageHintContainerComponent implements OnInit {
     this.fileDataUrls.splice(index, 1);
     this.displayedImages.splice(index, 1);
     this.isImageDisplayed.splice(index, 1);
-    this.nbHints--;
+    this.clues.splice(index, 1);
+
   }
 
   onImageUrlPaste(event: ClipboardEvent): void {
@@ -95,8 +80,7 @@ export class ImageHintContainerComponent implements OnInit {
         this.displayedImages.push(pastedText);
   
         this.updateHints();
-        this.clues[this.nbHints].indices = this.fileDataUrls[this.nbHints];
-        this.nbHints++;
+        this.clues.push(pastedText);
   
         this.clearInputField();
       };
@@ -115,12 +99,30 @@ export class ImageHintContainerComponent implements OnInit {
     this.imageUrls = '';
   }
 
-  onNumberChange(): void {
-    this.updateHints();
-  }
-
   updateHints() {
     this.hintsChangeImg.emit(this.clues);
+  }
+
+  moveUp(index: number): void {
+    if (index > 0) {
+      [this.fileDataUrls[index], this.fileDataUrls[index - 1]] = [this.fileDataUrls[index - 1], this.fileDataUrls[index]];
+      [this.fileNames[index], this.fileNames[index - 1]] = [this.fileNames[index - 1], this.fileNames[index]];
+      [this.displayedImages[index], this.displayedImages[index - 1]] = [this.displayedImages[index - 1], this.displayedImages[index]];
+      [this.isImageDisplayed[index], this.isImageDisplayed[index - 1]] = [this.isImageDisplayed[index - 1], this.isImageDisplayed[index]];
+      this.clues = this.fileDataUrls;
+      this.updateHints();
+    }
+  }
+
+  moveDown(index: number): void {
+    if (index < this.fileDataUrls.length - 1) {
+      [this.fileDataUrls[index], this.fileDataUrls[index + 1]] = [this.fileDataUrls[index + 1], this.fileDataUrls[index]];
+      [this.fileNames[index], this.fileNames[index + 1]] = [this.fileNames[index + 1], this.fileNames[index]];
+      [this.displayedImages[index], this.displayedImages[index + 1]] = [this.displayedImages[index + 1], this.displayedImages[index]];
+      [this.isImageDisplayed[index], this.isImageDisplayed[index + 1]] = [this.isImageDisplayed[index + 1], this.isImageDisplayed[index]];
+      this.clues = this.fileDataUrls;
+      this.updateHints();
+    }
   }
 
 }

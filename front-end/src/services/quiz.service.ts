@@ -101,7 +101,7 @@ export class QuizService {
   }
 
   getCurrentQuiz() {
-    return this.http.get<Quiz>(`${this.apiUrl}quizzes/${this.currentQuiz.id}/`);
+    return this.currentQuiz;
   }
 
   updateQuizList(id: number) {
@@ -201,18 +201,6 @@ export class QuizService {
       return quiz.name.toLowerCase().includes(value.toLowerCase()) || quiz.theme && quiz.theme.toLowerCase().includes(value.toLowerCase());
     });
     this.allQuiz$.next(tmp);
-  }
-
-  deleteQuestion(question: Question) {
-    this.http.delete<Question>(`${this.apiUrl}questions/${question.id}`).subscribe(
-      response => {
-        console.log('Question deleted successfully', response);
-        this.updateQuizList(this.user_id);
-      },
-      error => {
-        console.error('There was an error during the request', error);
-      }
-    );
   }
 
   // to move in a more appropriate service

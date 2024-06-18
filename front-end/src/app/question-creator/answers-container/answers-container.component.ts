@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Answer } from '../../../models/question.model';
 
 interface BasicAnswer {
-  type : string
+  type? : string
   value: string;
   isCorrect: boolean;
 }
@@ -16,6 +16,9 @@ interface BasicAnswer {
 
 
 export class AnswersContainerComponent implements OnInit {
+
+  @Input()
+  answersInput: Answer[] = [];
 
   answers: BasicAnswer[] = [
     {
@@ -46,6 +49,15 @@ export class AnswersContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (this.answersInput.length > 0) {
+      this.answers = this.answersInput.map(answer => {
+        return {
+          type: answer.type,
+          value: answer.value,
+          isCorrect: answer.isCorrect
+        }
+      });
+    }
   }
 
   updateAnswers() {
