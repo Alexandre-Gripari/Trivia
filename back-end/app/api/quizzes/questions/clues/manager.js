@@ -23,7 +23,15 @@ const getClueFromQuestion = (quizId, questionId, clueId) => {
   return clue
 }
 
+const deleteAllCluesFromQuestion = (questionId) => {
+  const clues = filterCluesFromQuestion(questionId)
+  clues.forEach((clue) => {
+    Clue.delete(clue.id)
+  })
+}
+
 module.exports = {
   getClueFromQuestion,
   filterCluesFromQuestion,
+  deleteAllCluesFromQuestion,
 }

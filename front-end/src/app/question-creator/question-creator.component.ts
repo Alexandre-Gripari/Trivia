@@ -6,6 +6,7 @@ import { QuizService } from 'src/services/quiz.service';
 import { BasicClue } from 'src/models/question.model';
 import { Router } from '@angular/router';
 
+
 interface Indice{
   text?: string;
   image?: string;
@@ -69,11 +70,7 @@ export class QuestionCreatorComponent implements OnInit {
   }
 
   createIndiceArray(textClues: any[], imageClues: any[], audioClues: any[]) {
-    const indicesArray = [];
-
-    textClues.sort((a, b) => a.order - b.order);
-    imageClues.sort((a, b) => a.order - b.order);
-    audioClues.sort((a, b) => a.order - b.order);
+    const indicesArray :Indice [] = [];
 
     // get the max order of the first element but it can be undefined
     const size = Math.max(
@@ -81,32 +78,22 @@ export class QuestionCreatorComponent implements OnInit {
       imageClues?.[0]?.order ?? 0,
       audioClues?.[0]?.order ?? 0
     );
-  
-    // Iterate over the longest array
-    for (let i = 0; i <= size; i++) {
-      // Create an object with text, image, and audio properties
-      const indice = {
-        text: textClues[i] ? textClues[i].indices : null,
-        image: imageClues[i] ? imageClues[i].indices  : null,
-        audio: audioClues[i] ? audioClues[i].indices  : null,
-      };
-  
-      
-      // Add the created object to the indices array
+
+    for (let i =0; i<=size; i++) {
+      var indice: Indice = {};
+      if (textClues[i]?.value) {
+        indice.text = textClues[i].value;
+      }
+      if (imageClues[i]?.value) {
+        indice.image = imageClues[i].value;
+      }
+      if (audioClues[i]?.value) {
+        indice.audio = audioClues[i].value;
+      }
       indicesArray.push(indice);
     }
-
-    // remove the last element if all properties are null
-    if (
-      indicesArray[indicesArray.length - 1].text === null &&
-      indicesArray[indicesArray.length - 1].image === null &&
-      indicesArray[indicesArray.length - 1].audio === null
-    ) {
-      indicesArray.pop();
-    }
-
-  
     return indicesArray;
+    
   }
-
+  
 }

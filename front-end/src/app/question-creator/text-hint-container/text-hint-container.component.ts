@@ -18,19 +18,19 @@ export class TextHintContainerComponent implements OnInit {
 
   clues: BasicClue[] =[
     {
-      order: 0,
+      order: 99,
       indices : this.textHints[0]
     },
     {
-      order: 1,
+      order: 99,
       indices : this.textHints[1]
     },
     {
-      order: 2,
+      order: 99,
       indices : this.textHints[2]
     },
     {
-      order: 3,
+      order: 99,
       indices : this.textHints[3]
     }
   ];

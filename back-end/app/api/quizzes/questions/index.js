@@ -45,8 +45,8 @@ router.post('/', (req, res) => {
     if (req.body.clues && req.body.clues.length > 0) {
       const clues = req.body.clues.map((clue) => Clue.create({ ...clue, questionId: question.id }))
       question = { ...question, clues }
-    }
-    res.status(201).json(question)*/
+    }*/
+    res.status(201).json(question)
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -64,6 +64,12 @@ router.put('/:questionId', (req, res) => {
 
 router.delete('/:questionId', (req, res) => {
   try {
+    /*for (const answer of AnswersRouter.filterAnswersFromQuestion(req.params.questionId)) {
+      AnswersRouter.deleteAnswer(req.params.questionId, answer.id)
+    }
+    for (const clue of CluesRouter.filterCluesFromQuestion(req.params.questionId)) {
+      CluesRouter.deleteClue(req.params.questionId, clue.id)
+    }*/
     // Check if the question id exists & if the question has the same quizId as the one provided in the url.
     getQuestionFromQuiz(req.params.quizId, req.params.questionId)
     Question.delete(req.params.questionId)

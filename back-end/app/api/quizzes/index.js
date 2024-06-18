@@ -4,6 +4,7 @@ const { Quiz } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 const QuestionsRouter = require('./questions')
 const { buildQuizz, buildQuizzes } = require('./manager')
+const { deleteAllQuestionsFromQuiz } = require('./questions/manager')
 
 const router = new Router()
 
@@ -47,6 +48,7 @@ router.put('/:quizId', (req, res) => {
 router.delete('/:quizId', (req, res) => {
   try {
     Quiz.delete(req.params.quizId)
+    deleteAllQuestionsFromQuiz(req.params.quizId)
     res.status(204).end()
   } catch (err) {
     manageAllErrors(res, err)

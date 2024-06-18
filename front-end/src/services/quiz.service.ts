@@ -39,6 +39,7 @@ export class QuizService {
   public allQuiz$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.allQuiz);
 
 
+
   constructor(private http: HttpClient) {
   }
 
@@ -241,38 +242,10 @@ export class QuizService {
 
     console.log('Creating question', question.answers);
 
-    const realAnswers1 = {
-      type: "option",
-      value: question.answers[0].value,
-      isCorrect: question.answers[0].isCorrect,
-      questionId: 3
-    }
-
-    const realAnswers2 = {
-      type: "option",
-      value: question.answers[1].value,
-      isCorrect: question.answers[1].isCorrect,
-      questionId: 3
-    }
-
-    const realAnswers3 = {
-      type: "option",
-      value: question.answers[2].value,
-      isCorrect: question.answers[2].isCorrect,
-      questionId: 3
-    }
-
-    const realAnswers4 = {
-      type: "option",
-      value: question.answers[3].value,
-      isCorrect: question.answers[3].isCorrect,
-      questionId: 3
-    }
-
     const realQuestion = {
       question: question.question,
       quizId: quizId,
-      answers : [realAnswers1, realAnswers2, realAnswers3, realAnswers4],
+      answers : question.answers,
       clues : question.clues,
       nbOfErrorsToUseClue : question.nbOfErrorsToUseClue
     }
@@ -308,7 +281,7 @@ export class QuizService {
       questionId: questionId
     }
 
-    this.http.post<any>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/answer`, realAnswer).subscribe(
+    this.http.post<any>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/answers`, realAnswer).subscribe(
       response => {
         console.log('Answer added successfully', response);
         // No need to update quiz list here
@@ -327,8 +300,9 @@ export class QuizService {
       text : clue.text,
       audio : clue.audio
     }
+    console.log('Creating clue', realClue);
 
-    this.http.post<any>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/answer`, realClue).subscribe(
+    this.http.post<any>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/clues`, realClue).subscribe(
       response => {
         console.log('Clue added successfully', response);
         // No need to update quiz list here
@@ -363,6 +337,11 @@ export class QuizService {
   
   getQuizData() {
     return this.quizData;
+  }
+
+  clearCurrentQuiz() {
+    this.questions = [];
+    this.quizData = { title: '', theme: '' };
   }
 
 

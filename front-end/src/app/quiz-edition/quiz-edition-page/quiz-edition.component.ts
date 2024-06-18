@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Question } from 'src/models/question.model';
 import { QuizService } from 'src/services/quiz.service';
+
 
 @Component({
   selector: 'app-quiz-edition',
@@ -13,7 +15,7 @@ export class QuizEditionComponent implements OnInit {
   quizTheme: string = '';
   questions: Question[] = [];
 
-  constructor(private quizService: QuizService){
+  constructor(private quizService: QuizService, private router : Router){
   }
   ngOnInit(): void {
     const quizData = this.quizService.getQuizData();
@@ -23,6 +25,8 @@ export class QuizEditionComponent implements OnInit {
 
   addQuiz() {
     this.quizService.createQuiz(this.quizTitle, this.quizTheme, this.questions);
+    this.quizService.clearCurrentQuiz();
+    this.router.navigate(['home-page'])
   }
 
   handleQuestionsUpdated(questions: Question[]) {

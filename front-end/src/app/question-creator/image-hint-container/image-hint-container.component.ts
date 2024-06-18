@@ -18,19 +18,19 @@ export class ImageHintContainerComponent implements OnInit {
   
   clues: BasicClue[] =[
     {
-      order: 0,
+      order: 99,
       indices : this.fileDataUrls[0]
     },
     {
-      order: 1,
+      order: 99,
       indices : this.fileDataUrls[1]
     },
     {
-      order: 2,
+      order: 99,
       indices : this.fileDataUrls[2]
     },
     {
-      order: 3,
+      order: 99,
       indices : this.fileDataUrls[3]
     }
   ];

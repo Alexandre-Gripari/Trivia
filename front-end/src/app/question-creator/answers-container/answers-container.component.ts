@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Answer } from '../../../models/question.model';
 
 interface BasicAnswer {
+  type : string
   value: string;
   isCorrect: boolean;
 }
@@ -18,20 +19,24 @@ export class AnswersContainerComponent implements OnInit {
 
   answers: BasicAnswer[] = [
     {
+      type: "option",
       value: '',
-      isCorrect: false
+      isCorrect: false,
     },
     {
+      type: "option",
       value: '',
-      isCorrect: false
+      isCorrect: false,
     },
     {
+      type: "option",
       value: '',
-      isCorrect: false
+      isCorrect: false,
     },
     {
+      type: "option",
       value: '',
-      isCorrect: false
+      isCorrect: false,
     }
   ];
 
