@@ -37,6 +37,7 @@ export class QuizComponent implements OnInit {
     if (this.quiz && this.quiz.questions.length > 0) {
       console.log(this.quiz.questions);
       this.gameService.setQuestions(this.quiz.questions, this.quiz.name, this.quiz.theme);
+      if (this.quiz.userId) this.gameService.setUserIdFromUser(this.quiz.userId);
       this.router.navigate(['/game-page']);
     }
   }

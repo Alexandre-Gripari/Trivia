@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
-//import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
-//import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
+
 
 
 @Injectable({
@@ -14,14 +13,6 @@ export class StatisticService {
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
-
-   /**
-    * The list of quiz.
-    * The list is retrieved from the mock. 
-    */
-  
-   /*  private user_id: String = "";
-    private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS; */
     
     private stats: StatisticData = {
       id: 0,
@@ -46,6 +37,8 @@ export class StatisticService {
     private statsUrl = this.serverUrl + 'statistics';
     private dataStatsPath = 'datastats';
     private quizStatsPath = 'quizstats';
+
+    private descSort: boolean = false;
 
   /**
    * Observable which contains the list of the quiz.
@@ -76,37 +69,24 @@ export class StatisticService {
       this.statsQuizzes = statsQuizzes;
       this.statsQuizzesFiltred = this.statsQuizzes.slice();
     }); 
-    /* this.statsQuizzes = this.allStatsQuizzes.get(userId)!;
-    this.statsQuizzesFiltred = this.statsQuizzes.slice();
-    this.statsQuizzesOb$.next(this.statsQuizzes); */
   }
 
-
-  /* setUserId(id: number) {
-    this.user_id = id;
-    if (!this.allStatistics.has(this.user_id)) {
-      console.log("No statistics for this user");
-    }
-    else {
-      this.stats = this.allStatistics.get(this.user_id)!;
-      this.statsQuizzes = this.allStatsQuizzes.get(this.user_id)!;
-      this.statsQuizzesFiltred = this.statsQuizzes.slice();
-      this.stats$.next(this.stats);
-      this.statsQuizzesOb$.next(this.statsQuizzes);
-    }
-  } */
 
   sortByDate() {
     this.statsQuizzesFiltred.sort((a, b) => {
-      return a.date.getTime() - b.date.getTime();
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+        console.error('Invalid date encountered', a.date, b.date);
+        return 0;
+      }
+      return dateA.getTime() - dateB.getTime();
     });
-
-    this.statsQuizzesFiltred.sort((a, b) => {
-      return a.date.getTime() - b.date.getTime();
-    });
-    
+  
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
+  
 
   sortByName() {
     this.statsQuizzes.sort((a, b) => {
@@ -116,7 +96,7 @@ export class StatisticService {
     this.statsQuizzesFiltred.sort((a, b) => {
       return a.name.localeCompare(b.name);
     });
-
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
 
@@ -150,7 +130,7 @@ export class StatisticService {
       // Comparaison des thèmes des quiz en utilisant localeCompare
       return a.theme.localeCompare(b.theme);
     });
-
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
 
@@ -162,14 +142,16 @@ export class StatisticService {
     this.statsQuizzesFiltred.sort((a, b) => {
       return a.successRate - b.successRate;
     });
-
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
 
-  sortReverse() {
+  sortReverse(selectedValue: string) {
     this.statsQuizzes.reverse();
     this.statsQuizzesFiltred.reverse();
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
+    if (selectedValue === "Croissante") this.descSort = false;
+    else this.descSort = true;
   }
 
   searchBarFilter(input: String) {
