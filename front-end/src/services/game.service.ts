@@ -66,7 +66,8 @@ export class GameService {
     if (answer.isCorrect) {
 
       // Gestion du backend
-      this.stopTimer(); // Arrêter le timer ici
+      this.stopTimer(); 
+      this.startTimer();
       this.addQuestionStats(this.observable.question.question, this.minutesTaken, this.secondsTaken, this.numberOfCluesPerQuestionUsed, this.numberOfBadAnswersPerQuestion);
       this.resetQuestionStats();
       this.addAnswerStats(answer, true, true);
@@ -102,7 +103,6 @@ export class GameService {
     }
     setTimeout(() => {
       if (this.index >= this.questions.length) this.finishGame();
-      else this.startTimer();
       this.observable$.next(this.observable);
     }, 1000);
 
@@ -212,6 +212,8 @@ export class GameService {
     for (let i = 0; i < this.questionsStats.length; i++) {
       totalTimeM += this.questionsStats[i].timeMinutes;
       totalTimeS += this.questionsStats[i].timeSeconds;
+      totalTimeM += Math.floor(totalTimeS / 60);
+      totalTimeS = totalTimeS % 60;
       totalCluesUsed += this.questionsStats[i].numberOfCluesUsed;
       successRate += 100 - (this.questionsStats[i].numberOfBadAnswers * 33)
     }
