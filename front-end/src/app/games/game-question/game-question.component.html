@@ -1,6 +1,7 @@
 <div class="game-question">
   <div *ngIf="isFinished; else elseBlock">
-    <app-game-end-page></app-game-end-page>
+    <app-game-end-page (notify)="onNotify($event)"></app-game-end-page>
+
   </div>
   <ng-template #elseBlock>
     <div class="question">
@@ -10,7 +11,7 @@
       <app-game-clue [clue]="clue"></app-game-clue>
     </div>
     <div class="answer-container">
-      <app-game-answer *ngFor="let answer of question?.answers" 
+      <app-game-answer *ngFor="let answer of question?.answers"
       [answer]="answer" (answerSelected)="handleAnswerSelected($event)"
       ></app-game-answer>
     </div>
