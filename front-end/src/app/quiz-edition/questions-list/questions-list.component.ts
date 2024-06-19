@@ -29,7 +29,6 @@ export class QuestionsListComponent implements OnInit {
 
   editQuestion(question: Question) {
     console.log("edit question");
-    this.router.navigate(['/question-creator']);
 
   }
   deleteQuestion(question: Question) {

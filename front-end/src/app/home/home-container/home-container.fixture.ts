@@ -14,10 +14,6 @@ export class HomeFixture extends E2EComponentFixture {
         return this.page.getByRole('button', { name: 'Créer un Quiz' });
     }
 
-    getCreateQuestionButton() {
-        return this.page.getByRole('button', { name: 'Créer une Question' });
-    }
-
     getQuizListButton() {
         return this.page.getByRole('button', { name: 'Liste des Quiz' });
     }
@@ -34,9 +30,6 @@ export class HomeFixture extends E2EComponentFixture {
         return this.getCreateQuizButton().click();
     }
 
-    clickCreateQuestionButton() {
-        return this.getCreateQuestionButton().click();
-    }
 
     clickQuizListButton() {
         return this.getQuizListButton().click();

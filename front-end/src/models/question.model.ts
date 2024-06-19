@@ -4,6 +4,7 @@ export interface Answer {
     isCorrect: boolean;
     show: boolean;
     questionId: number;
+    id: number;
 }
 
 export interface Question {
@@ -13,6 +14,7 @@ export interface Question {
     answers: Answer[];
     nbOfErrorsToUseClue: number;
     id: number;
+
     
 }
 
@@ -21,6 +23,7 @@ export interface Clue {
     text?: string;
     audio?: string;
     questionId: number;
+    id: number;
 }
 
 export interface BasicClue {

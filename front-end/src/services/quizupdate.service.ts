@@ -50,18 +50,21 @@ export class QuizUpdateService {
     this.currentQuiz.theme = theme;
   }
 
-  updateQuizInDB(name: string, theme?: string, questions?: Question[]) {
+  updateQuizInDB(name: string, theme: string, questions: Question[]) {
+    console.log("current qui" + this.currentQuiz.id);
+    console.log(name + " " + theme + " " + questions);
+    if (this.currentQuiz.id === 0) {
+        if (!theme) theme = '';
+        this.quizService.createQuiz(name, theme, questions);
+    } else {
     this.http.put<Quiz>(`${this.apiUrl}quizzes/${this.currentQuiz.id}`, {
-        id: this.currentQuiz.id,
         name: name,
         theme: theme,
         }).subscribe((quiz) => {
-            if (questions) {
-                console.log(questions);
-                this.updateQuestionsInDB(questions, quiz.id);
-            }
-        }
-    )
+            console.log(quiz);
+        });
+    }
+    this.updateQuestionsInDB(questions, this.currentQuiz.id);
   }
 
   updateQuestionsInDB(questions: Question[], quizId: number) {
@@ -77,12 +80,54 @@ export class QuizUpdateService {
             nbOfErrorsToUseClue: question.nbOfErrorsToUseClue
         
         }).subscribe((question) => {
-            console.log(question);
+            this.updateAnswerInDB(question.answers, question.id, quizId);
+            this.updateCluesInDB(question.clues, question.id, quizId);
         });
       }
     });
     
   }
+
+  updateAnswerInDB(answer: Answer[], questionId: number, quizId: number) {
+  
+    answer.forEach(ans => {
+        if (ans.id === 0) {
+            this.quizService.createAnswer(ans, questionId, quizId);
+        } else {
+          this.http.put<Answer>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/answers/${ans.id}`, {
+            type: ans.type,
+            text: ans.value,
+            isCorrect: ans.isCorrect,
+            questionId: questionId
+          }).subscribe(
+            response => {
+              console.log('User added to quiz successfully', response);
+            },
+            error => {
+              console.error('There was an error during the request', error);
+            }
+          );
+        }
+    });
+  }
+
+  updateCluesInDB(clue: Clue[], questionId: number, quizId: number) {
+    clue.forEach(clu => {
+        if (clu.id === 0) {
+            this.quizService.createClue(clu, questionId, quizId);
+        } else {
+            this.http.put<Clue>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/clues/${clu.id}`, {
+                text: clu.text,
+                image: clu.image,
+                audio: clu.audio,
+                questionId: questionId
+            }).subscribe((clu) => {
+                console.log(clu);
+            });
+        }
+    });
+  }
+
 
   updateQuestionToDelete(question: Question) {
     this.questionsToDel.push(question);
@@ -124,6 +169,27 @@ export class QuizUpdateService {
         quizId: 0,
         nbOfErrorsToUseClue: 0
     });
+  }
+
+  clearData() {
+    this.currentQuiz = {
+        id: 0,
+        name: '',
+        theme: '',
+        questions: [],
+        userId: 0
+    }
+  }
+
+  clearCurrentQuestion() {
+    this.currentQuestion = {
+        id: 0,
+        question: '',
+        clues: [],
+        answers: [],
+        quizId: 0,
+        nbOfErrorsToUseClue: 0
+    }
   }
 
   

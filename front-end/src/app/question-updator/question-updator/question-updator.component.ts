@@ -21,6 +21,8 @@ export class QuestionUpdatorComponent implements OnInit {
   answers: Answer[] = [];
   question: string = '';
 
+  
+
   questionGettingUpdated: Question = {
     id: 0,
     question: '',
@@ -120,6 +122,7 @@ export class QuestionUpdatorComponent implements OnInit {
     var indice = this.createIndiceArray(this.textClues, this.imageClues, this.audioClues);
     if (this.myBoolean) this.quizUpdateService.registerQuestionAdded(this.question, this.answers, indice);
     else this.quizUpdateService.registerQuestionUpdated(this.question, this.answers, indice);
+    this.quizUpdateService.clearCurrentQuestion();
     this.router.navigate(['quiz-update-page']);
   }
 
@@ -148,7 +151,8 @@ export class QuestionUpdatorComponent implements OnInit {
   
     for (let i = 0; i < size; i++) {
       const indice: Clue = {
-        questionId: 0
+        questionId: 0,
+        id: 0
       };
       if (modifiedTextClues[i]) {
         indice.text = modifiedTextClues[i];

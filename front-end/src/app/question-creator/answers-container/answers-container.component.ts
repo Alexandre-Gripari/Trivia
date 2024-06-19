@@ -5,6 +5,7 @@ interface BasicAnswer {
   type? : string
   value: string;
   isCorrect: boolean;
+  id : number;
 }
 
 @Component({
@@ -25,21 +26,25 @@ export class AnswersContainerComponent implements OnInit {
       type: "option",
       value: '',
       isCorrect: false,
+      id : 0
     },
     {
       type: "option",
       value: '',
       isCorrect: false,
+      id : 0
     },
     {
       type: "option",
       value: '',
       isCorrect: false,
+      id : 0
     },
     {
       type: "option",
       value: '',
       isCorrect: false,
+      id : 0
     }
   ];
 
@@ -54,7 +59,8 @@ export class AnswersContainerComponent implements OnInit {
         return {
           type: answer.type,
           value: answer.value,
-          isCorrect: answer.isCorrect
+          isCorrect: answer.isCorrect,
+          id : answer.id
         }
       });
     }

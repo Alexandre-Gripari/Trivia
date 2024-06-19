@@ -93,7 +93,9 @@ export class QuestionCreatorComponent implements OnInit {
   
     for (let i = 0; i < size; i++) {
       const indice: Clue = {
-        questionId: 0
+        questionId: 0,
+        id: 0
+
       };
       if (modifiedTextClues[i]) {
         indice.text = modifiedTextClues[i];

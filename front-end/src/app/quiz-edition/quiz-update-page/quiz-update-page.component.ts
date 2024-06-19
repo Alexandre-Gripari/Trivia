@@ -29,8 +29,10 @@ export class QuizUpdatePageComponent implements OnInit {
   }
 
   addQuiz() {
+    if (!this.quizTheme) this.quizTheme = '';
     this.quizUpdateService.updateQuizInDB(this.quizTitle, this.quizTheme, this.questions);
     this.quizUpdateService.deleteQuestionsInDB();
+    this.quizUpdateService.clearData();
     this.router.navigate(['home-page'])
   }
 
