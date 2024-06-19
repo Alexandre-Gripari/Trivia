@@ -6,6 +6,8 @@ import { EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { AnswerStats, QuestionStats, QuizStats } from 'src/models/statistic.model';
+import {Quiz} from "../models/quiz.model";
+import {User} from "../models/user.model";
 
 
 
@@ -58,19 +60,19 @@ export class GameService {
   constructor(private http: HttpClient) {
     this.resetInactivityTimer();
   }
-  
+
   public checkAnswer(answer: Answer) {
     this.resetInactivityTimer();
     if (answer.isCorrect) {
 
       // Gestion du backend
       this.stopTimer(); // Arrêter le timer ici
-      this.addQuestionStats(this.observable.question.question, this.minutesTaken, this.secondsTaken, this.numberOfCluesPerQuestionUsed, this.numberOfBadAnswersPerQuestion); 
+      this.addQuestionStats(this.observable.question.question, this.minutesTaken, this.secondsTaken, this.numberOfCluesPerQuestionUsed, this.numberOfBadAnswersPerQuestion);
       this.resetQuestionStats();
       this.addAnswerStats(answer, true, true);
       for (let i = 0; i < this.observable.question.answers.length; i++) {
         if (this.observable.question.answers[i].show === true && this.observable.question.answers[i].isCorrect === false) {
-          this.addAnswerStats(this.observable.question.answers[i], false, false); 
+          this.addAnswerStats(this.observable.question.answers[i], false, false);
         }
       }
       // Fin gestion du backend
@@ -83,10 +85,10 @@ export class GameService {
         this.observable.clueActive = false;
         this.autoClueOnStart();
         this.readQuestionAloud();
-      }, 1000); 
-      
-      
-    } 
+      }, 1000);
+
+
+    }
     else {
         this.numberOfBadAnswersPerQuestion+=1 //Backend
         for (let i = 0; i < this.observable.question.answers.length; i++) {
@@ -97,10 +99,10 @@ export class GameService {
         }
         this.numberOfErrors++;
         if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clues.length - 1) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
-    } 
+    }
     setTimeout(() => {
       if (this.index >= this.questions.length) this.finishGame();
-      else this.startTimer();  
+      else this.startTimer();
       this.observable$.next(this.observable);
     }, 1000);
 
@@ -135,7 +137,7 @@ export class GameService {
   public setUserIdFromUser(userId: number) {
     this.userId = userId!;
   }
-  
+
   public setQuestions(question: Question[], name: string, theme?: string) {
     this.resetGame();
     this.quizName = name;
@@ -219,7 +221,7 @@ export class GameService {
       userId: this.userId,
 	    name: this.quizName,
       theme: this.quizTheme,
-	    date: new Date(),  
+	    date: new Date(),
 	    totalTimeMinutes: totalTimeM,
 	    totalTimeSeconds: totalTimeS,
 	    totalNumberOfCluesUsed: totalCluesUsed,
@@ -285,9 +287,9 @@ export class GameService {
       }
     )
   }
-	
+
 	//
-	
+
 
   private resetGame() {
     this.index = 0;
@@ -310,12 +312,12 @@ export class GameService {
     const questionText = this.observable.question
     const synth = window.speechSynthesis;
     const utterThis = new SpeechSynthesisUtterance(questionText.question);
-  
-    // Ajustements 
+
+    // Ajustements
     utterThis.rate = 0.75; // Réduit la vitesse de parole
     utterThis.volume = 1; // Volume par défaut, ajustez selon besoin
     utterThis.pitch = 1; // Pitch par défaut
-  
+
     const voices = synth.getVoices();
     let voice = voices.find(voice => voice.lang.startsWith('fr-FR')); // Prefer European French if available
     if (!voice) {
@@ -334,7 +336,7 @@ export class GameService {
 
   private onInactivity() {
     this.readQuestionAloud();
-    
+
   }
 
 

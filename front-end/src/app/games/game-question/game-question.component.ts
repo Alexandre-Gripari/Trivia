@@ -52,5 +52,7 @@ export class GameQuestionComponent implements OnInit {
     this.gameService.useClueWithButton();
   }
 
-
+  onNotify(received: boolean) {
+    this.isFinished = false;
+  }
 }

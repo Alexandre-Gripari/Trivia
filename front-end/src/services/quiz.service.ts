@@ -79,6 +79,10 @@ export class QuizService {
     this.updateQuizList(this.user_id);
   }
 
+  getUserId() {
+    return this.user_id;
+  }
+
   deleteQuiz(quiz: Quiz) {
     this.http.delete<Quiz>(`${this.apiUrl}quizzes/${quiz.id}`).subscribe(
       response => {
@@ -144,8 +148,8 @@ export class QuizService {
   }
 
   addUserToQuiz(quiz: Quiz) {
-    const updatedQuiz = { 
-      id: quiz.id, 
+    const updatedQuiz = {
+      id: quiz.id,
       userId: this.user_id,
     };
     console.log('Adding user to quiz', updatedQuiz);
@@ -177,7 +181,7 @@ export class QuizService {
       if (a.theme == undefined) { a.theme = ""; }
       if (b.theme == undefined) { b.theme = ""; }
       return a.theme.localeCompare(b.theme);
-        
+
     });
     this.allQuiz$.next(this.allQuiz);
   }
@@ -333,5 +337,5 @@ export class QuizService {
   }
 
 
-    
+
 }
