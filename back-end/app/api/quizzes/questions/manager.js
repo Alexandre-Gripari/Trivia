@@ -1,5 +1,7 @@
 const { Quiz, Question } = require('../../../models')
 const NotFoundError = require('../../../utils/errors/not-found-error.js')
+const { deleteAllAnswersFromQuestion } = require('./answers/manager')
+const { deleteAllCluesFromQuestion } = require('./clues/manager')
 
 /**
  * Questions Manager.
@@ -34,7 +36,17 @@ const getQuestionFromQuiz = (quizId, questionId) => {
   return question
 }
 
+const deleteAllQuestionsFromQuiz = (quizId) => {
+  const questions = filterQuestionsFromQuizz(quizId)
+  questions.forEach((question) => {
+    deleteAllAnswersFromQuestion(question.id)
+    deleteAllCluesFromQuestion(question.id)
+    Question.delete(question.id)
+  })
+}
+
 module.exports = {
   filterQuestionsFromQuizz,
   getQuestionFromQuiz,
+  deleteAllQuestionsFromQuiz,
 }

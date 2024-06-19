@@ -33,19 +33,9 @@
   width: 80%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#text-hint-buttons {
-}
-
-input[type="number"] {
-  width: 20%;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: space-between;
+  
 }
 
 .hint-buttons {
@@ -128,3 +118,18 @@ input[type="text"]:focus {
 .hint{
   width: 500px;
 }
+
+.text-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.text-block::before {
+  content: ''; // Creates a pseudo-element
+  width: 15%; // This effectively pushes the first child to the middle
+}
+
+

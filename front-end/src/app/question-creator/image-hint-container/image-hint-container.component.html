@@ -1,18 +1,23 @@
 <div class="form-group hint">
-  <button id="addImage" (click)="onShowImageClick()">Choisir une image</button>
+  <input type="text" [(ngModel)]="imageUrls" placeholder="Ou collez l'URL de l'image ici" class="form-control" (paste)="onImageUrlPaste($event)">
+  <button id="addImage" class="" (click)="onShowImageClick()">Choisir une image</button>
   <div id="image-hints-container" *ngFor="let fileName of fileNames; index as i">
     <div class="image-hints">
-      <span>{{ fileName }}</span>
-      <img [src]="displayedImages[i]" *ngIf="isImageDisplayed[i]">
-      <div id="image-hint-order">
-        <p>Ordre d'apparition de l'indice:</p>
-        <input type="number" min="0" max="3">
+      <div class="image-hint-order">
+        <button (click)="moveUp(i)">&#x25B2;</button> <!-- Unicode for arrow up -->
+        <button (click)="moveDown(i)">&#x25BC;</button> <!-- Unicode for arrow down -->
       </div>
-      <div id="image-hint-buttons">
-        <button class="hint-buttons" id="display-button" (click)="onDisplayButtonClick(i)">
-          {{ isImageDisplayed[i] ? 'Cacher' : 'Afficher' }}
-        </button>
-        <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+      <div class="image-block">
+        <img class="image-max-width" [src]="displayedImages[i]" *ngIf="isImageDisplayed[i] ; else span">
+        <ng-template #span>
+          <span>{{ fileName }}</span>
+        </ng-template>
+        <div id="image-hint-buttons">
+          <button class="hint-buttons" id="display-button" (click)="onDisplayButtonClick(i)">
+            {{ isImageDisplayed[i] ? 'Cacher' : 'Afficher' }}
+          </button>
+          <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+        </div>
       </div>
     </div>
   </div>

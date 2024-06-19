@@ -3,13 +3,15 @@
   <button id="addText" (click)="onShowTextClick()">Ajouter un texte</button>
   <div id="text-hints-container" *ngFor="let textHint of textHints; index as i">
     <div class="text-hints">
-      <span>{{ textHint }}</span>
-      <div id="text-hint-order">
-        <p>Ordre d'apparition de l'indice:</p>
-        <input type="number" min="0" max="3">
+      <div class="text-hint-order">
+        <button (click)="moveUp(i)">&#x25B2;</button> <!-- Unicode for arrow up -->
+        <button (click)="moveDown(i)">&#x25BC;</button> <!-- Unicode for arrow down -->
       </div>
-      <div id="text-hint-buttons">
-        <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+      <div class="text-block">
+        <span>{{ textHint }}</span>
+        <div id="text-hint-buttons">
+          <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+        </div>
       </div>
     </div>
   </div>
