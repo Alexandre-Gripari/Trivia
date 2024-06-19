@@ -11,6 +11,9 @@ import { HomePageComponent } from './home/home-page/home-page.component';
 import { UserCreatorPageComponent } from './user-creator/user-creator-page/user-creator-page.component';
 import { UserEditPageComponent } from './user-edit/user-edit-page/user-edit-page.component';
 import { AllQuizzesComponent } from './all-quizzes/all-quizzes.component';
+import { QuizUpdatePageComponent } from './quiz-edition/quiz-update-page/quiz-update-page.component';
+import { QuizUpdateListComponent } from './quiz-edition/quiz-update-list/quiz-update-list.component';
+import { QuestionUpdatorComponent } from './question-updator/question-updator/question-updator.component';
 
 const routes: Routes = [
     { path: 'game-page', component: GamePageComponent},
@@ -24,7 +27,10 @@ const routes: Routes = [
     { path: 'home-page', component: HomePageComponent},
     { path: 'user-creator-page', component: UserCreatorPageComponent },
     { path: 'users/edit/:id', component: UserEditPageComponent },
-    { path: 'all-quizzes', component: AllQuizzesComponent }
+    { path: 'all-quizzes', component: AllQuizzesComponent },
+    { path: 'quiz-update-page', component: QuizUpdatePageComponent },
+    { path: 'quiz-update-list', component: QuizUpdateListComponent},
+    { path: 'question-updator', component: QuestionUpdatorComponent }
 ];
 
 @NgModule({

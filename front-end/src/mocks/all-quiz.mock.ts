@@ -1,4 +1,4 @@
-import { Quiz } from '../models/quiz.model';
+/*import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/question.model';
 
 export const QUESTION_PARIS: Question = {
@@ -428,3 +428,4 @@ export const ALLQUIZ: Map<number, Quiz[]> = new Map([
     [2, [QUIZ2]],
     [3, [QUIZ3]]
   ]);
+*/

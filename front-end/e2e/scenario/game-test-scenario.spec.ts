@@ -35,7 +35,7 @@ test.describe('Play a quiz test', () => {
         const quiz1 = quiz.nth(0);
         await quiz1.hover();
 
-        await expect(quiz1).toBeVisible();
+        await expect(quiz1).toBeVisible();  
 
         await quiz1.hover();
 
@@ -68,7 +68,7 @@ test.describe('Play a quiz test', () => {
 
         await answerButton2.click();
         await expect(answerButton2).not.toBeVisible();
-
+        
 
         await answerButton3.click();
         await expect(answerButton3).not.toBeVisible();
@@ -100,7 +100,7 @@ test.describe('Play a quiz test', () => {
         await answerButton7.click();
         await expect(answerButton7).not.toBeVisible();
         await expect(IndiceButton).not.toBeVisible();
-
+        
 
         await answerButton8.click();
         await expect(answerButton8).not.toBeVisible();
@@ -131,5 +131,9 @@ test.describe('Play a quiz test', () => {
 
         await answerButton10.click();
         await expect(answerButton10).not.toBeVisible();
+
+        
+        
+
       });
 });

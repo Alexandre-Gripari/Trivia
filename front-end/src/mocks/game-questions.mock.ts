@@ -1,4 +1,4 @@
-import { Quiz } from '../models/quiz.model';
+/*import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/question.model';
 
 
@@ -250,4 +250,4 @@ export const QUESTION_LIST: Question[] = [
   QUESTION_AUDIO,
   QUESTION_MIXTE
 
-];
+];*/

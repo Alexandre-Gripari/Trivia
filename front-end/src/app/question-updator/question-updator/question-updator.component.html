@@ -3,7 +3,7 @@
       <label id="qT"for="questionTitle">Intitulé de la question</label>
       <input type="text" id="questionTitle" [(ngModel)]="question" class="form-control">
     </div>
-  <app-answers-container (answersUpdated)="handleAnswersChange($event)"></app-answers-container>
+  <app-answers-container [answersInput]="answers" (answersUpdated)="handleAnswersChange($event)"></app-answers-container>
     <div class="form-group hint-container">
       <label id="hint" for="hints">Indices</label>
       <app-text-hint-container (hintsChangeTxt)="handleTextCluesChange($event)"></app-text-hint-container>

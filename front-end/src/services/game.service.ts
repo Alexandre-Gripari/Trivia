@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Answer, Question, Clue } from '../models/question.model';
-import { QUESTION_LIST } from '../mocks/game-questions.mock';
 import { QuestionAndClue } from '../models/game.model';
 import { EventEmitter } from '@angular/core';
 
@@ -25,7 +24,7 @@ export class GameService {
 
   private questions: Question[] = [];
 
-  private question: Question = QUESTION_LIST[0];
+  private question: Question = this.questions[0];
 
   private clueNumber: number = -1;
 
@@ -228,6 +227,7 @@ export class GameService {
 	    totalNumberOfCluesUsed: totalCluesUsed,
 	    successRate: successRate
     }
+    if (this.userId === 0) return;
     this.postQuizStats(quizStats);
   }
 

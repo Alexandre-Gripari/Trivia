@@ -2,24 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Clue } from 'src/models/question.model';
 import { Question } from 'src/models/question.model';
 import { Answer } from 'src/models/question.model';
-import { QuizService } from 'src/services/quiz.service';
 import { BasicClue } from 'src/models/question.model';
 import { Router } from '@angular/router';
-
-
-interface Indice{
-  text?: string;
-  image?: string;
-  audio?: string;
-}
+import { QuizUpdateService } from 'src/services/quizupdate.service';
 
 
 @Component({
-  selector: 'app-question-creator',
-  templateUrl: './question-creator.component.html',
-  styleUrls: ['./question-creator.component.scss']
+  selector: 'app-question-updator',
+  templateUrl: './question-updator.component.html',
+  styleUrls: ['./question-updator.component.scss']
 })
-export class QuestionCreatorComponent implements OnInit {
+export class QuestionUpdatorComponent implements OnInit {
 
   textClues: string[] = [];
   imageClues: string[] = [];
@@ -27,10 +20,24 @@ export class QuestionCreatorComponent implements OnInit {
   answers: Answer[] = [];
   question: string = '';
 
-  constructor(private quizService : QuizService, private router: Router ) { }
+  questionGettingUpdated: Question = {
+    id: 0,
+    question: '',
+    clues: [],
+    answers: [],
+    quizId: 0,
+    nbOfErrorsToUseClue: 0
+  }
+
+  constructor(private quizUpdateService: QuizUpdateService, private router: Router ) { }
 
   ngOnInit(): void {
+    this.questionGettingUpdated = this.quizUpdateService.getCurrentQuestion();
+    this.question = this.questionGettingUpdated.question;
+    this.answers = this.questionGettingUpdated.answers;
   }
+
+
   onAudioChange(event: any): void {
     const audioInput = document.getElementById('hint-audio') as HTMLInputElement;
     const audioPreview = document.getElementById('audio-preview') as HTMLAudioElement;
@@ -64,7 +71,7 @@ export class QuestionCreatorComponent implements OnInit {
   createQuestion() {
     console.log (this.textClues, this.imageClues, this.audioClues);
     var indice = this.createIndiceArray(this.textClues, this.imageClues, this.audioClues);
-    this.quizService.registerQuestion(this.question, this.answers, indice);
+    this.quizUpdateService.registerQuestionUpdated(this.question, this.answers, indice);
     this.router.navigate(['quiz-edition-page']);
   }
 
@@ -78,11 +85,13 @@ export class QuestionCreatorComponent implements OnInit {
       return prefix + '\n'+ clue;
     });
   
-    const indicesArray: Indice[] = [];
+    const indicesArray: Clue[] = [];
     const size = Math.max(modifiedTextClues.length, imageClues.length, audioClues.length);
   
     for (let i = 0; i < size; i++) {
-      const indice: Indice = {};
+      const indice: Clue = {
+        questionId: 0
+      };
       if (modifiedTextClues[i]) {
         indice.text = modifiedTextClues[i];
       }
@@ -97,5 +106,5 @@ export class QuestionCreatorComponent implements OnInit {
   
     return indicesArray;
   }
-  
+
 }

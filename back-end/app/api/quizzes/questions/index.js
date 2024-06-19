@@ -32,8 +32,11 @@ router.post('/', (req, res) => {
     // Check if quizId exists, if not it will throw a NotFoundError
     Quiz.getById(req.params.quizId)
     const quizId = parseInt(req.params.quizId, 10)
-    let question = Question.create({ label: req.body.label, quizId })
-    // If answers have been provided in the request, we create the answer and update the response to send.
+    let question = Question.create({ 
+      ...req.body, quizId
+    })
+    console.log(question)
+    /*// If answers have been provided in the request, we create the answer and update the response to send.
     if (req.body.answers && req.body.answers.length > 0) {
       const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
       question = { ...question, answers }
@@ -42,7 +45,7 @@ router.post('/', (req, res) => {
     if (req.body.clues && req.body.clues.length > 0) {
       const clues = req.body.clues.map((clue) => Clue.create({ ...clue, questionId: question.id }))
       question = { ...question, clues }
-    }
+    }*/
     res.status(201).json(question)
   } catch (err) {
     manageAllErrors(res, err)
@@ -52,7 +55,8 @@ router.post('/', (req, res) => {
 router.put('/:questionId', (req, res) => {
   try {
     const question = getQuestionFromQuiz(req.params.quizId, req.params.questionId)
-    const updatedQuestion = Question.update(req.params.questionId, { label: req.body.label, quizId: question.quizId })
+    const updatedQuestion = Question.update(req.params.questionId, req.body)
+    console.log(updatedQuestion)
     res.status(200).json(updatedQuestion)
   } catch (err) {
     manageAllErrors(res, err)
@@ -61,6 +65,12 @@ router.put('/:questionId', (req, res) => {
 
 router.delete('/:questionId', (req, res) => {
   try {
+    /*for (const answer of AnswersRouter.filterAnswersFromQuestion(req.params.questionId)) {
+      AnswersRouter.deleteAnswer(req.params.questionId, answer.id)
+    }
+    for (const clue of CluesRouter.filterCluesFromQuestion(req.params.questionId)) {
+      CluesRouter.deleteClue(req.params.questionId, clue.id)
+    }*/
     // Check if the question id exists & if the question has the same quizId as the one provided in the url.
     getQuestionFromQuiz(req.params.quizId, req.params.questionId)
     Question.delete(req.params.questionId)
