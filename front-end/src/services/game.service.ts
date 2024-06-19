@@ -226,6 +226,7 @@ export class GameService {
 	    totalNumberOfCluesUsed: totalCluesUsed,
 	    successRate: successRate
     }
+    if (this.userId === 0) return;
     this.postQuizStats(quizStats);
   }
 
