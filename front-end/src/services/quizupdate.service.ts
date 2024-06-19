@@ -6,6 +6,7 @@ import { Question } from 'src/models/question.model';
 import { Clue } from 'src/models/question.model';
 import { Answer } from 'src/models/question.model';
 import { getNumberOfCurrencyDigits } from '@angular/common';
+import { QuizService } from './quiz.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class QuizUpdateService {
     nbOfErrorsToUseClue: 0
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private quizService: QuizService) {
   }
 
   getCurrentQuiz() {
@@ -65,16 +66,22 @@ export class QuizUpdateService {
 
   updateQuestionsInDB(questions: Question[], quizId: number) {
     questions.forEach(question => {
+        if (question.id === 0) {
+            this.quizService.createQuestion(question, quizId);
+        } else {
         this.http.put<Question>(`${this.apiUrl}quizzes/${quizId}/questions/${question.id}`, {
             question: question.question,
             clues: question.clues,
             answers: question.answers,
             quizId: quizId,
             nbOfErrorsToUseClue: question.nbOfErrorsToUseClue
+        
         }).subscribe((question) => {
             console.log(question);
         });
+      }
     });
+    
   }
 
   updateQuestionToDelete(question: Question) {
@@ -106,6 +113,17 @@ export class QuizUpdateService {
             q.clues = clues;
         }
         });
+  }
+
+  registerQuestionAdded(question: string, answers: Answer[], clues: Clue[]) {
+    this.currentQuiz.questions.push({
+        id: 0,
+        question: question,
+        answers: answers,
+        clues: clues,
+        quizId: 0,
+        nbOfErrorsToUseClue: 0
+    });
   }
 
   

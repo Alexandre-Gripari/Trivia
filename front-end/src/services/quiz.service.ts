@@ -285,6 +285,10 @@ export class QuizService {
   }
   
   createClue(clue: Clue, questionId: number, quizId: number) {
+
+    if (clue.image === "") {
+      clue.image = undefined;
+    }
     
     const realClue = {
       questionId: questionId,

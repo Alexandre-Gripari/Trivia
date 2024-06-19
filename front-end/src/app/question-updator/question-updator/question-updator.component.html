@@ -6,10 +6,10 @@
   <app-answers-container [answersInput]="answers" (answersUpdated)="handleAnswersChange($event)"></app-answers-container>
     <div class="form-group hint-container">
       <label id="hint" for="hints">Indices</label>
-      <app-text-hint-container (hintsChangeTxt)="handleTextCluesChange($event)"></app-text-hint-container>
-      <app-image-hint-container (hintsChangeImg)="handleImgCluesChange($event)"></app-image-hint-container>
-      <app-audio-hint-container (hintsChangeAudio)="handleAudioCluesChange($event)"></app-audio-hint-container>
+      <app-text-hint-container [textHintInput]="textClues" (hintsChangeTxt)="handleTextCluesChange($event)"></app-text-hint-container>
+      <app-image-hint-container [imageHintInput]="imageClues" (hintsChangeImg)="handleImgCluesChange($event)"></app-image-hint-container>
+      <app-audio-hint-container [audioHintInput]="audioClues" (hintsChangeAudio)="handleAudioCluesChange($event)"></app-audio-hint-container>
    </div>
   <button type="submit" class="btn btn-success" (click)="createQuestion()">Valider</button>
-  <button type="reset" class="btn btn-danger">Annuler</button>
+  <button type="reset" class="btn btn-danger" (click)="cancel()">Annuler</button>
 </div>

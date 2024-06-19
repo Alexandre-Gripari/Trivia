@@ -25,6 +25,7 @@ export class QuizUpdatePageComponent implements OnInit {
     this.quizTitle = this.quizUpdateService.getCurrentQuiz().name;
     this.quizTheme = this.quizUpdateService.getCurrentQuiz().theme;
     this.questions = this.quizUpdateService.getCurrentQuiz().questions;
+    console.log(this.questions);
   }
 
   addQuiz() {

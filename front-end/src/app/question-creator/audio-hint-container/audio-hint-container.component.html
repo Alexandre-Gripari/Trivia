@@ -5,8 +5,6 @@
       <span>{{ fileName }}</span>
       <audio controls [src]="displayedAudios[i]"></audio>
       <div id="audio-hint-order">
-        <p>Ordre d'apparition de l'indice:</p>
-        <input type="number" min="0" max="3">
       </div>
       <div id="audio-hint-buttons">
         <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>

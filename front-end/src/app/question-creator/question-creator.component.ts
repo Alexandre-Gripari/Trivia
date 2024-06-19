@@ -54,7 +54,6 @@ export class QuestionCreatorComponent implements OnInit {
 
   handleImgCluesChange(clues: any) {
     this.imageClues = clues;
-    console.log(this.imageClues);
   }
 
   handleAudioCluesChange(clues: any) {
@@ -68,30 +67,49 @@ export class QuestionCreatorComponent implements OnInit {
     this.router.navigate(['quiz-edition-page']);
   }
 
+  cancel() {
+    this.router.navigate(['quiz-edition-page']);
+  }
+
+
   createIndiceArray(textClues: string[], imageClues: string[], audioClues: string[]) {
     const modifiedTextClues = textClues.map((clue, index) => {
       // Create a prefix from all text clues before the current one
-      const prefix = textClues.slice(0, index).join('');
-      if (index === 0) {
-        return clue;
-      }
-      return prefix + '\n'+ clue;
+      const prefix = textClues.slice(0, index).join('\n');
+      // Check if prefix is not empty, then append \n before the current clue
+      return prefix ? `${prefix}\n${clue}` : clue;
     });
   
-    const indicesArray: Indice[] = [];
+    const indicesArray: Clue[] = [];
     const size = Math.max(modifiedTextClues.length, imageClues.length, audioClues.length);
+
+    var imagetmp = "";
+    var audioTmp = "";
+    var textTmp = "";
+
+    if (imageClues.length > 0) {
+      imagetmp = imageClues[0];
+    }
   
     for (let i = 0; i < size; i++) {
-      const indice: Indice = {};
+      const indice: Clue = {
+        questionId: 0
+      };
       if (modifiedTextClues[i]) {
         indice.text = modifiedTextClues[i];
+        textTmp = modifiedTextClues[i];
       }
+      else indice.text = textTmp;
       if (imageClues[i]) {
         indice.image = imageClues[i];
+        imagetmp = imageClues[i];
       }
+      else indice.image = imagetmp;
       if (audioClues[i]) {
         indice.audio = audioClues[i];
+        audioTmp = audioClues[i];
       }
+      else indice.audio = audioTmp;
       indicesArray.push(indice);
     }
   

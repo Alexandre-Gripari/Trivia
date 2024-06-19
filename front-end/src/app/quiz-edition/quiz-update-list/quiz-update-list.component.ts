@@ -25,7 +25,7 @@ export class QuizUpdateListComponent implements OnInit {
   }
 
   addQuestion() {
-    this.router.navigate(['app-question-updator']);
+    this.router.navigate(['question-updator'], { state: { myBoolean: true } });
   }
 
   updateQuestions() {
