@@ -4,12 +4,14 @@ import { User } from '../models/user.model';
 import { USER_LIST } from '../mocks/user-list.mock';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { serverUrl } from 'src/configs/server.config';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:9428/api/users';
+  private apiUrl = serverUrl;
   private currentUser: any;
   /**
    * Services Documentation:
@@ -76,7 +78,7 @@ export class UserService {
 
   createUser(user: User | FormData): Observable<User> {
     if (user instanceof FormData) {
-      return this.http.post<User>(this.apiUrl, user);
+      return this.http.post<User>(this.apiUrl, user); //users
     } else {
       return this.http.post<User>(this.apiUrl, user);
     }

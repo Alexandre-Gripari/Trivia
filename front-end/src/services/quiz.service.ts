@@ -5,13 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { Question } from 'src/models/question.model';
 import { Clue } from 'src/models/question.model';
 import { Answer } from 'src/models/question.model';
+import { serverUrl} from 'src/configs/server.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
 
-  private apiUrl = 'http://localhost:9428/api/'
+  private apiUrl = serverUrl;
 
   /**
    * Services Documentation:

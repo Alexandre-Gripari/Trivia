@@ -6,6 +6,7 @@ import { EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { AnswerStats, QuestionStats, QuizStats } from 'src/models/statistic.model';
+import { serverUrl} from 'src/configs/server.config';
 
 
 
@@ -16,7 +17,7 @@ export class GameService {
 
   private inactivityTimer: any;
 
-  private apiUrl = 'http://localhost:9428/api/'
+  private apiUrl = serverUrl;
 
   private index: number = 0;
 

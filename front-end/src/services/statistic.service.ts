@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
 //import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
 //import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
+import { serverUrl} from 'src/configs/server.config';
 
 
 @Injectable({
@@ -42,7 +43,7 @@ export class StatisticService {
 
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
-    private serverUrl = "http://localhost:9428/api/"
+    private serverUrl = serverUrl;
     private statsUrl = this.serverUrl + 'statistics';
     private dataStatsPath = 'datastats';
     private quizStatsPath = 'quizstats';
