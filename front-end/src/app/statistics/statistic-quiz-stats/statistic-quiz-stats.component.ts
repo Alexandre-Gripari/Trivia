@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { QuizStats } from '../../../models/statistic.model';
 import { Router } from '@angular/router';
+import { StatisticService } from 'src/services/statistic.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class StatisticQuizStatsComponent implements OnInit {
 
   @Output() quizStatsSelected = new EventEmitter<QuizStats>();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public statsService: StatisticService) {
   }
 
   ngOnInit() {
@@ -31,6 +32,8 @@ export class StatisticQuizStatsComponent implements OnInit {
     this.quizStatsSelected.emit(this.quizStats);
   }
 
-
+  onDeleteQuizStat() {
+    if (this.quizStats) this.statsService.deleteQuizStat(this.quizStats)
+  }
   
 }

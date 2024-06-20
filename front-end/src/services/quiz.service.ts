@@ -55,7 +55,7 @@ export class QuizService {
     }
     this.http.post<Quiz>(`${this.apiUrl}quizzes`, quizWithUserId).subscribe(
     response => {
-      
+
       quiz.questions.forEach(question => {
         this.createQuestion(question, response.id);
       }
@@ -210,7 +210,7 @@ export class QuizService {
   // to move in a more appropriate service
 
   createQuiz(name: string, theme: string, questions: Question[]) {
-    const quiz = { 
+    const quiz = {
       theme: theme,
       name: name,
       userId: this.user_id,
@@ -228,7 +228,7 @@ export class QuizService {
       }
     );
   }
-  
+
   createQuestion(question: Question, quizId: number) {
     // Include quizId in the question object or API call as needed
 
@@ -263,9 +263,9 @@ export class QuizService {
       }
     );
   }
-  
+
   createAnswer(answer: Answer, questionId: number, quizId: number) {
-    
+
     const realAnswer = {
       type: "option",
       value: answer.value,
@@ -283,7 +283,7 @@ export class QuizService {
       }
     );
   }
-  
+
   createClue(clue: Clue, questionId: number, quizId: number) {
 
     if (clue.image === "") {
@@ -330,6 +330,10 @@ export class QuizService {
     this.questions.push(realQuestion);
   }
 
+  setQuestions(questions: Question[]) {
+    this.questions = questions;
+  }
+
   getQuestions() {
     return this.questions;
   }
@@ -338,7 +342,7 @@ export class QuizService {
     this.quizData.title = title;
     this.quizData.theme = theme;
   }
-  
+
   getQuizData() {
     return this.quizData;
   }

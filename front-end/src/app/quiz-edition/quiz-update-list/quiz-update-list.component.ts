@@ -13,7 +13,7 @@ export class QuizUpdateListComponent implements OnInit {
 
   questions: Question[] = [];
 
-  @Output() 
+  @Output()
   questionsUpdated: EventEmitter<Question[]> = new EventEmitter();
 
 
@@ -43,7 +43,7 @@ export class QuizUpdateListComponent implements OnInit {
     this.router.navigate(['question-updator']);
   }
 
-  
+
 
 
 }

@@ -5,18 +5,8 @@ import { Question } from './question.model';
 
 
 export interface StatisticData {
-	id: number;
-	
-	numberOfCompletedQuizzes: number;
-
     numberOfCluesUsed: number;
-	numberOfCluesUsedLatest: number;
-
-	timeSpentMinutes: number;
-	timeSpentSeconds: number;
-
-	timeSpentMinutesLatest: number;
-	timeSpentSecondsLatest: number;
+	date: Date;
 } 
 
 export interface QuizStats {

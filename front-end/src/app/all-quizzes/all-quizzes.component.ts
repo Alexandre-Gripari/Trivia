@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../models/quiz.model';
 import { QuizService } from '../../services/quiz.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {NavBarComponent} from "../quizzes/nav-bar/nav-bar.component";
 
 
 @Component({
@@ -14,7 +15,7 @@ export class AllQuizzesComponent implements OnInit {
   public allQuizzes: Quiz[] = [];
   public quizForm: FormGroup;
 
-  constructor(public quizService : QuizService,public formBuilder: FormBuilder) { 
+  constructor(public quizService : QuizService,public formBuilder: FormBuilder) {
     this.quizService.allQuiz$.subscribe((quizList) => {
       this.allQuizzes = quizList;
     });
@@ -29,7 +30,7 @@ export class AllQuizzesComponent implements OnInit {
     this.quizService.getAllQuiz();
   }
 
-  
+
     menuOpen = false;
 
   public allQuiz: Quiz[] = [];

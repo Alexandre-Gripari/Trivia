@@ -13,28 +13,22 @@ export class StatisticService {
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
+
+    private userId: number = 0;
     
-    private stats: StatisticData = {
-      id: 0,
-      numberOfCompletedQuizzes: 0, 
-      numberOfCluesUsed: 0, 
-      numberOfCluesUsedLatest: 0, 
-      timeSpentMinutes: 0,
-      timeSpentSeconds: 0,
-      timeSpentMinutesLatest: 0,
-      timeSpentSecondsLatest: 0
-    };
+    private stats: StatisticData[] = []; 
+    private statsFiltered: StatisticData[] = [];
 
     //private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
     private statsQuizzes: QuizStats[] = [];
     private statsQuizzesFiltred: QuizStats[] = [];
         
-    public stats$: BehaviorSubject<StatisticData> = new BehaviorSubject(this.stats); 
+    public stats$: BehaviorSubject<StatisticData[]> = new BehaviorSubject(this.stats); 
 
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
-    private serverUrl = "http://localhost:9428/api/"
-    private statsUrl = this.serverUrl + 'statistics';
+    private apiUrl = "http://localhost:9428/api/"
+    private statsUrl = this.apiUrl + 'statistics';
     private dataStatsPath = 'datastats';
     private quizStatsPath = 'quizstats';
 
@@ -51,19 +45,21 @@ export class StatisticService {
   }
 
   setUserId(userId: number): void {
-    this.setUserStats(userId.toString());
+    this.userId = userId;
+    this.setUserStats(userId);
     this.setUserStatsQuizzes(userId);
   }
 
-  setUserStats(userId: String): void {
-    const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + userId;
-    this.http.get<StatisticData>(urlWithId).subscribe((stats) => {
+  setUserStats(userId: number): void {
+    const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + this.userId;
+    this.http.get<StatisticData[]>(urlWithId).subscribe((stats) => {
+    this.stats = stats;
     this.stats$.next(stats);
     });
   }
 
   setUserStatsQuizzes(userId: number): void {
-    const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
+    const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + this.userId;
     this.http.get<QuizStats[]>(urlWithId).subscribe((statsQuizzes) => {
       this.statsQuizzesOb$.next(statsQuizzes);
       this.statsQuizzes = statsQuizzes;
@@ -71,6 +67,34 @@ export class StatisticService {
     }); 
   }
 
+  deleteQuizStat(quizStats: QuizStats) {
+    console.log("id du user :", this.userId);
+    this.http.delete<QuizStats>(`${this.statsUrl}/quizstats/${quizStats.id}`).subscribe(
+      response => {
+        console.log('QuizStats deleted successfully', response);
+        this.setUserStats(this.userId);
+        this.setUserStatsQuizzes(this.userId);
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
+
+  filterCharts(startDate: Date, endDate: Date) {
+    const startMonth = startDate.getMonth();
+    const startYear = startDate.getFullYear();
+    const endMonth = endDate.getMonth();
+    const endYear = endDate.getFullYear();
+    if (startYear > endYear) return this.stats$.next([]);
+    this.statsFiltered = this.stats.filter(stat => {
+      const statDate = new Date(stat.date);
+      const statMonth = statDate.getMonth();
+      const statYear = statDate.getFullYear();
+      return (statYear > startYear && statYear < endYear) || (startYear != endYear && statYear === startYear && statMonth >= startMonth) || (startYear != endYear && statYear === endYear && statMonth <= endMonth) || (startYear === endYear && statYear === startYear && statMonth >= startMonth && statMonth <= endMonth);
+    });
+    this.stats$.next(this.statsFiltered);
+  }
 
   sortByDate() {
     this.statsQuizzesFiltred.sort((a, b) => {
