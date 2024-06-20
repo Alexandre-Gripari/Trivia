@@ -1,6 +1,9 @@
 const { Router } = require('express');
 const { getStatsQuizzes } = require('./manager');
+const manageAllErrors = require('../../../utils/routes/error-management')
 const { Quizstats } = require('../../../models');
+const { deleteAllQuestionsStatsFromQuiz } = require('./questionstats/manager')
+const { deleteStatisticDataFromQuiz } = require('../datastats/manager')
 const QuestionStatsRouter = require('./questionstats')
 
 const router = new Router({ mergeParams: true })
@@ -26,6 +29,17 @@ router.get('/:userId', (req, res) => {
     try {
       const quiz = Quizstats.create({ ...req.body })
       res.status(201).json(quiz)
+    } catch (err) {
+      manageAllErrors(res, err)
+    }
+  })
+
+  router.delete('/:quizStatsId', (req, res) => {
+    try {
+      Quizstats.delete(req.params.quizStatsId);
+      deleteAllQuestionsStatsFromQuiz(req.params.quizStatsId);
+      deleteStatisticDataFromQuiz(req.params.quizStatsId);
+      res.status(204).end();
     } catch (err) {
       manageAllErrors(res, err)
     }

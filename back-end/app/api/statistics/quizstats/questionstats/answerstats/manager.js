@@ -16,6 +16,16 @@ const retrieveAnswers = (questionStatsId) => {
     return mappedAnswersStats;
 } 
 
+const deleteAllAnswersStatsFromQuestion = (questionStatsId) => {
+    const answersStats = Answerstats.get();
+    const parsedId = parseInt(questionStatsId, 10);
+    filteredAnswersStats = answersStats.filter((answerStats) => answerStats.questionStatsId === parsedId);
+    filteredAnswersStats.forEach((answerStat) => {
+      Answerstats.delete(answerStat.id);
+    });
+  }
+
 module.exports = {
-    retrieveAnswers
+    retrieveAnswers,
+    deleteAllAnswersStatsFromQuestion
 };

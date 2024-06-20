@@ -69,7 +69,8 @@ export class StatisticDataComponent implements OnInit {
       },
       series: [{
         name: 'Nombre d\'indices utilisés',
-        data: this.stats.map(stat => stat.numberOfCluesUsed) 
+        data: this.stats.map(stat => stat.numberOfCluesUsed),
+        color: '#0e80eb' 
       }]
     };
   }

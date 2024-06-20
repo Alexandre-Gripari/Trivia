@@ -17,6 +17,16 @@ const getStats = (userId) => {
     return mappedUserStats;
 };
 
+const deleteStatisticDataFromQuiz = (quizStatsId) => {
+    const statistics = Stats.get();
+    console.log("allStats: ", statistics);
+    const parsedId = parseInt(quizStatsId, 10);
+    const filteredStat = statistics.find((stat) => stat.quizStatId === parsedId);
+    console.log("stat: ", filteredStat);
+    Stats.delete(filteredStat.id);
+}
+
 module.exports = {
-    getStats
+    getStats,
+    deleteStatisticDataFromQuiz
 };

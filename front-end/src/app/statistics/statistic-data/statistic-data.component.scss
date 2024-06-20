@@ -1,4 +1,4 @@
-/* statistic-data.component.scss */
+@import '../../../styles/card.scss';
 
 .statistic-data {
     display: flex;
@@ -37,25 +37,39 @@
   
     label {
       margin-right: 2px;
+      font-size: 110%;
     }
   
     select,
     input {
       margin-right: 20px;
-      font-size: large;
+      font-size: 110%;
     }
   }
   
   button {
     margin-top: 2%;
-    width: 50%;
-    height: 50px;
+    text-align: center;
+    width: 55%;  
+    height: 25%; 
+    font-size: 100%;
+    padding: 1%;
+    background-color: $logo-fade;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 10px solid $logo-fade;
+    color: white;
+  }
+
+  button:hover {
+    background-color: $logo-color;
+    border: 10px solid $logo-color;
   }
 
   p {
     width: 100%;
     text-align: center; /* Centrer le texte */
-    padding-left: 150px; /* Ajouter un peu de marge intérieure */
+    padding-left: 180px; /* Ajouter un peu de marge intérieure */
     margin-top: 40%; /* Supprimer la marge par défaut */
   }
   

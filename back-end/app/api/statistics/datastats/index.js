@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { getStats } = require('./manager');
+const { Stats } = require('../../../models');
 
 const router = new Router({ mergeParams: true })
 
@@ -17,5 +18,14 @@ router.get('/:userId', (req, res) => {
     }
   }
 });
+
+router.post('/', (req, res) => {
+  try {
+    const stat = Stats.create({ ...req.body })
+    res.status(201).json(stat)
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
 
 module.exports = router;
