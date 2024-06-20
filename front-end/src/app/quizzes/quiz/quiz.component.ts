@@ -29,6 +29,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     this.quizService.setCurrentQuiz(this.quiz);
+    console.log(this.quiz);
   }
 
   selectQuiz() {
@@ -53,6 +54,7 @@ export class QuizComponent implements OnInit {
 
   deleteQuiz() {
     console.log("Delete quiz");
+  
     if (this.quiz) {
       console.log("Delete quiz");
       this.quizService.deleteQuiz(this.quiz);

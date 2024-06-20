@@ -25,16 +25,20 @@ export class QuizUpdatePageComponent implements OnInit {
     this.quizTitle = this.quizUpdateService.getCurrentQuiz().name;
     this.quizTheme = this.quizUpdateService.getCurrentQuiz().theme;
     this.questions = this.quizUpdateService.getCurrentQuiz().questions;
+    console.log(this.questions);
   }
 
   addQuiz() {
+    if (!this.quizTheme) this.quizTheme = '';
     this.quizUpdateService.updateQuizInDB(this.quizTitle, this.quizTheme, this.questions);
     this.quizUpdateService.deleteQuestionsInDB();
+    this.quizUpdateService.clearData();
     this.router.navigate(['home-page'])
   }
 
   handleQuestionsUpdated(questions: Question[]) {
     this.questions = questions;
+    this.quizUpdateService.updateQuestionsOfCurrentQuiz(questions);
   }
 
   handleQuizChange(event: any) {

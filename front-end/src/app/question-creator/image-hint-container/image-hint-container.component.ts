@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild, EventEmitter, Output} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, EventEmitter, Output, Input} from '@angular/core';
 import {BasicClue} from '../../../models/question.model';
 
 @Component({
@@ -18,12 +18,22 @@ export class ImageHintContainerComponent implements OnInit {
   
   clues: string[] = [];
 
+  @Input()
+  imageHintInput: string[] = [];
+
   @Output()
   hintsChangeImg: EventEmitter<string[]> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+    if (this.imageHintInput.length > 0) {
+      this.fileDataUrls = this.imageHintInput;
+      this.fileNames = this.imageHintInput.map(() => 'Image');
+      this.displayedImages = this.imageHintInput;
+      this.isImageDisplayed = this.imageHintInput.map(() => false);
+      this.clues = this.imageHintInput;
+    }
   }
 
   onShowImageClick(): void {

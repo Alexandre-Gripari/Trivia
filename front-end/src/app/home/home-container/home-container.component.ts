@@ -13,11 +13,8 @@ export class HomeContainerComponent {
   }
 
   navigateToCreateQuiz() {
-    this.router.navigate(['/quiz-edition-page']);
-  }
-
-  navigateToCreateQuestion() {
-    this.router.navigate(['/question-creator']);
+    //this.router.navigate(['/quiz-edition-page']);
+    this.router.navigate(['/quiz-update-page']);
   }
 
   navigateToUserList() {

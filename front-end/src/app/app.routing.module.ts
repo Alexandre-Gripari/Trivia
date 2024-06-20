@@ -15,6 +15,7 @@ import { QuizUpdatePageComponent } from './quiz-edition/quiz-update-page/quiz-up
 import { QuizUpdateListComponent } from './quiz-edition/quiz-update-list/quiz-update-list.component';
 import { QuestionUpdatorComponent } from './question-updator/question-updator/question-updator.component';
 
+
 const routes: Routes = [
     { path: 'game-page', component: GamePageComponent},
     { path: 'user-page', component: UserPageComponent},

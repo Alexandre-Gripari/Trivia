@@ -239,7 +239,7 @@ export class QuizService {
       quizId: quizId,
       answers : question.answers,
       clues : question.clues,
-      nbOfErrorsToUseClue : question.nbOfErrorsToUseClue
+      nbOfErrorsToUseClue : 1
     }
 
     console.log('Creating question', realQuestion);
@@ -286,6 +286,18 @@ export class QuizService {
 
   createClue(clue: Clue, questionId: number, quizId: number) {
 
+    if (clue.image === "") {
+      clue.image = undefined;
+    }
+
+    if (clue.audio === "") {
+      clue.audio = undefined;
+    }
+
+    if (clue.text === "") {
+      clue.text = undefined;
+    }
+    
     const realClue = {
       questionId: questionId,
       image : clue.image,

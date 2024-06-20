@@ -11,5 +11,5 @@
       <app-audio-hint-container (hintsChangeAudio)="handleAudioCluesChange($event)"></app-audio-hint-container>
    </div>
   <button type="submit" class="btn btn-success" (click)="createQuestion()">Valider</button>
-  <button type="reset" class="btn btn-danger">Annuler</button>
+  <button type="reset" class="btn btn-danger" (click)="cancel()" >Annuler</button>
 </div>

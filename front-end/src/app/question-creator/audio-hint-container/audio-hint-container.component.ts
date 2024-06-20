@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
@@ -13,9 +13,23 @@ export class AudioHintContainerComponent implements OnInit {
   fileDataUrls: SafeUrl[] = [];
   displayedAudios: (SafeUrl | undefined)[] = [];
 
+  clues: string[] = [];
+
+  @Input()
+  audioHintInput: string[] = [];
+
+  @Output()
+  hintsChangeAudio: EventEmitter<string[]> = new EventEmitter();
+
   constructor(private sanitizer : DomSanitizer) { }
 
   ngOnInit(): void {
+    if (this.audioHintInput.length > 0) {
+      this.fileDataUrls = this.audioHintInput.map(audio => this.sanitizer.bypassSecurityTrustUrl(audio));
+      this.fileNames = this.audioHintInput.map(() => 'Audio');
+      this.displayedAudios = this.fileDataUrls;
+      this.clues = this.audioHintInput;
+    }
   }
 
   onShowAudioClick(): void {
@@ -35,6 +49,8 @@ export class AudioHintContainerComponent implements OnInit {
       const safeUrl: SafeUrl = this.sanitizer.bypassSecurityTrustUrl(e.target?.result as string);
       this.fileDataUrls.push(safeUrl);
       this.displayedAudios.push(safeUrl);
+      this.clues.push(e.target?.result as string);
+      this.updateHints();
     };
     reader.readAsDataURL(file);
   }
@@ -43,6 +59,34 @@ export class AudioHintContainerComponent implements OnInit {
     this.fileNames.splice(index, 1);
     this.fileDataUrls.splice(index, 1);
     this.displayedAudios.splice(index, 1);
+    this.clues.splice(index, 1);
+    this.updateHints();
+  }
+
+  
+
+  updateHints() {
+    this.hintsChangeAudio.emit(this.clues);
+  }
+
+  moveUp(index: number): void {
+    if (index > 0) {
+      this.fileDataUrls.splice(index - 1, 0, this.fileDataUrls.splice(index, 1)[0]);
+      this.fileNames.splice(index - 1, 0, this.fileNames.splice(index, 1)[0]);
+      this.displayedAudios.splice(index - 1, 0, this.displayedAudios.splice(index, 1)[0]);
+      this.clues.splice(index - 1, 0, this.clues.splice(index, 1)[0]);
+      this.updateHints();
+    }
+  }
+
+  moveDown(index: number): void {
+    if (index < this.fileNames.length - 1) {
+      this.fileDataUrls.splice(index + 1, 0, this.fileDataUrls.splice(index, 1)[0]);
+      this.fileNames.splice(index + 1, 0, this.fileNames.splice(index, 1)[0]);
+      this.displayedAudios.splice(index + 1, 0, this.displayedAudios.splice(index, 1)[0]);
+      this.clues.splice(index + 1, 0, this.clues.splice(index, 1)[0]);
+      this.updateHints();
+    }
   }
 
 }
