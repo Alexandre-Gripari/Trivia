@@ -33,6 +33,7 @@ export class QuizEditionComponent implements OnInit {
 
   handleQuestionsUpdated(questions: Question[]) {
     this.questions = questions;
+    this.quizService.setQuestions(questions);
   }
 
   handleQuizChange(event: any) {
