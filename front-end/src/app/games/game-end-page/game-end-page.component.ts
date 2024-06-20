@@ -51,6 +51,7 @@ export class GameEndPageComponent implements OnInit {
     this.notify.emit(true);
     this.gameService.setQuestions(this.quiz.questions, this.quiz.name, this.quiz.theme);
     console.log("OK");
+    this.stopConfettiAnimation();
     this.router.navigate(['/game-page']);
   }
 
@@ -64,6 +65,10 @@ export class GameEndPageComponent implements OnInit {
     this.confettiComponent.startConfetti();
   }
 
+  stopConfettiAnimation() {
+    console.log("stop confetti");
+    this.confettiComponent.stopConfetti();
+  }
 
 
 }
