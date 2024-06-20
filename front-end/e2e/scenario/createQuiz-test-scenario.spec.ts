@@ -3,16 +3,17 @@ import {homeUrl} from 'e2e/e2e.config';
 import {HomeFixture} from "../../src/app/home/home-container/home-container.fixture";
 import { UserListFixture } from 'src/app/users/user-navigate/user-navigatecomponent.fixture';
 import {UserCardFixture} from "../../src/app/users/user/usercomponent.fixture";
-import {QuizEditionFixture} from "../../src/app/quiz-edition/quiz-edition-page/quiz_edition.fixture";
 import {HeaderFixture} from "../../src/app/header/header.fixture";
 import {GameQuestionFixture} from "../../src/app/games/game-question/game-question.fixture";
-import {QuestionCreatorFixture} from "../../src/app/question-creator/question-creator.fixture";
+import { QuestionUpdatorFixture } from 'src/app/question-updator/question-updator.fixture';
 import {AnswersContainerFixture} from "../../src/app/question-creator/answers-container/answers-container.fixture";
 import {TextHintsContainerFixture} from "../../src/app/question-creator/text-hint-container/text-hint-container.fixture";
-import {QuestionListFixture} from "../../src/app/quiz-edition/questions-list/question-list.fixture";
 import {ajax} from "rxjs/internal/ajax/ajax";
 import {QuizListFixture} from "../../src/app/quizzes/quiz-list/quiz-list.fixture";
 import {QuizCardFixture} from "../../src/app/quizzes/quiz/quiz.component.fixture";
+import { QuizUpdateFixture } from 'src/app/quiz-edition/quiz-update-page/quiz-update-page.fixture';
+import { QuestionUpdateListFixture } from 'src/app/quiz-edition/quiz-update-list/quiz-update-list.fixture';
+
 
 // This file is here to test the playwright integration.
 test.describe('Initial test display', () => {
@@ -25,7 +26,7 @@ test.describe('Initial test display', () => {
     await expect(creationQuizButton).toBeVisible();
     await HomeFixtureComponent.clickCreateQuizButton();
 
-    const QuizEditionFixtureComponent = new QuizEditionFixture(page);
+    const QuizEditionFixtureComponent = new QuizUpdateFixture(page);
 
     const confirmButton = QuizEditionFixtureComponent.getConfirmButton();
     await expect(confirmButton).toBeVisible();
@@ -50,11 +51,11 @@ test.describe('Initial test display', () => {
     const isThemeEqual = await QuizEditionFixtureComponent.isTextEqual('#quizTheme', 'Theme Test');
     expect(isThemeEqual).toBe(true);
 
-    const QuestionListFixtureComponent = new QuestionListFixture(page);
+    const QuestionListFixtureComponent = new QuestionUpdateListFixture(page);
 
     await QuestionListFixtureComponent.clickAddQuestionButton();
 
-    const QuestionCreatorFixtureComponent = new QuestionCreatorFixture(page);
+    const QuestionCreatorFixtureComponent = new QuestionUpdatorFixture(page);
 
     const questionTitleInput = QuestionCreatorFixtureComponent.getQuestionTitleInput();
     await expect(questionTitleInput).toBeVisible();

@@ -50,7 +50,7 @@ import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
 import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
 import { QuizUpdateListComponent } from './quiz-edition/quiz-update-list/quiz-update-list.component';
 import { QuizUpdatePageComponent} from './quiz-edition/quiz-update-page/quiz-update-page.component';
-import { QuestionUpdatorComponent } from './question-updator/question-updator/question-updator.component';
+import { QuestionUpdatorComponent } from './question-updator/question-updator.component';
 
 @NgModule({
   declarations: [

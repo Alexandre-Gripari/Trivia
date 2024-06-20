@@ -1,6 +1,6 @@
 import { E2EComponentFixture } from 'e2e/e2e-component.fixture';
 
-export class QuestionCreatorFixture extends E2EComponentFixture {
+export class QuestionUpdatorFixture extends E2EComponentFixture {
 
   getQuestionTitleInput() {
     return this.page.locator('#questionTitle');
