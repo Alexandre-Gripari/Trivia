@@ -5,9 +5,10 @@ import { QuestionAndClue } from '../models/game.model';
 import { EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { AnswerStats, QuestionStats, QuizStats } from 'src/models/statistic.model';
+import { AnswerStats, QuestionStats, QuizStats, StatisticData } from 'src/models/statistic.model';
 import {Quiz} from "../models/quiz.model";
 import {User} from "../models/user.model";
+
 
 
 
@@ -194,7 +195,7 @@ export class GameService {
       question: question,
       answerStats: [],
       timeMinutes: timeMinutes,
-	    timeSeconds: timeSeconds-1,
+	    timeSeconds: timeSeconds,
 	    numberOfCluesUsed: numberOfCluesUsed,
 	    numberOfBadAnswers: numberOfBadAnswers,
     }
@@ -219,30 +220,49 @@ export class GameService {
     }
     successRate /= this.questionsStats.length;
     successRate = Math.floor(successRate);
+    const actualDate = new Date();
     const quizStats = {
       userId: this.userId,
 	    name: this.quizName,
       theme: this.quizTheme,
-	    date: new Date(),
+	    date: actualDate,
 	    totalTimeMinutes: totalTimeM,
 	    totalTimeSeconds: totalTimeS,
 	    totalNumberOfCluesUsed: totalCluesUsed,
 	    successRate: successRate
     }
     if (this.userId === 0) return;
-    this.postQuizStats(quizStats);
+    this.postQuizStats(quizStats, totalCluesUsed, actualDate);
   }
 
-  private postQuizStats(quizStats: any) {
+  private postQuizStats(quizStats: any, totalCluesUsed: number, actualDate: Date) {
     this.http.post<QuizStats>(`${this.apiUrl}statistics/quizstats`, quizStats).subscribe(
       response => {
         console.log("Id du quizStats envoyé :", response.id);
+        const globalStats = {
+          userId: this.userId,
+          quizStatId: response.id,
+          numberOfCluesUsed: totalCluesUsed,
+          date: actualDate 
+        }
+        this.postGlobalStat(globalStats);
         this.postQuestionsStats(response.id);
       },
       error => {
         console.error('There was an error during the request', error);
       }
     );
+  }
+
+  private postGlobalStat(globalStat: any) {
+    this.http.post<StatisticData>(`${this.apiUrl}statistics/datastats`, globalStat).subscribe(
+      response => {
+        console.log("Id du globalStats envoyé :", response);
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    )
   }
 
   private postQuestionsStats(quizStatsId: number) {

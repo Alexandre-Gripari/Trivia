@@ -5,8 +5,8 @@ const router = new Router();
 
 router.post('/', (req, res) => {
     try {
-      const quiz = Answerstats.create({ ...req.body })
-      res.status(201).json(quiz)
+      const answer = Answerstats.create({ ...req.body })
+      res.status(201).json(answer)
     } catch (err) {
       manageAllErrors(res, err)
     }

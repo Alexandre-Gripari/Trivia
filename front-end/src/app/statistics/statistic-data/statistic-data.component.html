@@ -1,12 +1,35 @@
+<!-- statistic-data.component.html -->
+
 <div class="statistic-data">
-    <p>INFORMATIONS GENERALES</p>
-    <div class="clues">
-      <span class="clues-g">Nombre moyen d'indices utilisés sur l'ensemble des quiz: {{stats.numberOfCluesUsed}}</span>
-      <span class="clues-l">Nombre moyen d'indices utilisés sur les 10 derniers quiz: {{stats.numberOfCluesUsedLatest}}</span>
+  <div class="chart-container">
+    <div *ngIf="stats.length > 0">
+      <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" class="chart"></highcharts-chart>
     </div>
-    <div class="times">
-      <span class="times-g">Temps moyen passé sur l'ensemble des quiz: {{stats.timeSpentMinutes}} min {{stats.timeSpentSeconds}} s</span>
-      <span class="times-l">Temps moyen passé sur les 10 derniers quiz: {{stats.timeSpentMinutesLatest}} min {{stats.timeSpentSecondsLatest}} s</span>
+    <div *ngIf="stats.length === 0">
+      <p>L'intervalle donné ne contient aucune donnée existante (vérifiez vos filtres).</p>
     </div>
+  </div>
+  <div class="filters">
+    <div class="date-filter">
+      <label for="startMonth">Mois de début :</label>
+      <select id="startMonth" [(ngModel)]="startMonth">
+        <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+      </select>
+
+      <label for="startYear">Année de début :</label>
+      <input id="startYear" type="number" [(ngModel)]="startYear" />
+    </div>
+
+    <div class="date-filter">
+      <label for="endMonth">Mois de fin :</label>
+      <select id="endMonth" [(ngModel)]="endMonth">
+        <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+      </select>
+
+      <label for="endYear">Année de fin :</label>
+      <input id="endYear" type="number" [(ngModel)]="endYear" />
+    </div>
+
+    <button (click)="filterData()">Filtrer</button>
+  </div>
 </div>
-  

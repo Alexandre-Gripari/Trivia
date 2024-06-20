@@ -1,5 +1,5 @@
 const { Questionstats } = require('../../../../models')
-const { retrieveAnswers } = require('./answerstats/manager')
+const { retrieveAnswers, deleteAllAnswersStatsFromQuestion } = require('./answerstats/manager')
 
 
 const filterQuestionsStatsFromQuizz = (quizStatsId) => {
@@ -22,6 +22,18 @@ const filterQuestionsStatsFromQuizz = (quizStatsId) => {
 
   }
 
+  const deleteAllQuestionsStatsFromQuiz = (quizStatsId) => {
+    const questionsStats = Questionstats.get();
+    const parsedId = parseInt(quizStatsId, 10);
+    filteredQuestionsStats = questionsStats.filter((questionStats) => questionStats.quizStatsId === parsedId);
+    filteredQuestionsStats.forEach((questionStat) => {
+      deleteAllAnswersStatsFromQuestion(questionStat.id);
+      Questionstats.delete(questionStat.id);
+    });
+  }
+
+
   module.exports = {
-    filterQuestionsStatsFromQuizz
+    filterQuestionsStatsFromQuizz,
+    deleteAllQuestionsStatsFromQuiz
   }
