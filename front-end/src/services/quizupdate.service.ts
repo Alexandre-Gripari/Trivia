@@ -96,7 +96,7 @@ export class QuizUpdateService {
         } else {
           this.http.put<Answer>(`${this.apiUrl}quizzes/${quizId}/questions/${questionId}/answers/${ans.id}`, {
             type: ans.type,
-            text: ans.value,
+            value: ans.value,
             isCorrect: ans.isCorrect,
             questionId: questionId
           }).subscribe(
@@ -190,6 +190,10 @@ export class QuizUpdateService {
         quizId: 0,
         nbOfErrorsToUseClue: 0
     }
+  }
+
+  updateQuestionsOfCurrentQuiz(questions: Question[]) {
+    this.currentQuiz.questions = questions;
   }
 
   

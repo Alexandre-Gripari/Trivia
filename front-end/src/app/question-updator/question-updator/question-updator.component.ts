@@ -82,6 +82,7 @@ export class QuestionUpdatorComponent implements OnInit {
       else i++; // Only move to the next element if no removal was made
     }
     
+    this.textClues = this.textClues.filter(clue => clue !== '');
     this.imageClues = this.imageClues.filter(clue => clue !== '');
     this.audioClues = this.audioClues.filter(clue => clue !== '');
   }

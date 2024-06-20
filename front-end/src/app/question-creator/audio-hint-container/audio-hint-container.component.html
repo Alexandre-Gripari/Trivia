@@ -2,12 +2,16 @@
   <button id="addAudio" (click)="onShowAudioClick()">Choisir un audio</button>
   <div id="audio-hints-container" *ngFor="let fileName of fileNames; index as i">
     <div class="audio-hints">
-      <span>{{ fileName }}</span>
-      <audio controls [src]="displayedAudios[i]"></audio>
-      <div id="audio-hint-order">
+      <div class="audio-hint-order">
+        <button (click)="moveUp(i)">&#x25B2;</button> <!-- Unicode for arrow up -->
+        <button (click)="moveDown(i)">&#x25BC;</button> <!-- Unicode for arrow down -->
       </div>
-      <div id="audio-hint-buttons">
-        <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+      <div class="audio-hints-container">
+        <span>{{ fileName }}</span>
+        <audio controls [src]="displayedAudios[i]"></audio>
+        <div id="audio-hint-buttons">
+          <button class="hint-buttons" id="delete-button" (click)="onDeleteButtonClick(i)">Supprimer</button>
+        </div>
       </div>
     </div>
   </div>

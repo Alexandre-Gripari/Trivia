@@ -69,4 +69,24 @@ export class AudioHintContainerComponent implements OnInit {
     this.hintsChangeAudio.emit(this.clues);
   }
 
+  moveUp(index: number): void {
+    if (index > 0) {
+      this.fileDataUrls.splice(index - 1, 0, this.fileDataUrls.splice(index, 1)[0]);
+      this.fileNames.splice(index - 1, 0, this.fileNames.splice(index, 1)[0]);
+      this.displayedAudios.splice(index - 1, 0, this.displayedAudios.splice(index, 1)[0]);
+      this.clues.splice(index - 1, 0, this.clues.splice(index, 1)[0]);
+      this.updateHints();
+    }
+  }
+
+  moveDown(index: number): void {
+    if (index < this.fileNames.length - 1) {
+      this.fileDataUrls.splice(index + 1, 0, this.fileDataUrls.splice(index, 1)[0]);
+      this.fileNames.splice(index + 1, 0, this.fileNames.splice(index, 1)[0]);
+      this.displayedAudios.splice(index + 1, 0, this.displayedAudios.splice(index, 1)[0]);
+      this.clues.splice(index + 1, 0, this.clues.splice(index, 1)[0]);
+      this.updateHints();
+    }
+  }
+
 }

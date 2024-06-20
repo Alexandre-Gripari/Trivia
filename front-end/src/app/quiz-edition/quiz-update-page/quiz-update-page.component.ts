@@ -38,6 +38,7 @@ export class QuizUpdatePageComponent implements OnInit {
 
   handleQuestionsUpdated(questions: Question[]) {
     this.questions = questions;
+    this.quizUpdateService.updateQuestionsOfCurrentQuiz(questions);
   }
 
   handleQuizChange(event: any) {
