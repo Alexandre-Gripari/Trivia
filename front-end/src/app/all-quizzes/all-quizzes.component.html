@@ -1,7 +1,8 @@
 <div class="filter-bar">
     <app-nav-bar></app-nav-bar>
-</div>  
+</div>
 <div class="quiz-list card-container">
     <div class="quiz" *ngFor="let quiz of allQuizzes">
         <app-quiz [quiz]="quiz"></app-quiz>
+    </div>
 </div>
