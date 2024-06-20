@@ -14,22 +14,14 @@ export class StatisticService {
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
     
-    private stats: StatisticData = {
-      id: 0,
-      numberOfCompletedQuizzes: 0, 
-      numberOfCluesUsed: 0, 
-      numberOfCluesUsedLatest: 0, 
-      timeSpentMinutes: 0,
-      timeSpentSeconds: 0,
-      timeSpentMinutesLatest: 0,
-      timeSpentSecondsLatest: 0
-    };
+    private stats: StatisticData[] = []; 
+    private statsFiltered: StatisticData[] = [];
 
     //private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
     private statsQuizzes: QuizStats[] = [];
     private statsQuizzesFiltred: QuizStats[] = [];
         
-    public stats$: BehaviorSubject<StatisticData> = new BehaviorSubject(this.stats); 
+    public stats$: BehaviorSubject<StatisticData[]> = new BehaviorSubject(this.stats); 
 
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
@@ -57,7 +49,8 @@ export class StatisticService {
 
   setUserStats(userId: String): void {
     const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + userId;
-    this.http.get<StatisticData>(urlWithId).subscribe((stats) => {
+    this.http.get<StatisticData[]>(urlWithId).subscribe((stats) => {
+    this.stats = stats;
     this.stats$.next(stats);
     });
   }
@@ -71,6 +64,20 @@ export class StatisticService {
     }); 
   }
 
+  filterCharts(startDate: Date, endDate: Date) {
+    const startMonth = startDate.getMonth();
+    const startYear = startDate.getFullYear();
+    const endMonth = endDate.getMonth();
+    const endYear = endDate.getFullYear();
+
+    this.statsFiltered = this.stats.filter(stat => {
+      const statDate = new Date(stat.date);
+      const statMonth = statDate.getMonth();
+      const statYear = statDate.getFullYear();
+      return (statYear > startYear && statYear < endYear) || (startYear != endYear && statYear === startYear && statMonth >= startMonth) || (startYear != endYear && statYear === endYear && statMonth <= endMonth) || (startYear === endYear && statYear === startYear && statMonth >= startMonth && statMonth <= endMonth);
+    });
+    this.stats$.next(this.statsFiltered);
+  }
 
   sortByDate() {
     this.statsQuizzesFiltred.sort((a, b) => {
