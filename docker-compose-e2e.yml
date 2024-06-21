@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./back-end/Dockerfile
+    ports:
+      - "8080:9428"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9428/api/status"]
+      interval: 10s
+      timeout: 20s
+      retries: 3
+
+  frontend:
+    build: 
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  e2e-tests:
+    build: 
+      context: ./front-end
+      dockerfile: Dockerfile.e2e
+    depends_on:
+      frontend:
+        condition: service_healthy
+    volumes:
+      - tests:/tests/test-results
+
+volumes:
+  tests:
+
