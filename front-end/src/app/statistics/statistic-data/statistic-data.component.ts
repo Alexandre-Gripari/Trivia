@@ -40,7 +40,7 @@ export class StatisticDataComponent implements OnInit {
   constructor(public statisticService: StatisticService) {
     this.statisticService.stats$.subscribe((stats) => {
       this.stats = stats;
-      this.updateChart();
+      this.initChart();
     });
   }
 
