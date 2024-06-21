@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { User } from '../../../models/user.model';
 import { Router } from '@angular/router';
 import {UserService} from "../../../services/user.service";
-import { GameService } from 'src/services/game.service';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-user',
@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   @Output()
   userSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private userService: UserService, private gameService: GameService) {
+  constructor(private router: Router, private userService: UserService, private quizService: QuizService) {
   }
 
   ngOnInit() {
@@ -37,6 +37,7 @@ export class UserComponent implements OnInit {
   }
 
   navigateToQuizList() {
+    if (this.user?.first_name && this.user.last_name) this.quizService.setUserFullName(this.user.first_name +" " + this.user.last_name)
     this.router.navigate(['/quiz', this.user?.id]);
   }
 

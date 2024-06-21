@@ -24,6 +24,7 @@ export class QuizService {
     * The list is retrieved from the mock.
     */
   private user_id: number = 0;
+  private userFullName: String = "";
   private quizzes: Quiz[] = [];
   private currentQuiz: any;
   private allQuiz: Quiz[] = [];
@@ -38,6 +39,7 @@ export class QuizService {
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
   public allQuiz$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.allQuiz);
+  public fullName$: BehaviorSubject<String> = new BehaviorSubject(this.userFullName);
 
 
 
@@ -82,6 +84,11 @@ export class QuizService {
 
   getUserId() {
     return this.user_id;
+  }
+
+  setUserFullName(fullName: String) {
+    this.userFullName = fullName;
+    this.fullName$.next(this.userFullName);
   }
 
   deleteQuiz(quiz: Quiz) {

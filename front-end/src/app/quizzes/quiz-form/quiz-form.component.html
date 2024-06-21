@@ -1,23 +1,10 @@
 <div class="navigate-container">
-  <h2>Créer un nouveau Quiz</h2>
-  <form class="quiz-form" [formGroup]="quizForm">
-    <div class="input-row">
-      <div class="input-group">
-        <label for="title">Title</label>
-        <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-      </div>
-      <div class="input-group">
-        <label for="theme">Theme</label>
-        <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
-      </div>
-      <button type="submit" class="button" (click)="addQuiz()">Create</button>
-      <button type="button" class="button" (click)="openMenu()">Ajouter un quiz existant</button>
-    </div>
-  </form>
+  <h2>Liste des quiz de {{userCompleteName}}</h2>
+  <button type="button" class="button-add" (click)="openMenu()">Ajouter un quiz existant</button>
 </div>
 <div class="menu" [class.open]="menuOpen">
   <div class="button-container">
-    <button type="button" class="button" (click)="addSelectedQuizzes()">Add Selected Quizzes</button>
+    <button type="button" class="button" (click)="addSelectedQuizzes()">Ajouter quiz sélectionné(s)</button>
     <button type="button" class="button" (click)="closeMenu()">Retour</button>
   </div>
   <div class="filter-bar">
