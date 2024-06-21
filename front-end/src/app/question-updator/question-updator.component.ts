@@ -15,6 +15,8 @@ import { max } from 'rxjs';
 })
 export class QuestionUpdatorComponent implements OnInit {
 
+  private tmpId: number = 0;
+
   textClues: string[] = [];
   imageClues: string[] = [];
   audioClues: string[] = [];
@@ -47,7 +49,7 @@ export class QuestionUpdatorComponent implements OnInit {
     this.textClues = this.questionGettingUpdated.clues.map((clue) => clue.text || '');
     this.imageClues = this.questionGettingUpdated.clues.map((clue) => clue.image || '');
     this.audioClues = this.questionGettingUpdated.clues.map((clue) => clue.audio || '');
-    console.log(this.textClues, this.imageClues, this.audioClues);
+    //console.log(this.textClues, this.imageClues, this.audioClues);
     for (let i = 0; i < this.textClues.length; i++) {
       if (this.textClues[i] && i>0) {
         // remove everything before the last \n in the string
@@ -65,21 +67,21 @@ export class QuestionUpdatorComponent implements OnInit {
     }
 
     // reomve subsequetn same audio clues
-    i = 1; // Start from the second element
-    while (i < this.audioClues.length) {
-      if (this.audioClues[i] === this.audioClues[i - 1]) {
-        this.audioClues.splice(i, 1); // Remove the current element
+    let j = 1; // Start from the second element
+    while (j < this.audioClues.length) {
+      if (this.audioClues[j] === this.audioClues[j - 1]) {
+        this.audioClues.splice(j, 1); // Remove the current element
       } 
-      else i++; // Only move to the next element if no removal was made
+      else j++; // Only move to the next element if no removal was made
     }
 
     // remove subsequetn same text clues
-    i = 1; // Start from the second element
-    while (i < this.textClues.length) {
-      if (this.textClues[i] === this.textClues[i - 1]) {
-        this.textClues.splice(i, 1); // Remove the current element
+    let k = 1; // Start from the second element
+    while (k < this.textClues.length) {
+      if (this.textClues[k] === this.textClues[k - 1]) {
+        this.textClues.splice(k, 1); // Remove the current element
       } 
-      else i++; // Only move to the next element if no removal was made
+      else k++; // Only move to the next element if no removal was made
     }
     
     this.textClues = this.textClues.filter(clue => clue !== '');
@@ -111,7 +113,7 @@ export class QuestionUpdatorComponent implements OnInit {
 
   handleImgCluesChange(clues: any) {
     this.imageClues = clues;
-    console.log(this.imageClues);
+    //console.log(this.imageClues);
   }
 
   handleAudioCluesChange(clues: any) {
@@ -119,10 +121,12 @@ export class QuestionUpdatorComponent implements OnInit {
   }
 
   createQuestion() {
-    console.log (this.textClues, this.imageClues, this.audioClues);
+    //console.log (this.textClues, this.imageClues, this.audioClues);
     var indice = this.createIndiceArray(this.textClues, this.imageClues, this.audioClues);
     if (this.myBoolean) this.quizUpdateService.registerQuestionAdded(this.question, this.answers, indice);
-    else this.quizUpdateService.registerQuestionUpdated(this.question, this.answers, indice);
+    else {
+      this.quizUpdateService.registerQuestionUpdated(this.question, this.answers, indice);
+    }
     this.quizUpdateService.clearCurrentQuestion();
     this.router.navigate(['quiz-update-page']);
   }

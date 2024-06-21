@@ -78,7 +78,6 @@ export class QuizUpdateService {
             question: question.question,
             clues: question.clues,
             answers: question.answers,
-            quizId: quizId,
             nbOfErrorsToUseClue: question.nbOfErrorsToUseClue
         
         }).subscribe((question) => {
@@ -100,10 +99,9 @@ export class QuizUpdateService {
             type: ans.type,
             value: ans.value,
             isCorrect: ans.isCorrect,
-            questionId: questionId
           }).subscribe(
             response => {
-              console.log('User added to quiz successfully', response);
+              console.log('Answer updated to quiz successfully', response);
             },
             error => {
               console.error('There was an error during the request', error);
@@ -122,7 +120,6 @@ export class QuizUpdateService {
                 text: clu.text,
                 image: clu.image,
                 audio: clu.audio,
-                questionId: questionId
             }).subscribe((clu) => {
                 console.log(clu);
             });
@@ -169,7 +166,7 @@ export class QuizUpdateService {
         answers: answers,
         clues: clues,
         quizId: 0,
-        nbOfErrorsToUseClue: 0
+        nbOfErrorsToUseClue: 1
     });
   }
 

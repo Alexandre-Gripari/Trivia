@@ -84,14 +84,13 @@ export class ImageHintContainerComponent implements OnInit {
       const img = new Image();
       img.onload = () => {
         // Image loaded successfully, URL is valid
+        this.imageUrls = pastedText;
         this.fileNames.push("Image");
-        this.fileDataUrls.push(pastedText);
+        this.fileDataUrls.push(this.imageUrls);
         this.isImageDisplayed.push(false);
-        this.displayedImages.push(pastedText);
-  
+        this.displayedImages = this.fileDataUrls;
+        this.clues = this.fileDataUrls;
         this.updateHints();
-        this.clues.push(pastedText);
-  
         this.clearInputField();
       };
       img.onerror = () => {
@@ -103,6 +102,7 @@ export class ImageHintContainerComponent implements OnInit {
     } else {
       this.clearInputField();
     }
+    console.log(this.clues);
   }
 
   clearInputField(): void {
@@ -114,25 +114,23 @@ export class ImageHintContainerComponent implements OnInit {
   }
 
   moveUp(index: number): void {
-    if (index > 0) {
-      [this.fileDataUrls[index], this.fileDataUrls[index - 1]] = [this.fileDataUrls[index - 1], this.fileDataUrls[index]];
-      [this.fileNames[index], this.fileNames[index - 1]] = [this.fileNames[index - 1], this.fileNames[index]];
-      [this.displayedImages[index], this.displayedImages[index - 1]] = [this.displayedImages[index - 1], this.displayedImages[index]];
-      [this.isImageDisplayed[index], this.isImageDisplayed[index - 1]] = [this.isImageDisplayed[index - 1], this.isImageDisplayed[index]];
-      this.clues = this.fileDataUrls;
-      this.updateHints();
+    if (index > 0) { // Check if it's not the first item
+      this.swapItems(index, index - 1);
     }
   }
-
+  
   moveDown(index: number): void {
-    if (index < this.fileDataUrls.length - 1) {
-      [this.fileDataUrls[index], this.fileDataUrls[index + 1]] = [this.fileDataUrls[index + 1], this.fileDataUrls[index]];
-      [this.fileNames[index], this.fileNames[index + 1]] = [this.fileNames[index + 1], this.fileNames[index]];
-      [this.displayedImages[index], this.displayedImages[index + 1]] = [this.displayedImages[index + 1], this.displayedImages[index]];
-      [this.isImageDisplayed[index], this.isImageDisplayed[index + 1]] = [this.isImageDisplayed[index + 1], this.isImageDisplayed[index]];
-      this.clues = this.fileDataUrls;
-      this.updateHints();
+    if (index < this.fileDataUrls.length - 1) { // Check if it's not the last item
+      this.swapItems(index, index + 1);
     }
   }
-
+  
+  // Utility method to swap elements in all arrays
+  swapItems(indexA: number, indexB: number): void {
+    [this.fileDataUrls[indexA], this.fileDataUrls[indexB]] = [this.fileDataUrls[indexB], this.fileDataUrls[indexA]];
+    [this.fileNames[indexA], this.fileNames[indexB]] = [this.fileNames[indexB], this.fileNames[indexA]];
+    [this.displayedImages[indexA], this.displayedImages[indexB]] = [this.displayedImages[indexB], this.displayedImages[indexA]];
+    [this.isImageDisplayed[indexA], this.isImageDisplayed[indexB]] = [this.isImageDisplayed[indexB], this.isImageDisplayed[indexA]];
+    [this.clues[indexA], this.clues[indexB]] = [this.clues[indexB], this.clues[indexA]];
+  }
 }
