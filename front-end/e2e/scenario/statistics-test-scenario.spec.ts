@@ -150,7 +150,7 @@ test.describe('Play a quiz test', () => {
 
         await user.hover();
 
-        const statsButton = UserCardFixtureComponent.getStatistiqueButton();
+        const statsButton = UserCardFixtureComponent.getStatistiqueButton().nth(0);
         await expect(statsButton).toBeVisible();
         await UserCardFixtureComponent.clickStatistiqueButton();
 

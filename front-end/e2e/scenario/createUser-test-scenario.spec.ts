@@ -32,11 +32,7 @@ test.describe('Initial test display', () => {
 
     const newUserCount = await page.locator('.user').count();
 
-    if (userCount + 1 == newUserCount) {
-      console.log('User added successfully');
-    } else {
-      console.log('User not added');
-    }
+    await expect(newUserCount).toBe(userCount + 1);
 
     const userList2 = await page.locator('.user');
     const user = userList2.nth(1);
