@@ -55,4 +55,26 @@ export class UserListComponent implements OnInit {
     this.userList = [...this.userList, ...nextUsers];
   }*/
 
+    sortByName() {
+      this.userList.sort((a, b) => {
+        return a.last_name.localeCompare(b.last_name);
+      });
+    }
+  
+    sortByBirth() {
+      this.userList.sort((a, b) => {
+        return Number(a.birth_date.substring(6,10)) - Number(b.birth_date.substring(6,10));
+      });
+    }
+  
+    sortReverse() {
+      this.userList.reverse();
+    }
+  
+    searchUser(searchValue: string) {
+      let tmp : User[] = this.userList.filter((user) => {
+        return (user.first_name.toLowerCase() + ' ' + user.last_name.toLowerCase()).includes(searchValue.toLowerCase());
+      });
+    }
+
 }

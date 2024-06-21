@@ -4,7 +4,15 @@
     "last_name": "cendre",
     "birth_date": "2003-09-23",
     "alzheimerStage": 0,
-    "profilepicture": "C:\\fakepath\\7 dims.png",
+    "profilepicture": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Pierre_Gripari.jpg",
     "id": 1718605001546
+  },
+  {
+    "first_name": "Ilias",
+    "last_name": "Moutaoukil",
+    "birth_date": "1937-04-08",
+    "alzheimerStage": 1,
+    "profilepicture": "C:\\\\fakepath\\\\7 dims.png",
+    "id": 1718989746849
   }
 ]
