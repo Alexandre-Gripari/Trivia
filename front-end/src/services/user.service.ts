@@ -90,6 +90,7 @@ export class UserService {
 
   updateUser(userId: number, userData: User): Observable<User> {
     const url = `${this.apiUrl}/${userId}`;
+    if (userData.profilepicture === "") userData.profilepicture = undefined;
     return this.http.put<User>(url, userData).pipe(
       catchError(this.handleError)
     );

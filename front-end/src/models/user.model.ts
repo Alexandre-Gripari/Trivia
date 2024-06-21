@@ -7,7 +7,7 @@ export interface User {
     //birth_date_month: string;
     //birth_date_year: string;
     birth_date: string;
-    profilepicture: string;
+    profilepicture?: string;
     alzheimerStage: string;
     personal_quizzes: Quiz[];
     id: number;
