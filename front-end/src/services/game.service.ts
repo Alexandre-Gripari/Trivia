@@ -5,10 +5,11 @@ import { QuestionAndClue } from '../models/game.model';
 import { EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { serverUrl} from 'src/configs/server.config';
+
 import { AnswerStats, QuestionStats, QuizStats, StatisticData } from 'src/models/statistic.model';
 import {Quiz} from "../models/quiz.model";
 import {User} from "../models/user.model";
-
 
 
 
@@ -19,7 +20,7 @@ export class GameService {
 
   private inactivityTimer: any;
 
-  private apiUrl = 'http://localhost:9428/api/'
+  private apiUrl = serverUrl;
 
   private index: number = 0;
 

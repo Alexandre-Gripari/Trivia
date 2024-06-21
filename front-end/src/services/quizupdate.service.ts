@@ -6,14 +6,16 @@ import { Question } from 'src/models/question.model';
 import { Clue } from 'src/models/question.model';
 import { Answer } from 'src/models/question.model';
 import { getNumberOfCurrencyDigits } from '@angular/common';
+import { serverUrl} from 'src/configs/server.config';
 import { QuizService } from './quiz.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizUpdateService {
 
-  private apiUrl = 'http://localhost:9428/api/'
+  private apiUrl = serverUrl;
 
   questionsToDel: Question[] = [];
 

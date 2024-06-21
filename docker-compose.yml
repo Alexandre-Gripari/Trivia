@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./back-end  
+    ports:
+      - "8081:9428"
+    volumes:
+      - backend-data:/usr/local/app/database
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9428/api/status"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./front-end  
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    #volumes:
+      #- frontend-dist:/usr/share/nginx/html
+      #- ./front-end/default.conf:/etc/nginx/conf.d/default.conf:ro  
+    environment:
+      - BACKEND_URL=http://backend:9428
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  backend-data:
+

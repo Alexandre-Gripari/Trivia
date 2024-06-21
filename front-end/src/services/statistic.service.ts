@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
-
+import { serverUrl} from 'src/configs/server.config';
 
 
 @Injectable({
@@ -18,8 +18,7 @@ export class StatisticService {
     
     private stats: StatisticData[] = []; 
     private statsFiltered: StatisticData[] = [];
-
-    //private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
+  
     private statsQuizzes: QuizStats[] = [];
     private statsQuizzesFiltred: QuizStats[] = [];
         
@@ -27,8 +26,8 @@ export class StatisticService {
 
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
-    private apiUrl = "http://localhost:9428/api/"
-    private statsUrl = this.apiUrl + 'statistics';
+    private serverUrl = serverUrl;
+    private statsUrl = this.serverUrl + 'statistics';
     private dataStatsPath = 'datastats';
     private quizStatsPath = 'quizstats';
 
