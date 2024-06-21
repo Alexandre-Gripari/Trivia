@@ -40,13 +40,13 @@ export class StatisticNavigateComponent implements OnInit {
     switch (selectedValue) {
       case 'Croissante':
         if (!this.asc) {
-          this.statisticService.sortReverse();
+          this.statisticService.sortReverse(selectedValue);
           this.asc = true;
         }
         break;
       case 'Décroissante':
         if (this.asc) { 
-          this.statisticService.sortReverse();
+          this.statisticService.sortReverse(selectedValue);
           this.asc = false
         }
         break;

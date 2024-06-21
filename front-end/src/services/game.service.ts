@@ -5,8 +5,11 @@ import { QuestionAndClue } from '../models/game.model';
 import { EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { AnswerStats, QuestionStats, QuizStats } from 'src/models/statistic.model';
 import { serverUrl} from 'src/configs/server.config';
+
+import { AnswerStats, QuestionStats, QuizStats, StatisticData } from 'src/models/statistic.model';
+import {Quiz} from "../models/quiz.model";
+import {User} from "../models/user.model";
 
 
 
@@ -59,19 +62,20 @@ export class GameService {
   constructor(private http: HttpClient) {
     this.resetInactivityTimer();
   }
-  
+
   public checkAnswer(answer: Answer) {
     this.resetInactivityTimer();
     if (answer.isCorrect) {
 
       // Gestion du backend
-      this.stopTimer(); // Arrêter le timer ici
-      this.addQuestionStats(this.observable.question.question, this.minutesTaken, this.secondsTaken, this.numberOfCluesPerQuestionUsed, this.numberOfBadAnswersPerQuestion); 
+      this.stopTimer(); 
+      this.startTimer();
+      this.addQuestionStats(this.observable.question.question, this.minutesTaken, this.secondsTaken, this.numberOfCluesPerQuestionUsed, this.numberOfBadAnswersPerQuestion);
       this.resetQuestionStats();
       this.addAnswerStats(answer, true, true);
       for (let i = 0; i < this.observable.question.answers.length; i++) {
         if (this.observable.question.answers[i].show === true && this.observable.question.answers[i].isCorrect === false) {
-          this.addAnswerStats(this.observable.question.answers[i], false, false); 
+          this.addAnswerStats(this.observable.question.answers[i], false, false);
         }
       }
       // Fin gestion du backend
@@ -84,10 +88,10 @@ export class GameService {
         this.observable.clueActive = false;
         this.autoClueOnStart();
         this.readQuestionAloud();
-      }, 1000); 
-      
-      
-    } 
+      }, 1000);
+
+
+    }
     else {
         this.numberOfBadAnswersPerQuestion+=1 //Backend
         for (let i = 0; i < this.observable.question.answers.length; i++) {
@@ -98,10 +102,9 @@ export class GameService {
         }
         this.numberOfErrors++;
         if (this.numberOfErrors >= this.observable.question.nbOfErrorsToUseClue && this.observable.clueNumber < this.observable.question.clues.length - 1) this.useClue(this.observable.question.clues[this.observable.clueNumber]);
-    } 
+    }
     setTimeout(() => {
       if (this.index >= this.questions.length) this.finishGame();
-      else this.startTimer();  
       this.observable$.next(this.observable);
     }, 1000);
 
@@ -136,7 +139,7 @@ export class GameService {
   public setUserIdFromUser(userId: number) {
     this.userId = userId!;
   }
-  
+
   public setQuestions(question: Question[], name: string, theme?: string) {
     this.resetGame();
     this.quizName = name;
@@ -193,7 +196,7 @@ export class GameService {
       question: question,
       answerStats: [],
       timeMinutes: timeMinutes,
-	    timeSeconds: timeSeconds-1,
+	    timeSeconds: timeSeconds,
 	    numberOfCluesUsed: numberOfCluesUsed,
 	    numberOfBadAnswers: numberOfBadAnswers,
     }
@@ -211,34 +214,56 @@ export class GameService {
     for (let i = 0; i < this.questionsStats.length; i++) {
       totalTimeM += this.questionsStats[i].timeMinutes;
       totalTimeS += this.questionsStats[i].timeSeconds;
+      totalTimeM += Math.floor(totalTimeS / 60);
+      totalTimeS = totalTimeS % 60;
       totalCluesUsed += this.questionsStats[i].numberOfCluesUsed;
       successRate += 100 - (this.questionsStats[i].numberOfBadAnswers * 33)
     }
     successRate /= this.questionsStats.length;
     successRate = Math.floor(successRate);
+    const actualDate = new Date();
     const quizStats = {
       userId: this.userId,
 	    name: this.quizName,
       theme: this.quizTheme,
-	    date: new Date(),  
+	    date: actualDate,
 	    totalTimeMinutes: totalTimeM,
 	    totalTimeSeconds: totalTimeS,
 	    totalNumberOfCluesUsed: totalCluesUsed,
 	    successRate: successRate
     }
-    this.postQuizStats(quizStats);
+    if (this.userId === 0) return;
+    this.postQuizStats(quizStats, totalCluesUsed, actualDate);
   }
 
-  private postQuizStats(quizStats: any) {
+  private postQuizStats(quizStats: any, totalCluesUsed: number, actualDate: Date) {
     this.http.post<QuizStats>(`${this.apiUrl}statistics/quizstats`, quizStats).subscribe(
       response => {
         console.log("Id du quizStats envoyé :", response.id);
+        const globalStats = {
+          userId: this.userId,
+          quizStatId: response.id,
+          numberOfCluesUsed: totalCluesUsed,
+          date: actualDate 
+        }
+        this.postGlobalStat(globalStats);
         this.postQuestionsStats(response.id);
       },
       error => {
         console.error('There was an error during the request', error);
       }
     );
+  }
+
+  private postGlobalStat(globalStat: any) {
+    this.http.post<StatisticData>(`${this.apiUrl}statistics/datastats`, globalStat).subscribe(
+      response => {
+        console.log("Id du globalStats envoyé :", response);
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    )
   }
 
   private postQuestionsStats(quizStatsId: number) {
@@ -285,9 +310,9 @@ export class GameService {
       }
     )
   }
-	
+
 	//
-	
+
 
   private resetGame() {
     this.index = 0;
@@ -310,12 +335,12 @@ export class GameService {
     const questionText = this.observable.question
     const synth = window.speechSynthesis;
     const utterThis = new SpeechSynthesisUtterance(questionText.question);
-  
-    // Ajustements 
+
+    // Ajustements
     utterThis.rate = 0.75; // Réduit la vitesse de parole
     utterThis.volume = 1; // Volume par défaut, ajustez selon besoin
     utterThis.pitch = 1; // Pitch par défaut
-  
+
     const voices = synth.getVoices();
     let voice = voices.find(voice => voice.lang.startsWith('fr-FR')); // Prefer European French if available
     if (!voice) {
@@ -334,7 +359,7 @@ export class GameService {
 
   private onInactivity() {
     this.readQuestionAloud();
-    
+
   }
 
 

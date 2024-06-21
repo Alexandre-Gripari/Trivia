@@ -13,7 +13,7 @@ export class QuizUpdateListComponent implements OnInit {
 
   questions: Question[] = [];
 
-  @Output() 
+  @Output()
   questionsUpdated: EventEmitter<Question[]> = new EventEmitter();
 
 
@@ -25,7 +25,7 @@ export class QuizUpdateListComponent implements OnInit {
   }
 
   addQuestion() {
-    this.router.navigate(['app-question-updator']);
+    this.router.navigate(['question-updator'], { state: { myBoolean: true } });
   }
 
   updateQuestions() {
@@ -43,7 +43,7 @@ export class QuizUpdateListComponent implements OnInit {
     this.router.navigate(['question-updator']);
   }
 
-  
+
 
 
 }

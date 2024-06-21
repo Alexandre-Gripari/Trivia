@@ -37,35 +37,38 @@ export class UserCreatorContainerComponent implements OnInit {
   }
 
   onSubmit() {
-    const user: User = this.userForm.value;
-    if (this.user && this.user.profilepicture instanceof File) {
+    const user: any = this.userForm.value;
+
+    if (this.userForm.get('profilepicture')?.value instanceof File) {
       const formData = new FormData();
       formData.append('first_name', user.first_name);
       formData.append('last_name', user.last_name);
       formData.append('birth_date', user.birth_date);
       formData.append('alzheimerStage', user.alzheimerStage);
-      formData.append('profilepicture', this.user.profilepicture);
+      formData.append('profilepicture', this.userForm.get('profilepicture')?.value);
 
       this.userService.createUser(formData).subscribe(
         response => {
           console.log('User created', response);
+          this.router.navigate(['/user-page']);
         },
         error => {
           console.error('Error creating user', error);
         }
       );
     } else {
+      user.profilepicture = 'C:\\\\fakepath\\\\7 dims.png';
+
       this.userService.createUser(user).subscribe(
         response => {
           console.log('User created', response);
+          this.router.navigate(['/user-page']);
         },
         error => {
           console.error('Error creating user', error);
         }
       );
     }
-
-    this.router.navigate(['/user-page']);
   }
 
   onFileSelected(event: Event): void {
@@ -83,4 +86,5 @@ export class UserCreatorContainerComponent implements OnInit {
     }
   }
 }
+
 

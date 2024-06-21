@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { QuizStats, StatisticData } from '../models/statistic.model';
-//import { ALLSTATISTICS } from '../mocks/all-statistics.mock';
-//import { ALL_STATS_QUIZ } from '../mocks/all-stats-quizzes.mock';
 import { serverUrl} from 'src/configs/server.config';
 
 
@@ -16,30 +14,15 @@ export class StatisticService {
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
 
-   /**
-    * The list of quiz.
-    * The list is retrieved from the mock. 
-    */
-  
-   /*  private user_id: String = "";
-    private allStatistics: Map<Number, StatisticData> = ALLSTATISTICS; */
+    private userId: number = 0;
     
-    private stats: StatisticData = {
-      id: 0,
-      numberOfCompletedQuizzes: 0, 
-      numberOfCluesUsed: 0, 
-      numberOfCluesUsedLatest: 0, 
-      timeSpentMinutes: 0,
-      timeSpentSeconds: 0,
-      timeSpentMinutesLatest: 0,
-      timeSpentSecondsLatest: 0
-    };
-
-    //private allStatsQuizzes: Map<Number, QuizStats[]> = ALL_STATS_QUIZ;
+    private stats: StatisticData[] = []; 
+    private statsFiltered: StatisticData[] = [];
+  
     private statsQuizzes: QuizStats[] = [];
     private statsQuizzesFiltred: QuizStats[] = [];
         
-    public stats$: BehaviorSubject<StatisticData> = new BehaviorSubject(this.stats); 
+    public stats$: BehaviorSubject<StatisticData[]> = new BehaviorSubject(this.stats); 
 
     public statsQuizzesOb$: BehaviorSubject<QuizStats[]> = new BehaviorSubject(this.statsQuizzes);
 
@@ -47,6 +30,8 @@ export class StatisticService {
     private statsUrl = this.serverUrl + 'statistics';
     private dataStatsPath = 'datastats';
     private quizStatsPath = 'quizstats';
+
+    private descSort: boolean = false;
 
   /**
    * Observable which contains the list of the quiz.
@@ -59,55 +44,72 @@ export class StatisticService {
   }
 
   setUserId(userId: number): void {
-    this.setUserStats(userId.toString());
+    this.userId = userId;
+    this.setUserStats(userId);
     this.setUserStatsQuizzes(userId);
   }
 
-  setUserStats(userId: String): void {
-    const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + userId;
-    this.http.get<StatisticData>(urlWithId).subscribe((stats) => {
+  setUserStats(userId: number): void {
+    const urlWithId = this.statsUrl + '/' + this.dataStatsPath + '/' + this.userId;
+    this.http.get<StatisticData[]>(urlWithId).subscribe((stats) => {
+    this.stats = stats;
     this.stats$.next(stats);
     });
   }
 
   setUserStatsQuizzes(userId: number): void {
-    const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + userId;
+    const urlWithId = this.statsUrl + '/' + this.quizStatsPath + '/' + this.userId;
     this.http.get<QuizStats[]>(urlWithId).subscribe((statsQuizzes) => {
       this.statsQuizzesOb$.next(statsQuizzes);
       this.statsQuizzes = statsQuizzes;
       this.statsQuizzesFiltred = this.statsQuizzes.slice();
     }); 
-    /* this.statsQuizzes = this.allStatsQuizzes.get(userId)!;
-    this.statsQuizzesFiltred = this.statsQuizzes.slice();
-    this.statsQuizzesOb$.next(this.statsQuizzes); */
   }
 
+  deleteQuizStat(quizStats: QuizStats) {
+    console.log("id du user :", this.userId);
+    this.http.delete<QuizStats>(`${this.statsUrl}/quizstats/${quizStats.id}`).subscribe(
+      response => {
+        console.log('QuizStats deleted successfully', response);
+        this.setUserStats(this.userId);
+        this.setUserStatsQuizzes(this.userId);
+      },
+      error => {
+        console.error('There was an error during the request', error);
+      }
+    );
+  }
 
-  /* setUserId(id: number) {
-    this.user_id = id;
-    if (!this.allStatistics.has(this.user_id)) {
-      console.log("No statistics for this user");
-    }
-    else {
-      this.stats = this.allStatistics.get(this.user_id)!;
-      this.statsQuizzes = this.allStatsQuizzes.get(this.user_id)!;
-      this.statsQuizzesFiltred = this.statsQuizzes.slice();
-      this.stats$.next(this.stats);
-      this.statsQuizzesOb$.next(this.statsQuizzes);
-    }
-  } */
+  filterCharts(startDate: Date, endDate: Date) {
+    const startMonth = startDate.getMonth();
+    const startYear = startDate.getFullYear();
+    const endMonth = endDate.getMonth();
+    const endYear = endDate.getFullYear();
+    if (startYear > endYear) return this.stats$.next([]);
+    this.statsFiltered = this.stats.filter(stat => {
+      const statDate = new Date(stat.date);
+      const statMonth = statDate.getMonth();
+      const statYear = statDate.getFullYear();
+      return (statYear > startYear && statYear < endYear) || (startYear != endYear && statYear === startYear && statMonth >= startMonth) || (startYear != endYear && statYear === endYear && statMonth <= endMonth) || (startYear === endYear && statYear === startYear && statMonth >= startMonth && statMonth <= endMonth);
+    });
+    this.stats$.next(this.statsFiltered);
+  }
 
   sortByDate() {
     this.statsQuizzesFiltred.sort((a, b) => {
-      return a.date.getTime() - b.date.getTime();
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+        console.error('Invalid date encountered', a.date, b.date);
+        return 0;
+      }
+      return dateA.getTime() - dateB.getTime();
     });
-
-    this.statsQuizzesFiltred.sort((a, b) => {
-      return a.date.getTime() - b.date.getTime();
-    });
-    
+  
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
+  
 
   sortByName() {
     this.statsQuizzes.sort((a, b) => {
@@ -117,7 +119,7 @@ export class StatisticService {
     this.statsQuizzesFiltred.sort((a, b) => {
       return a.name.localeCompare(b.name);
     });
-
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
 
@@ -151,7 +153,7 @@ export class StatisticService {
       // Comparaison des thèmes des quiz en utilisant localeCompare
       return a.theme.localeCompare(b.theme);
     });
-
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
 
@@ -163,14 +165,16 @@ export class StatisticService {
     this.statsQuizzesFiltred.sort((a, b) => {
       return a.successRate - b.successRate;
     });
-
+    if (this.descSort === true) this.sortReverse("Décroissant");
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
   }
 
-  sortReverse() {
+  sortReverse(selectedValue: string) {
     this.statsQuizzes.reverse();
     this.statsQuizzesFiltred.reverse();
     this.statsQuizzesOb$.next(this.statsQuizzesFiltred);
+    if (selectedValue === "Croissante") this.descSort = false;
+    else this.descSort = true;
   }
 
   searchBarFilter(input: String) {

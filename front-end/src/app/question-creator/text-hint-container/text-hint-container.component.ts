@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, Input } from '@angular/core';
 import { BasicClue } from '../../../models/question.model';
 
 @Component({
@@ -9,6 +9,9 @@ import { BasicClue } from '../../../models/question.model';
 export class TextHintContainerComponent implements OnInit {
 
   nbHints: number = 0;
+
+  @Input()
+  textHintInput: string[] = [];
 
   @Output() 
   hintsChangeTxt: EventEmitter<String[]> = new EventEmitter();
@@ -21,6 +24,10 @@ export class TextHintContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (this.textHintInput.length > 0) {
+      this.textHints = this.textHintInput;
+      this.clues = this.textHintInput;
+    }
   }
 
   onShowTextClick(): void {

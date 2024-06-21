@@ -37,7 +37,6 @@ export class UserComponent implements OnInit {
   }
 
   navigateToQuizList() {
-    if (this.user != undefined) this.gameService.setUserIdFromUser(this.user?.id)
     this.router.navigate(['/quiz', this.user?.id]);
   }
 

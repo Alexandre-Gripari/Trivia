@@ -29,6 +29,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     this.quizService.setCurrentQuiz(this.quiz);
+    console.log(this.quiz);
   }
 
   selectQuiz() {
@@ -37,6 +38,7 @@ export class QuizComponent implements OnInit {
     if (this.quiz && this.quiz.questions.length > 0) {
       console.log(this.quiz.questions);
       this.gameService.setQuestions(this.quiz.questions, this.quiz.name, this.quiz.theme);
+      if (this.quiz.userId) this.gameService.setUserIdFromUser(this.quiz.userId);
       this.router.navigate(['/game-page']);
     }
   }
@@ -52,6 +54,7 @@ export class QuizComponent implements OnInit {
 
   deleteQuiz() {
     console.log("Delete quiz");
+  
     if (this.quiz) {
       console.log("Delete quiz");
       this.quizService.deleteQuiz(this.quiz);

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 import { AppComponent } from './app.component';
@@ -29,9 +30,6 @@ import { StatisticNavigateComponent } from './statistics/statistic-navigate/stat
 import { ReviewPageComponent } from './reviews/review-page/review-page.component';
 import { ReviewListComponent } from './reviews/review-list/review-list.component';
 import { ReviewComponent } from './reviews/review/review.component';
-import { QuizEditionComponent } from './quiz-edition/quiz-edition-page/quiz-edition.component';
-import { QuestionsListComponent } from './quiz-edition/questions-list/questions-list.component';
-import { QuestionCreatorComponent } from './question-creator/question-creator.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { HomeContainerComponent} from './home/home-container/home-container.component';
 import { GameConfettiComponent } from './games/game-confetti/game-confetti.component';
@@ -49,7 +47,7 @@ import { NavBarComponent } from './quizzes/nav-bar/nav-bar.component';
 import {AllQuizzesComponent} from './all-quizzes/all-quizzes.component';
 import { QuizUpdateListComponent } from './quiz-edition/quiz-update-list/quiz-update-list.component';
 import { QuizUpdatePageComponent} from './quiz-edition/quiz-update-page/quiz-update-page.component';
-import { QuestionUpdatorComponent } from './question-updator/question-updator/question-updator.component';
+import { QuestionUpdatorComponent } from './question-updator/question-updator.component';
 
 @NgModule({
   declarations: [
@@ -77,9 +75,6 @@ import { QuestionUpdatorComponent } from './question-updator/question-updator/qu
     ReviewPageComponent,
     ReviewListComponent,
     ReviewComponent,
-    QuizEditionComponent,
-    QuestionsListComponent,
-    QuestionCreatorComponent,
     HomePageComponent,
     HomeContainerComponent,
     GameConfettiComponent,
@@ -106,6 +101,7 @@ import { QuestionUpdatorComponent } from './question-updator/question-updator/qu
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    HighchartsChartModule,
   ],
   exports : [
     GameConfettiComponent

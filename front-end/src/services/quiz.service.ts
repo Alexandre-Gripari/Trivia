@@ -56,7 +56,7 @@ export class QuizService {
     }
     this.http.post<Quiz>(`${this.apiUrl}quizzes`, quizWithUserId).subscribe(
     response => {
-      
+
       quiz.questions.forEach(question => {
         this.createQuestion(question, response.id);
       }
@@ -78,6 +78,10 @@ export class QuizService {
     this.quizzes = [];
     this.quizzes$.next(this.quizzes);
     this.updateQuizList(this.user_id);
+  }
+
+  getUserId() {
+    return this.user_id;
   }
 
   deleteQuiz(quiz: Quiz) {
@@ -145,8 +149,8 @@ export class QuizService {
   }
 
   addUserToQuiz(quiz: Quiz) {
-    const updatedQuiz = { 
-      id: quiz.id, 
+    const updatedQuiz = {
+      id: quiz.id,
       userId: this.user_id,
     };
     console.log('Adding user to quiz', updatedQuiz);
@@ -178,7 +182,7 @@ export class QuizService {
       if (a.theme == undefined) { a.theme = ""; }
       if (b.theme == undefined) { b.theme = ""; }
       return a.theme.localeCompare(b.theme);
-        
+
     });
     this.allQuiz$.next(this.allQuiz);
   }
@@ -207,7 +211,7 @@ export class QuizService {
   // to move in a more appropriate service
 
   createQuiz(name: string, theme: string, questions: Question[]) {
-    const quiz = { 
+    const quiz = {
       theme: theme,
       name: name,
       userId: this.user_id,
@@ -225,7 +229,7 @@ export class QuizService {
       }
     );
   }
-  
+
   createQuestion(question: Question, quizId: number) {
     // Include quizId in the question object or API call as needed
 
@@ -236,7 +240,7 @@ export class QuizService {
       quizId: quizId,
       answers : question.answers,
       clues : question.clues,
-      nbOfErrorsToUseClue : question.nbOfErrorsToUseClue
+      nbOfErrorsToUseClue : 1
     }
 
     console.log('Creating question', realQuestion);
@@ -260,9 +264,9 @@ export class QuizService {
       }
     );
   }
-  
+
   createAnswer(answer: Answer, questionId: number, quizId: number) {
-    
+
     const realAnswer = {
       type: "option",
       value: answer.value,
@@ -280,8 +284,20 @@ export class QuizService {
       }
     );
   }
-  
+
   createClue(clue: Clue, questionId: number, quizId: number) {
+
+    if (clue.image === "") {
+      clue.image = undefined;
+    }
+
+    if (clue.audio === "") {
+      clue.audio = undefined;
+    }
+
+    if (clue.text === "") {
+      clue.text = undefined;
+    }
     
     const realClue = {
       questionId: questionId,
@@ -315,6 +331,10 @@ export class QuizService {
     this.questions.push(realQuestion);
   }
 
+  setQuestions(questions: Question[]) {
+    this.questions = questions;
+  }
+
   getQuestions() {
     return this.questions;
   }
@@ -323,7 +343,7 @@ export class QuizService {
     this.quizData.title = title;
     this.quizData.theme = theme;
   }
-  
+
   getQuizData() {
     return this.quizData;
   }
@@ -334,5 +354,5 @@ export class QuizService {
   }
 
 
-    
+
 }
