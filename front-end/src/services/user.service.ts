@@ -11,7 +11,7 @@ import { serverUrl } from 'src/configs/server.config';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = serverUrl;
+  private apiUrl = serverUrl + 'users';
   private currentUser: any;
   /**
    * Services Documentation:
