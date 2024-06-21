@@ -5,6 +5,10 @@ services:
     build: 
       context: ../back-end/
       dockerfile: Dockerfile.e2e
+    entrypoint: 
+      - npm
+      - run 
+      - start:e2e
     ports:
       - "8080:9428"
     healthcheck:
