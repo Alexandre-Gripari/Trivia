@@ -3,7 +3,8 @@ version: '3.8'
 services:
   backend:
     build: 
-      context: ./back-end/Dockerfile
+      context: ./back-end/
+      dockerfile: Dockerfile.e2e
     ports:
       - "8080:9428"
     healthcheck:
@@ -16,6 +17,8 @@ services:
     build: 
       context: ./front-end
       dockerfile: Dockerfile
+    environment:
+      - BACKEND_URL=http://backend:9428
     ports:
       - "80:80"
     depends_on:
@@ -34,9 +37,13 @@ services:
     depends_on:
       frontend:
         condition: service_healthy
+    environment:
+      - TEST_URL=http://frontend:80
     volumes:
       - tests:/tests/test-results
+      - reports:/tests/playwright-report
 
 volumes:
   tests:
+  reports:
 
