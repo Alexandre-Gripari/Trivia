@@ -1,0 +1,46 @@
+[
+  {
+    "userId": 1718605001546,
+    "name": "yohan",
+    "theme": "yohan",
+    "date": "2024-06-21T15:36:11.410Z",
+    "totalTimeMinutes": 0,
+    "totalTimeSeconds": 13,
+    "totalNumberOfCluesUsed": 6,
+    "successRate": 1,
+    "id": 1718984171426
+  },
+  {
+    "userId": 1718605001546,
+    "name": "yohan",
+    "theme": "yohan",
+    "date": "2024-06-21T15:36:15.017Z",
+    "totalTimeMinutes": 0,
+    "totalTimeSeconds": 13,
+    "totalNumberOfCluesUsed": 6,
+    "successRate": 1,
+    "id": 1718984175030
+  },
+  {
+    "userId": 28,
+    "name": "edit football",
+    "theme": "edit sport",
+    "date": "2024-06-21T15:36:21.284Z",
+    "totalTimeMinutes": 0,
+    "totalTimeSeconds": 2,
+    "totalNumberOfCluesUsed": 1,
+    "successRate": 100,
+    "id": 1718984181288
+  },
+  {
+    "userId": 1718605001546,
+    "name": "yohan",
+    "theme": "yohan",
+    "date": "2024-06-21T15:36:32.726Z",
+    "totalTimeMinutes": 0,
+    "totalTimeSeconds": 9,
+    "totalNumberOfCluesUsed": 4,
+    "successRate": 45,
+    "id": 1718984192728
+  }
+]

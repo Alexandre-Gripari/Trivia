@@ -1,0 +1,137 @@
+[
+    {
+      "question": "Quelle est la capitale de la France ?",
+      "quizId": 1716952898888,
+      "answers": [
+        {
+          "type": "option",
+          "value": "Paris",
+          "isCorrect": true,
+          "questionId": 1
+        },
+        {
+          "type": "option",
+          "value": "Lyon",
+          "isCorrect": false,
+          "questionId": 1
+        },
+        {
+          "type": "option",
+          "value": "Marseille",
+          "isCorrect": false,
+          "questionId": 1
+        },
+        {
+          "type": "option",
+          "value": "Lille",
+          "isCorrect": false,
+          "questionId": 1
+        }
+      ],
+      "clues": [
+        {
+          "questionId": 1,
+          "text": "C'est la ville la plus peuplée de France",
+          "image": "url_to_image",
+          "audio": "url_to_audio"
+        },
+        {
+          "questionId": 1,
+          "text": "La Tour Eiffel s'y trouve",
+          "image": "url_to_image",
+          "audio": "url_to_audio"
+        }
+      ],
+      "nbOfErrorsToUseClue": 1
+    },
+    {
+      "question": "Qui a écrit 'Le Petit Prince' ?",
+      "quizId": 1716952898888,
+      "answers": [
+        {
+          "type": "option",
+          "value": "Victor Hugo",
+          "isCorrect": false,
+          "questionId": 2
+        },
+        {
+          "type": "option",
+          "value": "Antoine de Saint-Exupéry",
+          "isCorrect": true,
+          "questionId": 2
+        },
+        {
+          "type": "option",
+          "value": "J.K. Rowling",
+          "isCorrect": false,
+          "questionId": 2
+        },
+        {
+          "type": "option",
+          "value": "George Orwell",
+          "isCorrect": false,
+          "questionId": 2
+        }
+      ],
+      "clues": [
+        {
+          "questionId": 2,
+          "text": "Il était aussi un aviateur",
+          "image": "url_to_image",
+          "audio": "url_to_audio"
+        },
+        {
+          "questionId": 2,
+          "text": "Il est français",
+          "image": "url_to_image",
+          "audio": "url_to_audio"
+        }
+      ],
+      "nbOfErrorsToUseClue": 2
+    },
+    {
+      "question": "Quelle est la formule chimique de l'eau ?",
+      "quizId": 1716952898888,
+      "answers": [
+        {
+          "type": "option",
+          "value": "CO2",
+          "isCorrect": false,
+          "questionId": 3
+        },
+        {
+          "type": "option",
+          "value": "H2O",
+          "isCorrect": true,
+          "questionId": 3
+        },
+        {
+          "type": "option",
+          "value": "NA",
+          "isCorrect": false,
+          "questionId": 3
+        },
+        {
+          "type": "option",
+          "value": "N2",
+          "isCorrect": false,
+          "questionId": 3
+        }
+      ],
+      "clues": [
+        {
+          "questionId": 3,
+          "text": "Elle contient de l'hydrogène et de l'oxygène",
+          "image": "url_to_image",
+          "audio": "url_to_audio"
+        },
+        {
+          "questionId": 3,
+          "text": "C'est une molécule diatomique",
+          "image": "url_to_image",
+          "audio": "url_to_audio"
+        }
+      ],
+      "nbOfErrorsToUseClue": 0
+    }
+  ]

@@ -1,0 +1,92 @@
+[
+  {
+    "quizStatsId": 1718984171426,
+    "question": "Quelle est la capitale de la France ?",
+    "timeMinutes": 0,
+    "timeSeconds": 4,
+    "numberOfCluesUsed": 2,
+    "numberOfBadAnswers": 3,
+    "id": 1718984171466
+  },
+  {
+    "quizStatsId": 1718984171426,
+    "question": "Qui a écrit 'Le Petit Prince' ?",
+    "timeMinutes": 0,
+    "timeSeconds": 5,
+    "numberOfCluesUsed": 2,
+    "numberOfBadAnswers": 3,
+    "id": 1718984171477
+  },
+  {
+    "quizStatsId": 1718984171426,
+    "question": "Quelle est la formule chimique de l'eau ?",
+    "timeMinutes": 0,
+    "timeSeconds": 4,
+    "numberOfCluesUsed": 2,
+    "numberOfBadAnswers": 3,
+    "id": 1718984171482
+  },
+  {
+    "quizStatsId": 1718984175030,
+    "question": "Quelle est la capitale de la France ?",
+    "timeMinutes": 0,
+    "timeSeconds": 4,
+    "numberOfCluesUsed": 2,
+    "numberOfBadAnswers": 3,
+    "id": 1718984175060
+  },
+  {
+    "quizStatsId": 1718984175030,
+    "question": "Qui a écrit 'Le Petit Prince' ?",
+    "timeMinutes": 0,
+    "timeSeconds": 5,
+    "numberOfCluesUsed": 2,
+    "numberOfBadAnswers": 3,
+    "id": 1718984175064
+  },
+  {
+    "quizStatsId": 1718984175030,
+    "question": "Quelle est la formule chimique de l'eau ?",
+    "timeMinutes": 0,
+    "timeSeconds": 4,
+    "numberOfCluesUsed": 2,
+    "numberOfBadAnswers": 3,
+    "id": 1718984175068
+  },
+  {
+    "quizStatsId": 1718984181288,
+    "question": "test question",
+    "timeMinutes": 0,
+    "timeSeconds": 2,
+    "numberOfCluesUsed": 1,
+    "numberOfBadAnswers": 0,
+    "id": 1718984181316
+  },
+  {
+    "quizStatsId": 1718984192728,
+    "question": "Quelle est la capitale de la France ?",
+    "timeMinutes": 0,
+    "timeSeconds": 2,
+    "numberOfCluesUsed": 1,
+    "numberOfBadAnswers": 1,
+    "id": 1718984192753
+  },
+  {
+    "quizStatsId": 1718984192728,
+    "question": "Qui a écrit 'Le Petit Prince' ?",
+    "timeMinutes": 0,
+    "timeSeconds": 3,
+    "numberOfCluesUsed": 1,
+    "numberOfBadAnswers": 1,
+    "id": 1718984192755
+  },
+  {
+    "quizStatsId": 1718984192728,
+    "question": "Quelle est la formule chimique de l'eau ?",
+    "timeMinutes": 0,
+    "timeSeconds": 4,
+    "numberOfCluesUsed": 2,
+    "numberOfBadAnswers": 3,
+    "id": 1718984192758
+  }
+]

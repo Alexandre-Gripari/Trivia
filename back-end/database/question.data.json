@@ -1,0 +1,1383 @@
+[
+  {
+    "question": "Quelle est la capitale de la France ?",
+    "quizId": 1716952898888,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Paris",
+        "isCorrect": true,
+        "questionId": 1
+      },
+      {
+        "type": "option",
+        "value": "Lyon",
+        "isCorrect": false,
+        "questionId": 1
+      },
+      {
+        "type": "option",
+        "value": "Marseille",
+        "isCorrect": false,
+        "questionId": 1
+      },
+      {
+        "type": "option",
+        "value": "Lille",
+        "isCorrect": false,
+        "questionId": 1
+      }
+    ],
+    "clues": [
+      {
+        "questionId": 1,
+        "text": "C'est la ville la plus peuplée de France",
+        "image": "url_to_image",
+        "audio": "url_to_audio"
+      },
+      {
+        "questionId": 1,
+        "text": "La Tour Eiffel s'y trouve",
+        "image": "url_to_image",
+        "audio": "url_to_audio"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1
+  },
+  {
+    "question": "Qui a écrit 'Le Petit Prince' ?",
+    "quizId": 1716952898888,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Victor Hugo",
+        "isCorrect": false,
+        "questionId": 2
+      },
+      {
+        "type": "option",
+        "value": "Antoine de Saint-Exupéry",
+        "isCorrect": true,
+        "questionId": 2
+      },
+      {
+        "type": "option",
+        "value": "J.K. Rowling",
+        "isCorrect": false,
+        "questionId": 2
+      },
+      {
+        "type": "option",
+        "value": "George Orwell",
+        "isCorrect": false,
+        "questionId": 2
+      }
+    ],
+    "clues": [
+      {
+        "questionId": 2,
+        "text": "Il était aussi un aviateur",
+        "image": "url_to_image",
+        "audio": "url_to_audio"
+      },
+      {
+        "questionId": 2,
+        "text": "Il est français",
+        "image": "url_to_image",
+        "audio": "url_to_audio"
+      }
+    ],
+    "nbOfErrorsToUseClue": 2
+  },
+  {
+    "question": "Quelle est la formule chimique de l'eau ?",
+    "quizId": 1716952898888,
+    "answers": [
+      {
+        "type": "option",
+        "value": "CO2",
+        "isCorrect": false,
+        "questionId": 3
+      },
+      {
+        "type": "option",
+        "value": "H2O",
+        "isCorrect": true,
+        "questionId": 3
+      },
+      {
+        "type": "option",
+        "value": "NA",
+        "isCorrect": false,
+        "questionId": 3
+      },
+      {
+        "type": "option",
+        "value": "N2",
+        "isCorrect": false,
+        "questionId": 3
+      }
+    ],
+    "clues": [
+      {
+        "questionId": 3,
+        "text": "Elle contient de l'hydrogène et de l'oxygène",
+        "image": "url_to_image",
+        "audio": "url_to_audio"
+      },
+      {
+        "questionId": 3,
+        "text": "C'est une molécule diatomique",
+        "image": "url_to_image",
+        "audio": "url_to_audio"
+      }
+    ],
+    "nbOfErrorsToUseClue": 0
+  },
+  {
+    "question": "Qui détient le plus grand nombre de titres du Grand Chelem en simple masculin ?",
+    "quizId": 1718782660045,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Rafael Nadal",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Roger Federer",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Novak Djokovic",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Pete Sampras",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il est originaire de Belgrade en Serbie",
+        "image": "https://assets.tennismajors.com/uploads/sites/2/2021/04/Djokovic-OTD-04_01-1.jpg"
+      },
+      {
+        "text": "Il est originaire de Belgrade en Serbie\nIl atteint la première place mondiale pour la première fois le 4 juillet 2011",
+        "image": "https://www.voici.fr/imgre/fit/~1~voi~2023~06~06~d6e8037c-789e-422f-abce-dbfa0cc29b0d.jpeg/1200x675/quality/80/novak-djokovic-quel-est-ce-mysterieux-patch-metallique-qu-il-porte-au-niveau-du-coeur.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718782660065
+  },
+  {
+    "question": "Quel tournoi du Grand Chelem se joue sur terre battue ?",
+    "quizId": 1718782660045,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Wimbledon",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "US Open",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": " Roland-Garros",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Open d'Australie",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il prend place à Paris",
+        "image": "https://d2dzi65yjecjnt.cloudfront.net/385930-6.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718782660071
+  },
+  {
+    "question": "Qui a remporté le plus de titres du Grand Chelem en simple féminin ?",
+    "quizId": 1718782660045,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Serena Williams",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Steffi Graf",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Martina Navratilova",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Margaret Court",
+        "isCorrect": true
+      }
+    ],
+    "clues": [
+      {
+        "text": "Elle est née le 16 juillet 1942 à Albury",
+        "image": "https://www.leparisien.fr/resizer/5zc4RhVLw02jprO4iMIw8d-AxGk=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/4HMAYUPB4BC3BOXLV5DO73G6II.jpg"
+      },
+      {
+        "text": "Elle est née le 16 juillet 1942 à Albury",
+        "image": "https://library.sportingnews.com/styles/twitter_card_120x120/s3/2023-01/Margaret%20Court.jpg?itok=DsVH55ap"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718782660076
+  },
+  {
+    "question": "Quel est le nom du stade principal où se joue l'US Open ?",
+    "quizId": 1718782660045,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Rod Laver Arena",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Arthur Ashe Stadium",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Philippe Chatrier",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Centre Court",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il a été ouvert en 1997",
+        "image": "https://www.wsp.com/-/media/project/global/image/bnr-arthur-ashe-stadium_property-and-building_sports-and-stadia.jpg"
+      },
+      {
+        "text": "Il a été ouvert en 1997\nIl se situe aux États-Unis",
+        "image": "https://www.wsp.com/-/media/project/global/image/bnr-arthur-ashe-stadium_property-and-building_sports-and-stadia.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718782660079
+  },
+  {
+    "question": "Quelle est la surface de jeu du tournoi de Wimbledon ?",
+    "quizId": 1718782660045,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Terre battue",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Gazon",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Dur",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Moquette",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "C'est la plus ancienne surface au tennis"
+      },
+      {
+        "text": "C'est la plus ancienne surface au tennis\nC'est une surface plus rapide que la terre battue"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718782660083
+  },
+  {
+    "question": "Qui a été le premier à remporter les quatre tournois du Grand Chelem la même année ?",
+    "quizId": 1718782660045,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Fred Perry",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Rod Laver",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Don Budge",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Roy Emerson",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il a remporté six titres du Grand Chelem ",
+        "image": "https://images.tennis.com/image/private/t_16-9_1920/tenniscom-prd/akyzhtzwzs1b4jjpef8u.jpg"
+      },
+      {
+        "text": "Il a remporté six titres du Grand Chelem ",
+        "image": "https://cdn0.scrvt.com/c2465e9022ba946df66d1244a69b1c75/9f0b02fb20287267/3be551472b0a/v/bcfd27130563/p_1993_0100_J2_016_o2.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718782660089
+  },
+  {
+    "question": "Quel est le premier tournoi du Grand Chelem ?",
+    "quizId": 1718782660045,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Wimbledon",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "US Open",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Roland-Garros",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Open d'Australie",
+        "isCorrect": true
+      }
+    ],
+    "clues": [
+      {
+        "text": " Il se joue sur gazon jusqu'en 1987, puis sur dur",
+        "image": "https://media.ouest-france.fr/v1/pictures/MjAyMzAxMTQzMzk0MGVlYTlkYWVlMTY2OTUyZDgwY2U4NDgxZjg?width=1260&height=708&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=5ba7ace6ed20f89f42dd95c3bcfe6dc900217cae69595b82a655948357549808"
+      },
+      {
+        "text": " Il se joue sur gazon jusqu'en 1987, puis sur dur\nil se déroule à Melbourne en Australie",
+        "image": "https://media.ouest-france.fr/v1/pictures/MjAyMzAxMTQzMzk0MGVlYTlkYWVlMTY2OTUyZDgwY2U4NDgxZjg?width=1260&height=708&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=5ba7ace6ed20f89f42dd95c3bcfe6dc900217cae69595b82a655948357549808"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718782660095
+  },
+  {
+    "question": "Qui détient le record du plus grand nombre de victoires au Tour de France ?",
+    "quizId": 1718784738455,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Eddy Merckx",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Bernard Hinault",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Miguel Indurain",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Lance Armstrong",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il est né le 17 juin 1945",
+        "image": "https://www.leparisien.fr/resizer/augSKIXLcID4d9Zq_IBCuyORPLg=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/57Q5PJVGRRXX76U4IKESPW46FE.jpg"
+      },
+      {
+        "text": "Il est né le 17 juin 1945\nIl est Belge",
+        "image": "https://www.lederailleur.fr/wp-content/uploads/2024/04/Eddy-Merckx-chez-lui-apres-avoir-subi-une-operation-intestinale.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718784738470
+  },
+  {
+    "question": "En quelle année le premier Tour de France a-t-il eu lieu ?",
+    "quizId": 1718784738455,
+    "answers": [
+      {
+        "type": "option",
+        "value": "1899",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "1903",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "1914",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "1921",
+        "isCorrect": false
+      }
+    ],
+    "clues": [],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718784738472
+  },
+  {
+    "question": "Quel est le maillot porté par le leader du classement général ?",
+    "quizId": 1718784738455,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Maillot vert",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Maillot à pois",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Maillot jaune",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Maillot blanc",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "On y voit souvent inscrit LCL"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718784738474
+  },
+  {
+    "question": "Quel est le col le plus souvent escaladé dans l’histoire du Tour de France ?",
+    "quizId": 1718784738455,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Col du Tourmalet",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Mont Ventoux",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Alpe d'Huez",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Col de l'Izoard",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "C'est un col de montagne des Pyrénées centrales françaises",
+        "image": "https://climbfinder.com/CDN/col-du-tourmalet-luz-saint-sauveur-upload-13894-1024x0.jpeg"
+      },
+      {
+        "text": "C'est un col de montagne des Pyrénées centrales françaises",
+        "image": "https://www.aquitaineonline.com/images/stories/Occitanie/Tour-de-france-col-tourmalet_01.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718784738476
+  },
+  {
+    "question": "Quel est le nom de la place où le Tour de France se termine à Paris ?",
+    "quizId": 1718784738455,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Place de la Concorde",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Place Vendôme",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Place de l'Étoile",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Champs-Élysées",
+        "isCorrect": true
+      }
+    ],
+    "clues": [
+      {
+        "image": "https://www.etsionvisitaitparis.com/f/francia/paris/guia/campos-eliseos.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718784738479
+  },
+  {
+    "question": "Quelle est la récompense pour le vainqueur de chaque étape du Tour de France ?",
+    "quizId": 1718784738455,
+    "answers": [
+      {
+        "type": "option",
+        "value": "2 000 euros",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "5 000 euros",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "8 000 euros",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "11 000 euros",
+        "isCorrect": true
+      }
+    ],
+    "clues": [],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718784738481
+  },
+  {
+    "question": "Qui a été le premier cycliste britannique à remporter le Tour de France ?",
+    "quizId": 1718784738455,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Bradley Wiggins",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Chris Froome",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Mark Cavendish",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Geraint Thomas",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il est né le 28 avril 1980 à Gand",
+        "image": "https://cdn-s-www.ledauphine.com/images/D00E7999-C4BA-4E1D-85D1-A461C7B7262E/NW_raw/vainqueur-du-tour-de-france-en-2012-bradley-wiggins-est-dans-une-situation-tres-difficile-archives-photo-le-dl-thierry-guillot-1718721049.jpg"
+      },
+      {
+        "text": "Il est né le 28 avril 1980 à Gand\n Professionnel entre 2002 et 2016, il est spécialiste de la poursuite",
+        "image": "https://cdn-s-www.ledauphine.com/images/D00E7999-C4BA-4E1D-85D1-A461C7B7262E/NW_raw/vainqueur-du-tour-de-france-en-2012-bradley-wiggins-est-dans-une-situation-tres-difficile-archives-photo-le-dl-thierry-guillot-1718721049.jpg"
+      },
+      {
+        "text": "Il est né le 28 avril 1980 à Gand Professionnel entre 2002 et 2016, il est spécialiste de la poursuite\nChampion du monde de poursuite individuelle (2003, 2007, 2008)",
+        "image": "https://cdn-s-www.ledauphine.com/images/D00E7999-C4BA-4E1D-85D1-A461C7B7262E/NW_raw/vainqueur-du-tour-de-france-en-2012-bradley-wiggins-est-dans-une-situation-tres-difficile-archives-photo-le-dl-thierry-guillot-1718721049.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718784738482
+  },
+  {
+    "question": "Quelle technique de coupe consiste à trancher les légumes en fines lamelles ?",
+    "quizId": 1718786543820,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Brunoise",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Julienne",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Mirepoix",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Macédoine",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Elle est aussi appelée lingue franche"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718786543845
+  },
+  {
+    "question": "Quelle épice donne sa couleur jaune au curry ?",
+    "quizId": 1718786543820,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Cumin",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Safran",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Curcuma",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Paprika",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Elle provient d'Asie du Sud",
+        "image": "https://cdn.futura-sciences.com/sources/images/curcuma-bienfaits-vertus.jpg"
+      },
+      {
+        "text": "Elle provient d'Asie du Sud\nElle tâche en donnant une couleur orange",
+        "image": "https://cdn.futura-sciences.com/sources/images/curcuma-bienfaits-vertus.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718786543848
+  },
+  {
+    "question": "Quel type de pâte est utilisé pour faire une quiche ?",
+    "quizId": 1718786543820,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Pâte feuilletée",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Pâte à choux",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Pâte brisée",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Pâte sablée",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Sa préparation impose l'utilisation de beurre mou",
+        "image": "https://odelices.ouest-france.fr/images/recettes/pate-brisee-1.jpg"
+      },
+      {
+        "text": "Sa préparation impose l'utilisation de beurre mou\nElle se caractérise par sa texture lisse et craquante",
+        "image": "https://odelices.ouest-france.fr/images/recettes/pate-brisee-1.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718786543852
+  },
+  {
+    "question": "Quel chef cuisinier est devenu Meilleur Ouvrier de France en 2000 ?",
+    "quizId": 1718786543820,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Anne-Sophie Pic",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Paul Bocuse",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Alain Ducasse",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Philippe Etchebest",
+        "isCorrect": true
+      }
+    ],
+    "clues": [
+      {
+        "image": "https://philippe-etchebest.com/wp-content/uploads/2018/03/philippe-etchebest-concour-2-1-1200x900.jpg"
+      },
+      {
+        "image": "https://philippe-etchebest.com/wp-content/uploads/2020/10/philippe-etchebest-1200x675.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718786543854
+  },
+  {
+    "question": "Quel est le principal ingrédient de la soupe miso ?",
+    "quizId": 1718786543820,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Tomate",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Pâte de soja fermenté",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Haricots rouges",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Pois chiches",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "C'est un ingrédient essentiel dans la cuisine coréenne",
+        "image": "https://www.kimchi-passion.fr/img/cms/doenjang%20guk/DSC09262.JPG"
+      },
+      {
+        "text": "C'est un ingrédient essentiel dans la cuisine coréenne\n Elle est fabriquée à partir de soja, de sel et d'eau",
+        "image": "https://www.kimchi-passion.fr/img/cms/doenjang%20guk/DSC09262.JPG"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718786543856
+  },
+  {
+    "question": "Quel ustensile est indispensable pour battre les blancs en neige à la main ?",
+    "quizId": 1718786543820,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Un fouet",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Une spatule",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Une cuillère en bois",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Un pilon",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "image": "https://files.meilleurduchef.com/mdc/photo/produit/mfe/fouet-cuisine/fouet-cuisine-1-main-650.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718786543859
+  },
+  {
+    "question": "Quel type de couteau est spécifiquement conçu pour découper du pain ?",
+    "quizId": 1718786543820,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Couteau à filet de sole",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Couteau à éplucher",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Couteau dentelé",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Couteau de chef",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il est plus généralement utilisé pour couper les aliments à croûte dure ou à peau épaisse",
+        "image": "https://www.cdiscount.com/pdt2/5/5/7/4/700x700/tra1690240541557/rw/couteau-a-pain-dentele-23cm-allemand-acier-inoxyda.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718786543860
+  },
+  {
+    "question": "Combien de cartes y a-t-il dans un jeu de cartes standard utilisé pour jouer au rami ?",
+    "quizId": 1718788019338,
+    "answers": [
+      {
+        "type": "option",
+        "value": "40",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "52",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "54",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "60",
+        "isCorrect": false
+      }
+    ],
+    "clues": [],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718788019357
+  },
+  {
+    "question": "Quel est l'objectif principal du jeu de rami ?",
+    "quizId": 1718788019338,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Collecter des paires",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": " Former des séquences et des combinaisons",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Avoir la carte la plus haute",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Éliminer toutes les cartes de l'adversaire",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "image": "https://www.neopoker.fr/wp-content/uploads/2013/02/rami-combinaisons.jpg"
+      },
+      {
+        "image": "https://jeuxdecartes1.e-monsite.com/medias/images/phase-10-image7-.png"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718788019358
+  },
+  {
+    "question": "Quelle carte est considérée comme la plus haute dans le jeu de rami ?",
+    "quizId": 1718788019338,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Roi",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Dame",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "As",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Dix",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "image": "https://static.vecteezy.com/ti/vecteur-libre/p3/1269691-cartes-as-dans-une-rangee-gratuit-vectoriel.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718788019360
+  },
+  {
+    "question": "Dans une partie de rami, que signifie \"faire rami\" ?",
+    "quizId": 1718788019338,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Gagner sans avoir utilisé de joker",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Former une main composée uniquement de séquences",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Réaliser une main complète et se débarrasser de toutes ses cartes",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Perdre avec le moins de points possible",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "image": "https://previews.123rf.com/images/mudcauldron/mudcauldron2108/mudcauldron210800031/173549608-mains-de-personnes-dessin%C3%A9es-%C3%A0-la-main-organiques-tenant-une-carte-ou-quelque-chose-sans-l-objet.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718788019363
+  },
+  {
+    "question": "Combien de cartes un joueur reçoit-il au début d'une partie de \"Blackjack\" ?",
+    "quizId": 1718788019338,
+    "answers": [
+      {
+        "type": "option",
+        "value": "1",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "2",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "3",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "4",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "C'est un nombre pair",
+        "image": "https://www.guide-blackjack.com/wp-content/uploads/2021/01/blackjack-dealer.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718788019365
+  },
+  {
+    "question": "Quel jeu de cartes utilise des cartes appelées \"atouts\" ?",
+    "quizId": 1718788019338,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Poker",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Canasta",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Tarot",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Écarté",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il y a généralement au nombre de 78 cartes",
+        "image": "https://img-3.journaldesfemmes.fr/6znN5vF6nAeqtU3F6260gYBk8EA=/1500x/smart/8c186f41e59e423baa68d6676a0d3663/ccmcms-jdf/11456393.jpg"
+      },
+      {
+        "text": "Il y a généralement au nombre de 78 cartes",
+        "image": "https://www.letarot.net/images/oudlersbig.png"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718788019367
+  },
+  {
+    "question": "Quel est le nom de la main la plus haute au poker ?",
+    "quizId": 1718788019338,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Full house",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Quinte flush royale",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Carré",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Quinte flush",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "image": "https://t3.ftcdn.net/jpg/03/06/36/86/360_F_306368661_PA4b7k6ZAEj5iN0gM6llcBoeAXAp1gTH.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718788019368
+  },
+  {
+    "question": "Quel est le plus grand désert chaud du monde ?",
+    "quizId": 1718789611882,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Sahara",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Gobi",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Atacama",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Kalahari",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": " Il s'étend sur 5 000 km d'Ouest en Est",
+        "image": "https://qph.cf2.quoracdn.net/main-qimg-d5287b7b8fed09ff4e6510bd92f38aeb-lq"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718789611905
+  },
+  {
+    "question": "Quel est le plus grand parc national des États-Unis ?",
+    "quizId": 1718789611882,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Yellowstone",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Grand Canyon",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Yosemite",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Everglades",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Principalement situé dans le Wyoming, le parc s'étend également sur des parties du Montana et de l'Idaho",
+        "image": "https://images.ctfassets.net/bth3mlrehms2/3xEhPuwynvvJFYElsr5DBh/d81bc6fbc15d53cc72440141aeb6126e/iStock-1135715079.jpg?w=2121&h=1414&fl=progressive&q=50&fm=jpg"
+      },
+      {
+        "text": "Principalement situé dans le Wyoming, le parc s'étend également sur des parties du Montana et de l'Idaho\nC'est une zone d'environ 9 000 km² surplombant un site géothermique volcanique",
+        "image": "https://i0.wp.com/hikesandtravels.com/wp-content/uploads/2021/03/screenshot_2017-03-08-00-28-57-11.png?fit=768%2C789&ssl=1"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718789611907
+  },
+  {
+    "question": "Dans quel pays trouve-t-on le Machu Picchu, une ancienne cité inca ?",
+    "quizId": 1718789611882,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Pérou",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Mexique",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Brésil",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Colombie",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "C'est un pays d'Amérique du Sud couvrant une partie de la forêt amazonienne",
+        "image": "https://static-cms.routard.com/web-routard/uploads/peroupop_1366984_a6533eacca.gif"
+      },
+      {
+        "text": "C'est un pays d'Amérique du Sud couvrant une partie de la forêt amazonienne",
+        "image": "https://www.larousse.fr/encyclopedie/data/images/1009572-Drapeau_du_P%C3%A9rou.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718789611909
+  },
+  {
+    "question": "Quel est le plus grand océan du monde ?",
+    "quizId": 1718789611882,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Océan Atlantique",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Océan Indien",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Océan Pacifique",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Océan Arctique",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il comporte deux océans : le Pacifique Nord et le Pacifique Sud",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Pacific_Ocean_laea_relief_location_map.jpg/440px-Pacific_Ocean_laea_relief_location_map.jpg"
+      },
+      {
+        "text": "Il comporte deux océans : le Pacifique Nord et le Pacifique Sud\nIl couvre environ un tiers de la surface de la Terre",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Pacific_Ocean_laea_relief_location_map.jpg/440px-Pacific_Ocean_laea_relief_location_map.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718789611911
+  },
+  {
+    "question": "Quelle ville italienne est célèbre pour ses canaux et ses gondoles ?",
+    "quizId": 1718789611882,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Rome",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Venise",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Florence",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Milan",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Elle occupe plus de 100 petites îles dans un lagon de la mer Adriatique",
+        "image": "https://www.voyageway.com/wp-content/uploads/2019/01/pass-venise.jpg"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718789611914
+  },
+  {
+    "question": "Quel est le plus haut sommet du monde ?",
+    "quizId": 1718789611882,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Mont Kilimandjaro",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Mont Everest",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Mont McKinley (Denali)",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Mont Fuji",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": "Il possède une altitude de 8 849 m",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Nepal_rel_location_map.svg/280px-Nepal_rel_location_map.svg.png"
+      },
+      {
+        "text": "Il possède une altitude de 8 849 m\nIl est situé dans la chaîne de l'Himalaya",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRTfZPGXbaNT5vbAaHfmOZELIxiDKlVGUY6JhSN9XItf3RbjxutoXdPpTtckSRU-_Cgdg&usqp=CAU"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718789611916
+  },
+  {
+    "question": "Quel est le nom de la célèbre route côtière en Californie ?",
+    "quizId": 1718789611882,
+    "answers": [
+      {
+        "type": "option",
+        "value": "Route 66",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Great Ocean Road",
+        "isCorrect": false
+      },
+      {
+        "type": "option",
+        "value": "Pacific Coast Highway",
+        "isCorrect": true
+      },
+      {
+        "type": "option",
+        "value": "Overseas Highway",
+        "isCorrect": false
+      }
+    ],
+    "clues": [
+      {
+        "text": " Elle suit la côte pacifique",
+        "image": "https://media-api.xogrp.com/images/2210a14a-0079-48f2-b5bc-021626840af0~rs_768.h"
+      },
+      {
+        "text": " Elle suit la côte pacifique\nElles est aussi appelée Highway 1",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgBdDnSBnNKE3JSLmiF4wqJ_jXo1z5Z4j7XxcojGhoiTOY5qCx1mvxx5ufpakvu9ljTw&usqp=CAU"
+      }
+    ],
+    "nbOfErrorsToUseClue": 1,
+    "id": 1718789611918
+  }
+]

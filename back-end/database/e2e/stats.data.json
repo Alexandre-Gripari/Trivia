@@ -1,0 +1,30 @@
+[
+  {
+    "userId": 1718605001546,
+    "quizStatId": 1718984171426,
+    "numberOfCluesUsed": 6,
+    "date": "2024-06-21T15:36:11.410Z",
+    "id": 1718984171462
+  },
+  {
+    "userId": 1718605001546,
+    "quizStatId": 1718984175030,
+    "numberOfCluesUsed": 6,
+    "date": "2024-06-21T15:36:15.017Z",
+    "id": 1718984175056
+  },
+  {
+    "userId": 28,
+    "quizStatId": 1718984181288,
+    "numberOfCluesUsed": 1,
+    "date": "2024-06-21T15:36:21.284Z",
+    "id": 1718984181314
+  },
+  {
+    "userId": 1718605001546,
+    "quizStatId": 1718984192728,
+    "numberOfCluesUsed": 4,
+    "date": "2024-06-21T15:36:32.726Z",
+    "id": 1718984192750
+  }
+]
