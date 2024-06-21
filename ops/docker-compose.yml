@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./back-end  
+      context: ../back-end  
     ports:
       - "8081:9428"
     volumes:
@@ -16,7 +16,7 @@ services:
 
   frontend:
     build:
-      context: ./front-end  
+      context: ../front-end  
     ports:
       - "80:80"
     depends_on:

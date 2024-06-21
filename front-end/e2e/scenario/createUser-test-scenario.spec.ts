@@ -28,7 +28,6 @@ test.describe('Initial test display', () => {
     await page.fill('#alzheimerStage', '3');
     await page.click('button[type="submit"]');
 
-    await page.reload();
 
     const newUserCount = await page.locator('.user').count();
 

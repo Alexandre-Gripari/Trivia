@@ -1,6 +1,5 @@
 FROM node:20.14 as build
 
-#RUN npm install -g @angular/cli
 
 #Set the working directory
 WORKDIR /usr/local/app
@@ -8,7 +7,6 @@ WORKDIR /usr/local/app
 COPY package*.json ./
 
 RUN npm install 
-#--omit=dev
 #Add the source code to app
 COPY ./ ./
 

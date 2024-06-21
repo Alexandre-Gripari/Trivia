@@ -1,5 +1,5 @@
 # Utiliser l'image de base officielle Playwright
-FROM mcr.microsoft.com/playwright:v1.20.0-focal
+FROM mcr.microsoft.com/playwright:v1.44.1
 
 # Définir le répertoire de travail
 WORKDIR /tests
@@ -9,8 +9,6 @@ COPY . .
 
 # Installer les dépendances
 RUN npm install
-
-RUN npx playwright install
 
 # Exécuter les tests
 CMD ["npx", "playwright", "test"]
