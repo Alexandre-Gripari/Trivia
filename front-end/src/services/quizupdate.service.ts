@@ -15,6 +15,8 @@ import { QuizService } from './quiz.service';
 })
 export class QuizUpdateService {
 
+  private tempIdCounter = -1;
+
   private apiUrl = serverUrl;
 
   questionsToDel: Question[] = [];
@@ -71,7 +73,7 @@ export class QuizUpdateService {
 
   updateQuestionsInDB(questions: Question[], quizId: number) {
     questions.forEach(question => {
-        if (question.id === 0) {
+        if (question.id < 0) {
             this.quizService.createQuestion(question, quizId);
         } else {
         this.http.put<Question>(`${this.apiUrl}quizzes/${quizId}/questions/${question.id}`, {
@@ -161,7 +163,7 @@ export class QuizUpdateService {
 
   registerQuestionAdded(question: string, answers: Answer[], clues: Clue[]) {
     this.currentQuiz.questions.push({
-        id: 0,
+        id: this.tempIdCounter--,
         question: question,
         answers: answers,
         clues: clues,

@@ -18,6 +18,8 @@ import {User} from "../models/user.model";
 })
 export class GameService {
 
+  private isFinished: boolean = false;
+
   private inactivityTimer: any;
 
   private apiUrl = serverUrl;
@@ -133,6 +135,7 @@ export class GameService {
   public finishGame() {
     console.log("Game finished");
     this.postElements();
+    this.isFinished = true;
 
   }
 
@@ -315,6 +318,7 @@ export class GameService {
 
 
   private resetGame() {
+    this.isFinished = false;
     this.index = 0;
     this.numberOfErrors = 0;
     this.observable.clueNumber = -1;
@@ -331,6 +335,7 @@ export class GameService {
   }
 
   public readQuestionAloud() {
+    if (this.isFinished) return;
     console.log("Reading question aloud");
     const questionText = this.observable.question
     const synth = window.speechSynthesis;
