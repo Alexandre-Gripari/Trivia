@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   gotoHomePage() {
     this.router.navigate(['/home-page']);
-    this.gameService.finishGame();
+    this.gameService.setIsFinished(true);
   }
 
 }

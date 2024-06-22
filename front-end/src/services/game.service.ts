@@ -367,6 +367,10 @@ export class GameService {
 
   }
 
+  public setIsFinished(isFinished: boolean) {
+    this.isFinished = isFinished;
+  }
+
 
 
 }
